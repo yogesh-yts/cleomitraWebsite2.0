@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.figma.com)",
+      "Read(/C:\\Users\\yogesh\\Documents\\VS\\cleomitraCrm\\cleomitra\\app/**)",
+      "Bash(npm install:*)",
+      "WebFetch(domain:embed.figma.com)",
+      "Read(/c:\\Users\\yogesh\\Downloads/**)",
+      "Read(/C:\\Users\\yogesh\\Documents\\VS\\cleomitraCrm\\cleomitra\\app/**)",
+      "Read(/C:\\Users\\yogesh\\Downloads/**)",
+      "Read(/C:\\Users\\yogesh\\Downloads/**)",
+      "Read(/C:\\Users\\yogesh\\Downloads/**)",
+      "Read(/C:\\Users\\yogesh\\Downloads/**)",
+      "Read(/C:\\Users\\yogesh\\Downloads/**)",
+      "Read(/C:\\Users\\yogesh\\Downloads/**)",
+      "Read(/C:\\Users\\yogesh\\Documents\\VS\\cleomitraCrm\\cleomitra\\app/**)",
+      "Read(/C:\\Users\\yogesh\\Downloads/**)",
+      "Read(/C:\\Users\\yogesh\\Downloads/**)",
+      "Read(//c/Users/yogesh/Downloads/**)",
+      "Bash(mkdir:*)",
+      "mcp__figma-dev-mode-mcp-server__get_code",
+      "mcp__figma-dev-mode-mcp-server__get_image",
+      "Bash(claude mcp add:*)",
+      "mcp__ide__getDiagnostics",
+      "Read(//c/Users/yogesh/Pictures/Screenshots/**)",
+      "Bash(claude doctor)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
