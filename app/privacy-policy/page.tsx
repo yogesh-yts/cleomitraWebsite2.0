@@ -1,165 +1,172 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
+import React, { useState } from "react";
 
-export default function PrivacyPolicyPage() {
+const PrivacyPolicy: React.FC = () => {
+  const currentDate = new Date();
+  const formattedDate = `${currentDate.toLocaleString("default", {
+    month: "long",
+  })} ${currentDate.getFullYear()}`;
+
+  const [expandedSection, setExpandedSection] = useState<string | null>(null);
+
+  const toggleSection = (section: string) => {
+    setExpandedSection(expandedSection === section ? null : section);
+  };
+
   return (
-    <div className="bg-background">
-      {/* Hero Section */}
-      <section className="container-responsive py-16">
-        <motion.div
-          className="text-center max-w-4xl mx-auto"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+    <div className="text-black min-h-screen px-4 pt-10 pb-30">
+      <main
+        className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-6 border border-black/10"
+        role="main"
+        aria-labelledby="privacy-policy-title"
+      >
+        <div className="text-center mb-6">
+          <h1 id="privacy-policy-title" className="text-3xl font-bold">
             Privacy Policy
           </h1>
-          <p className="text-lg text-gray-600 mb-8">
-            Last updated: January 15, 2025
-          </p>
-        </motion.div>
-      </section>
-
-      {/* Content Section */}
-      <section className="container-responsive pb-20">
-        <div className="max-w-4xl mx-auto prose prose-lg">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="space-y-8"
-          >
-            <div>
-              <h2 className="text-2xl font-bold text-foreground mb-4">Introduction</h2>
-              <p className="text-gray-600 leading-relaxed">
-                Cleomitra ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our customer experience platform and related services.
-              </p>
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-bold text-foreground mb-4">Information We Collect</h2>
-              <div className="space-y-4">
-                <div>
-                  <h3 className="text-xl font-semibold text-foreground mb-2">Personal Information</h3>
-                  <ul className="list-disc pl-6 text-gray-600 space-y-2">
-                    <li>Name, email address, phone number, and business information</li>
-                    <li>Account credentials and profile information</li>
-                    <li>Payment and billing information</li>
-                    <li>Communication preferences and settings</li>
-                  </ul>
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-foreground mb-2">Usage Information</h3>
-                  <ul className="list-disc pl-6 text-gray-600 space-y-2">
-                    <li>Device information, IP address, and browser type</li>
-                    <li>Usage patterns, feature utilization, and platform interactions</li>
-                    <li>Log files and technical data</li>
-                    <li>Cookies and similar tracking technologies</li>
-                  </ul>
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-foreground mb-2">Business Data</h3>
-                  <ul className="list-disc pl-6 text-gray-600 space-y-2">
-                    <li>Customer information you input into our system</li>
-                    <li>Appointment and booking data</li>
-                    <li>Communications and messages sent through our platform</li>
-                    <li>Inventory and business analytics data</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-bold text-foreground mb-4">How We Use Your Information</h2>
-              <ul className="list-disc pl-6 text-gray-600 space-y-2">
-                <li>Provide, maintain, and improve our services</li>
-                <li>Process payments and manage your account</li>
-                <li>Send important notifications and updates</li>
-                <li>Provide customer support and technical assistance</li>
-                <li>Analyze usage patterns to enhance user experience</li>
-                <li>Comply with legal obligations and protect our rights</li>
-                <li>Send marketing communications (with your consent)</li>
-              </ul>
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-bold text-foreground mb-4">Information Sharing and Disclosure</h2>
-              <p className="text-gray-600 mb-4">
-                We do not sell, trade, or otherwise transfer your personal information to outside parties except in the following circumstances:
-              </p>
-              <ul className="list-disc pl-6 text-gray-600 space-y-2">
-                <li><strong>Service Providers:</strong> Third-party companies that help us operate our platform</li>
-                <li><strong>Legal Requirements:</strong> When required by law or to protect our rights</li>
-                <li><strong>Business Transfers:</strong> In connection with a merger, acquisition, or sale</li>
-                <li><strong>Consent:</strong> When you explicitly consent to sharing</li>
-              </ul>
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-bold text-foreground mb-4">Data Security</h2>
-              <p className="text-gray-600 leading-relaxed">
-                We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. This includes encryption, secure servers, regular security audits, and access controls. However, no method of transmission over the internet is 100% secure.
-              </p>
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-bold text-foreground mb-4">Data Retention</h2>
-              <p className="text-gray-600 leading-relaxed">
-                We retain your information for as long as necessary to provide our services, comply with legal obligations, resolve disputes, and enforce our agreements. You may request deletion of your personal data at any time, subject to certain legal requirements.
-              </p>
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-bold text-foreground mb-4">Your Rights</h2>
-              <ul className="list-disc pl-6 text-gray-600 space-y-2">
-                <li><strong>Access:</strong> Request access to your personal information</li>
-                <li><strong>Correction:</strong> Request correction of inaccurate data</li>
-                <li><strong>Deletion:</strong> Request deletion of your personal information</li>
-                <li><strong>Portability:</strong> Request a copy of your data in a structured format</li>
-                <li><strong>Objection:</strong> Object to processing of your personal information</li>
-                <li><strong>Consent:</strong> Withdraw consent for marketing communications</li>
-              </ul>
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-bold text-foreground mb-4">Cookies and Tracking</h2>
-              <p className="text-gray-600 leading-relaxed">
-                We use cookies and similar tracking technologies to enhance your experience, analyze usage patterns, and provide personalized content. You can control cookie preferences through your browser settings, though this may affect platform functionality.
-              </p>
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-bold text-foreground mb-4">Third-Party Links</h2>
-              <p className="text-gray-600 leading-relaxed">
-                Our platform may contain links to third-party websites or services. We are not responsible for the privacy practices of these external sites. We encourage you to review their privacy policies before providing any information.
-              </p>
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-bold text-foreground mb-4">Updates to This Policy</h2>
-              <p className="text-gray-600 leading-relaxed">
-                We may update this Privacy Policy from time to time. We will notify you of any significant changes by posting the new policy on this page and updating the "Last updated" date. Your continued use of our services constitutes acceptance of the updated policy.
-              </p>
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-bold text-foreground mb-4">Contact Us</h2>
-              <p className="text-gray-600 leading-relaxed mb-4">
-                If you have any questions about this Privacy Policy or our data practices, please contact us:
-              </p>
-              <div className="bg-gray-50 p-6 rounded-lg">
-                <ul className="text-gray-600 space-y-2">
-                  <li><strong>Email:</strong> privacy@cleomitra.com</li>
-                  <li><strong>Website:</strong> <a href="http://cleomitra.com" className="text-primary hover:underline">http://cleomitra.com</a></li>
-                  <li><strong>Address:</strong> [Your Business Address]</li>
-                </ul>
-              </div>
-            </div>
-          </motion.div>
+          <p className="text-black">Last Updated: {formattedDate}</p>
         </div>
-      </section>
+
+        <div className="mb-6">
+          <p className="text-black/80">
+            At CLEOMITRA, we value your privacy and are committed to protecting
+            your personal information. This Privacy Policy explains how we
+            collect, use, disclose, and safeguard your information when you use
+            our CLEOMITRA salon management application (&quot;App&quot; &amp;
+            &quot;Web&quot;). Please read this privacy policy carefully. If you
+            do not agree with the terms of this privacy policy, please do not
+            access the App.
+          </p>
+        </div>
+
+        {/* Accordion Section */}
+        <div className="space-y-4 ">
+          {[
+            {
+              title: "Information We Collect",
+              content: (
+                <>
+                  <h3 className="font-bold text-lg mb-2">
+                    Personal Information
+                  </h3>
+                  <p>
+                    We may collect personal information that you voluntarily
+                    provide when using our App, including:
+                  </p>
+                  <ul className="list-disc list-inside mt-2 space-y-1">
+                    <li>
+                      Contact Information: Name, email, phone, business address
+                    </li>
+                    <li>
+                      Business Information: Salon name, service offerings,
+                      pricing
+                    </li>
+                    <li>
+                      Financial Information: Payment processing details, bank
+                      account info
+                    </li>
+                    <li>
+                      Client Information: Appointment history, preferences, and
+                      contact details
+                    </li>
+                  </ul>
+                </>
+              ),
+            },
+            {
+              title: "How We Use Your Information",
+              content: (
+                <>
+                  <p>
+                    We use the information we collect for various business
+                    purposes, including to:
+                  </p>
+                  <ul className="list-disc list-inside mt-2 space-y-1">
+                    <li>Provide and maintain our App</li>
+                    <li>Improve our services</li>
+                    <li>Communicate with you</li>
+                    <li>Marketing and promotion</li>
+                    <li>Security and fraud prevention</li>
+                    <li>Legal compliance</li>
+                  </ul>
+                </>
+              ),
+            },
+            {
+              title: "Data Security",
+              content: (
+                <>
+                  <p>
+                    We implement appropriate technical and organizational
+                    measures to protect the security of your personal
+                    information.
+                  </p>
+                  <ul className="list-disc list-inside mt-2 space-y-1">
+                    <li>Encryption: Data in transit and at rest</li>
+                    <li>
+                      Access controls: Limited access to authorized personnel
+                    </li>
+                    <li>
+                      Regular audits: Periodic review of security practices
+                    </li>
+                    <li>Data backups: Regular backups to prevent data loss</li>
+                  </ul>
+                </>
+              ),
+            },
+            {
+              title: "Your Rights",
+              content: (
+                <>
+                  <p>You have the right to:</p>
+                  <ul className="list-disc list-inside mt-2 space-y-1">
+                    <li>Access the personal data we store about you</li>
+                    <li>Request corrections or updates to your data</li>
+                    <li>Ask for your data to be deleted</li>
+                    <li>Withdraw your consent to data processing</li>
+                  </ul>
+                  <p className="mt-2">
+                    For any requests, contact us at{" "}
+                    <strong>support@cleomitra.com</strong>
+                  </p>
+                </>
+              ),
+            },
+          ].map((section, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-lg border border-black/10"
+            >
+              <button
+                onClick={() => toggleSection(section.title)}
+                className="w-full text-left px-4 py-3 font-semibold rounded-lg flex justify-between items-center border border-black/10"
+                aria-expanded={expandedSection === section.title}
+                aria-controls={`section-content-${index}`}
+              >
+                <span>{section.title}</span>
+                <span>{expandedSection === section.title ? "-" : "+"}</span>
+              </button>
+              {expandedSection === section.title && (
+                <div
+                  id={`section-content-${index}`}
+                  className="px-4 py-3 text-black/70"
+                >
+                  {section.content}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-6 text-center">
+          <p className="text-black/70 text-sm">
+            © {currentDate.getFullYear()} CLEOMITRA. All Rights Reserved.
+          </p>
+        </div>
+      </main>
     </div>
   );
-}
+};
+
+export default PrivacyPolicy;

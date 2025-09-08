@@ -23,7 +23,8 @@
       "Bash(claude mcp add:*)",
       "mcp__ide__getDiagnostics",
       "Read(//c/Users/yogesh/Pictures/Screenshots/**)",
-      "Bash(claude doctor)"
+      "Bash(claude doctor)",
+      "Bash(ls:*)"
     ],
     "deny": [],
     "ask": []

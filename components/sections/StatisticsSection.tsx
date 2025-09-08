@@ -5,11 +5,17 @@ import ButtonWithArrow from "../ui/ButtonWithArrow";
 
 const StatisticsSection = () => {
   return (
-    <section className="container-responsive section-spacing">
-      <div className="relative flex justify-center items-center min-h-[400px]">
+    <section className="container-responsive pt-15">
+      <div
+        className="relative flex justify-center items-center border-2 border-dotted border-black/20 py-20 px-8"
+        style={{
+          borderTopLeftRadius: "var(--radius-20)",
+          borderTopRightRadius: "var(--radius-20)",
+        }}
+      >
         {/* Central Text Box */}
         <motion.div
-          className="relative bg-white  max-w-5xl text-center z-10"
+          className="relative bg-white  max-w-5xl text-center z-10 my-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}

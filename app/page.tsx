@@ -2,70 +2,77 @@
 
 import HeroSection from "@/components/sections/HeroSection";
 import FeaturesSection from "@/components/sections/FeaturesSection";
-import ProductShowcase from "@/components/sections/ProductShowcase";
+import ProductShowcase, {
+  SliderData,
+} from "@/components/sections/ProductShowcase";
 import StatisticsSection from "@/components/sections/StatisticsSection";
 
 const HomePage = () => {
+  const sliderData: SliderData[] = [
+    {
+      id: 1,
+      image: "/Homepage/Home page-business opportunity-1.png",
+      title: "All messages in a single location.",
+      subtitle:
+        "Access all your chats from WhatsApp, Instagram, and your contacts seamlessly on a single screen, using any account you prefer.",
+      name: "Swathy",
+      stars: 5,
+      testimonial:
+        "Increased customer engagement by utilizing targeted email templates recommended by Cleomitra.",
+    },
+    {
+      id: 2,
+      image: "/Homepage/Home page-business opportunity-2.png",
+      title: "Advanced Analytics Dashboard",
+      subtitle:
+        "Monitor your business performance with real-time analytics and comprehensive reporting tools.",
+      name: "Rajesh",
+      stars: 4,
+      testimonial:
+        "The analytics helped us identify key growth opportunities and improve our conversion rates significantly.",
+    },
+    {
+      id: 3,
+      image: "/Homepage/Home page-business opportunity-3.png",
+      title: "Automated Marketing Campaigns",
+      subtitle:
+        "Create and manage automated marketing campaigns that drive engagement and boost sales.",
+      name: "Priya",
+      stars: 4,
+      testimonial:
+        "Automation saved us hours of manual work while delivering better results than ever before.",
+    },
+  ];
+
   return (
     <div className="bg-background">
       <HeroSection />
-
-      <FeaturesSection />
-
-      <ProductShowcase
-        title="Make every message a business opportunity with Cleomitra"
-        subtitle="Transform customer conversations into revenue-generating opportunities with our intelligent messaging platform."
-        backgroundColor="bg-green-100"
-        textColor="text-green-800"
-        features={[
-          "AI-powered conversation analysis",
-          "Real-time opportunity detection",
-          "Automated follow-up sequences",
-          "Revenue tracking and analytics",
-        ]}
+      <FeaturesSection
+        imageAlt="Features Overview"
+        imageSrc="/Homepage/Homepage hero sec.png"
       />
-
       <ProductShowcase
-        title="Send Broadcast Emails that actually get customers with Cleomitra"
-        subtitle="Create and send targeted email campaigns that drive engagement and conversions."
-        backgroundColor="bg-red-100"
-        textColor="text-red-800"
+        backgroundColor="bg-green"
+        sliderData={sliderData}
+        gradientButtonText="Make every message a business opportunity with Cleomitra"
+      />
+      <ProductShowcase
+        backgroundColor="bg-orange"
+        sliderData={sliderData}
         reverse={true}
-        features={[
-          "Advanced segmentation tools",
-          "A/B testing capabilities",
-          "Deliverability optimization",
-          "Comprehensive email analytics",
-        ]}
-      />
-
+        gradientButtonText="Send Broadcast Emails that actually get customers with Cleomitra"
+      />{" "}
       <ProductShowcase
-        title="Effectively oversee your inventory and analyse using Cleomitra"
-        subtitle="Take complete control of your inventory with smart tracking and insightful analytics."
-        backgroundColor="bg-blue-100"
-        textColor="text-blue-800"
-        features={[
-          "Real-time inventory tracking",
-          "Low stock alerts",
-          "Demand forecasting",
-          "Multi-location management",
-        ]}
-      />
-
+        backgroundColor="bg-blue"
+        sliderData={sliderData}
+        gradientButtonText="Effectively oversee your inventory and analyse using Cleomitra"
+      />{" "}
       <ProductShowcase
-        title="Communicate effectively with your customers using Cleomitra"
-        subtitle="Build stronger relationships through seamless, multi-channel customer communication."
-        backgroundColor="bg-purple-100"
-        textColor="text-purple-800"
+        backgroundColor="bg-maroon"
+        sliderData={sliderData}
         reverse={true}
-        features={[
-          "Unified communication dashboard",
-          "Multi-channel support",
-          "Customer history tracking",
-          "Response automation",
-        ]}
+        gradientButtonText="Communicate effectively with your customers using Cleomitra"
       />
-
       <StatisticsSection />
     </div>
   );

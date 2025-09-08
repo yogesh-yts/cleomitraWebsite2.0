@@ -18,9 +18,10 @@
   --color-accent-dark: #d97706;
   --color-white: #ffffff;
   --color-black: #1a1a1a;
+  --color-black-100: #202020;
   /* Neutral Colors */
   --color-gray-50: #f9fafb;
-  --color-gray-100: #f3f4f6;
+  --color-gray-100: #989292;
   --color-gray-200: #e5e7eb;
   --color-gray-300: #d1d5db;
   --color-gray-400: #9ca3af;
@@ -38,22 +39,15 @@
   --color-yellow: #fbbf24;
   --color-red: #d11a2a;
   --color-green: #10b981;
+  --color-gray: #737373;
+  --color-orange: #ea4335;
+  --color-maroon: #660033;
 
-  /* Hero Section Colors */
-  --color-hero-text-light: #989292;
-  --color-hero-text-medium: #949494;
-  --color-hero-business: #660033;
-  --color-hero-big-name-start: #6a0135;
-  --color-hero-big-name-end: #bb045f;
-  --color-hero-btn-bg: #202020;
-  --color-hero-icon-whatsapp: #00d907;
-  --color-hero-icon-instagram: #db01b3;
-  --color-hero-icon-analytics: #e3db00;
-  --color-hero-icon-email: #ea4335;
-  --color-hero-icon-settings: #292cd2;
-  --color-hero-float-bg: #f5f5f5;
-  --color-hero-arrow: #d9d9d9;
-  --color-hero-arrow-inner: #1c1b1f;
+  /* Pink Shades */
+  --color-pink-950: #6a0135;
+  --color-pink-900: #660033;
+  --color-pink-700: #bb045f;
+  --color-pink-750: #bd0460;
 
   /* Typography */
   --font-primary: "Lato", sans-serif;
@@ -63,6 +57,9 @@
   --breakpoint-3xl: 107rem;
   --breakpoint-4xl: 120rem;
   --breakpoint-5xl: 160rem;
+
+  /* Border Radius */
+  --radius-20: 20px;
 
   /* Shadows */
   --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);

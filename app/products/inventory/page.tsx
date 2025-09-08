@@ -1,10 +1,20 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import ProductHero from '../../../components/sections/ProductHero';
 import FeaturesSection from '../../../components/sections/FeaturesSection';
 import FAQSection from '../../../components/sections/FAQSection';
+import ProductFeatureImages from '../../../components/sections/ProductFeatureImages';
 
 export default function InventoryPage() {
+  const inventoryImages = [
+    "/Products-features/inventory/Inventory-hero sectionpng.png",
+    "/Products-features/inventory/Inventory-low stock alert.png",
+    "/Products-features/inventory/Inventory-product and service linking.png",
+    "/Products-features/inventory/Inventory-real time stock tracking.png",
+    "/Products-features/inventory/Inventory-sales & usage reports.png"
+  ];
+
   const inventoryFAQs = [
     {
       question: "How does real-time inventory tracking work?",
@@ -24,45 +34,20 @@ export default function InventoryPage() {
     <div className="bg-background">
       
       <main>
-        <section className="container-responsive section-spacing">
-          <div className="text-center max-w-4xl mx-auto">
-            <motion.h1
-              className="text-4xl md:text-6xl font-bold text-foreground mb-6 leading-tight"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              Inventory management that<br />
-              keeps your business stocked.
-            </motion.h1>
-
-            <motion.p
-              className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              Oversee your inventory and track performance with comprehensive stock management tools.
-            </motion.p>
-
-            <motion.div
-              className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 mb-12"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-              <button className="bg-foreground text-background px-8 py-3 rounded-full hover:bg-gray-800 transition-colors font-medium">
-                Start Free Trial
-              </button>
-              <button className="text-gray-600 hover:text-foreground transition-colors font-medium">
-                Get a Demo
-              </button>
-            </motion.div>
-          </div>
-        </section>
+        <ProductHero 
+          title="Inventory management that<br />keeps your business stocked."
+          description="Oversee your inventory and track performance with comprehensive stock management tools."
+        />
 
         <FeaturesSection />
+        
+        <ProductFeatureImages 
+          images={inventoryImages} 
+          productName="Inventory"
+        />
+        
         <FAQSection faqs={inventoryFAQs} />
+      </main>
     </div>
   );
 }

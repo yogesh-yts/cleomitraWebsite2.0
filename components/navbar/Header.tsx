@@ -99,7 +99,7 @@ const Header = () => {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 right-0 z-40 bg-white shadow-sm border-b border-gray-100"
+      className="fixed top-0 left-0 right-0 z-40 bg-white shadow-sm "
       initial={{ opacity: 0, y: -20 }}
       animate={{
         opacity: isVisible ? 1 : 0,

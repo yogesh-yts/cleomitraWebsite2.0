@@ -3,8 +3,6 @@ import { MousePointer2 } from "lucide-react";
 
 export interface ButtonWithArrowProps {
   text: string;
-  bgColor?: string;
-  textColor?: string;
   cursorColor?: string;
   arrowPosition: "top-left" | "top-right" | "bottom-left" | "bottom-right";
   className?: string;
@@ -12,8 +10,6 @@ export interface ButtonWithArrowProps {
 
 export default function ButtonWithArrow({
   text,
-  bgColor = "#3b82f6",
-  textColor = "#ffffff",
   cursorColor = "#ffffff",
   arrowPosition,
   className = "",

@@ -1,10 +1,20 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import FeaturesSection from '../../../components/sections/FeaturesSection';
 import FAQSection from '../../../components/sections/FAQSection';
+import ProductHero from '../../../components/sections/ProductHero';
+import ProductFeatureImages from '../../../components/sections/ProductFeatureImages';
 
 export default function BillingPage() {
+  const billingImages = [
+    "/Products-features/billing/billing-discount & taxes.png",
+    "/Products-features/billing/billing-flexible payment option.png",
+    "/Products-features/billing/billing-hero section.png",
+    "/Products-features/billing/billing-linked to appointment and services.png",
+    "/Products-features/billing/billing-one click invoice.png",
+    "/Products-features/billing/billing-revenue insights.png"
+  ];
+
   const billingFAQs = [
     {
       question: "What payment methods are supported?",
@@ -22,47 +32,20 @@ export default function BillingPage() {
 
   return (
     <div className="bg-background">
-      
       <main>
-        <section className="container-responsive section-spacing">
-          <div className="text-center max-w-4xl mx-auto">
-            <motion.h1
-              className="text-4xl md:text-6xl font-bold text-foreground mb-6 leading-tight"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              Professional billing with<br />
-              built-in tracking and flexibility.
-            </motion.h1>
-
-            <motion.p
-              className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              Professional invoicing with built-in tracking and flexibility to manage all your billing needs.
-            </motion.p>
-
-            <motion.div
-              className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 mb-12"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-              <button className="bg-foreground text-background px-8 py-3 rounded-full hover:bg-gray-800 transition-colors font-medium">
-                Start Free Trial
-              </button>
-              <button className="text-gray-600 hover:text-foreground transition-colors font-medium">
-                Get a Demo
-              </button>
-            </motion.div>
-          </div>
-        </section>
-
+        <ProductHero
+          title="Professional billing with<br />built-in tracking and flexibility."
+          description="Professional invoicing with built-in tracking and flexibility to manage all your billing needs."
+        />
         <FeaturesSection />
+        
+        <ProductFeatureImages 
+          images={billingImages} 
+          productName="Billing"
+        />
+        
         <FAQSection faqs={billingFAQs} />
+      </main>
     </div>
   );
 }
