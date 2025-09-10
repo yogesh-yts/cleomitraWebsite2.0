@@ -2,6 +2,7 @@
 
 import React from "react";
 import GradientTextButton from "../ui/GradientTextButton";
+import StartFreeTrialButton from "../ui/StartFreeTrialButton";
 import Image from "next/image";
 import { useState } from "react";
 import { motion } from "framer-motion";
@@ -50,7 +51,7 @@ const ProductShowcase = ({
     <section className="container-responsive py-15">
       <GradientTextButton
         text={gradientButtonText}
-        className="mb-8 text-center"
+        className="mb-9 text-center"
       />
       <div
         className={`flex flex-col md:flex-row gap-5 items-stretch ${
@@ -79,6 +80,7 @@ const ProductShowcase = ({
             width={1010}
             height={1100}
             className="rounded-l-2xl w-full h-auto"
+            quality={100}
           />
         </motion.div>
 
@@ -139,6 +141,7 @@ const ProductShowcase = ({
                     width={1010}
                     height={1100}
                     className="rounded-lg w-28 h-10"
+                    quality={100}
                   />
                 </div>
               </div>
@@ -215,9 +218,9 @@ const ProductShowcase = ({
             </div>
           </div>
 
-          <button className="bg-foreground text-background px-6 py-3 rounded-2xl hover:bg-gray-800 transition-colors w-full mt-auto">
+          <StartFreeTrialButton className="bg-foreground text-background hover:bg-gray-800 px-6 py-3 rounded-2xl w-full mt-auto">
             Start Free Trial Today
-          </button>
+          </StartFreeTrialButton>
         </motion.div>
       </div>
     </section>

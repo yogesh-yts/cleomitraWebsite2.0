@@ -24,8 +24,8 @@ const ProductFeatureImages = ({
               width={1200}
               height={800}
               className="w-full h-auto rounded-lg"
-              wrapperClassName="border-2 border-dashed border-gray-300 rounded-lg p-4 hover:border-gray-400 transition-colors"
-              quality={95}
+              wrapperClassName="border-2 border-dashed border-black/20 rounded-lg p-4 hover:border-gray-400 transition-colors"
+              quality={100}
             />
           ))}
         </div>

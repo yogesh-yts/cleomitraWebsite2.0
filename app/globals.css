@@ -8,6 +8,7 @@
 
   /* Brand Colors */
   --color-primary: #3b82f6;
+  --color-main: #660033;
   --color-primary-light: #60a5fa;
   --color-primary-dark: #1d4ed8;
   --color-secondary: #10b981;
@@ -19,6 +20,8 @@
   --color-white: #ffffff;
   --color-black: #1a1a1a;
   --color-black-100: #202020;
+  --color-black-200: #f3f3f3;
+  --color-black-300: #a7a7a7;
   /* Neutral Colors */
   --color-gray-50: #f9fafb;
   --color-gray-100: #989292;

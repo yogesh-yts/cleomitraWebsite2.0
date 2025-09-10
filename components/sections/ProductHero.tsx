@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import StartFreeTrialButton from "../ui/StartFreeTrialButton";
+import GetDemoButton from "../ui/GetDemoButton";
 
 interface ProductHeroProps {
   title: string;
@@ -10,17 +12,18 @@ interface ProductHeroProps {
 const ProductHero = ({ title, description }: ProductHeroProps) => {
   return (
     <section className="container-responsive section-spacing">
-      <div className="text-center  mx-auto">
+      <div className="text-center  mx-auto ">
         <motion.h1
-          className="text-4xl md:text-6xl font-bold text-foreground mb-6 leading-tight"
+          className="text-4xl md:text-6xl font-bold text-black mb-6 leading-tight whitespace-pre-wrap"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          dangerouslySetInnerHTML={{ __html: title }}
-        />
+        >
+          {title}
+        </motion.h1>
 
         <motion.p
-          className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto"
+          className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto whitespace-pre-wrap"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -34,12 +37,8 @@ const ProductHero = ({ title, description }: ProductHeroProps) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <button className="bg-foreground text-background px-8 py-3 rounded-full hover:bg-gray-800 transition-colors font-medium">
-            Start Free Trial
-          </button>
-          <button className="text-gray-600 hover:text-foreground transition-colors font-medium">
-            Get a Demo
-          </button>
+          <StartFreeTrialButton className="bg-foreground text-background hover:bg-gray-800 border border-black px-8 py-3" />
+          <GetDemoButton className="text-gray-600 hover:text-foreground border border-gray-700 px-8 py-3 bg-transparent hover:bg-transparent" />
         </motion.div>
       </div>
     </section>

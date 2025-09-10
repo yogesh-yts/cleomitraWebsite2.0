@@ -10,9 +10,9 @@ interface FeaturesSectionProps {
   imageAlt?: string;
 }
 
-const FeaturesSection = ({ 
-  imageSrc = "/Homepage/Homepage hero sec.png", 
-  imageAlt = "Features Overview" 
+const FeaturesSection = ({
+  imageSrc = "/Homepage/Homepage hero sec.png",
+  imageAlt = "Features Overview",
 }: FeaturesSectionProps) => {
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -48,12 +48,12 @@ const FeaturesSection = ({
           height={600}
           className="mx-auto w-full h-auto"
           priority
-          quality={95}
+          quality={100}
         />
       </div>
 
       {/* Features Section */}
-      <motion.div style={{ y, opacity }} className="text-center">
+      <motion.div style={{ y, opacity }} className="text-center mt-30">
         <motion.h2
           className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-12"
           initial={{ opacity: 0, y: 30 }}

@@ -7,7 +7,7 @@ const StatisticsSection = () => {
   return (
     <section className="container-responsive pt-15">
       <div
-        className="relative flex justify-center items-center border-2 border-dotted border-black/20 py-20 px-8"
+        className="relative flex justify-center items-center border-2 border-dashed border-black/40 border-b-0 py-20 px-8"
         style={{
           borderTopLeftRadius: "var(--radius-20)",
           borderTopRightRadius: "var(--radius-20)",

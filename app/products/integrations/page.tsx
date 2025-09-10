@@ -1,10 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
 import ProductHero from "../../../components/sections/ProductHero";
-import FeaturesSection from "../../../components/sections/FeaturesSection";
 import FAQSection from "../../../components/sections/FAQSection";
-import ProductFeatureImages from "../../../components/sections/ProductFeatureImages";
+import StatisticsSection from "../../../components/sections/StatisticsSection";
+import IntegrationsGrid from "../../../components/sections/IntegrationsGrid";
 
 export default function IntegrationsPage() {
   const integrationsImages = [
@@ -12,7 +11,7 @@ export default function IntegrationsPage() {
     "/Products-features/integrations/gmail.png",
     "/Products-features/integrations/instagram.png",
     "/Products-features/integrations/twilio.png",
-    "/Products-features/integrations/whatsapp.png"
+    "/Products-features/integrations/whatsapp.png",
   ];
 
   const integrationsFAQs = [
@@ -36,19 +35,19 @@ export default function IntegrationsPage() {
   return (
     <div className="bg-background">
       <main>
-        <ProductHero 
-          title="Connect everything you use<br />in seconds, not hours."
-          description="Integrations you can connect to cleomitra in seconds with our extensive library of business tools."
+        <ProductHero
+          title={`Integrations help you optimize
+your sales workflow`}
+          description={`With Cleomitra, every integration is
+built to simplify workflows and
+enhance client experience.`}
         />
 
-        <FeaturesSection />
-        
-        <ProductFeatureImages 
-          images={integrationsImages} 
-          productName="Integrations"
-        />
-        
+        <IntegrationsGrid />
+
         <FAQSection faqs={integrationsFAQs} />
+
+        <StatisticsSection />
       </main>
     </div>
   );

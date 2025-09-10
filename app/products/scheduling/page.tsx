@@ -4,14 +4,14 @@ import FeaturesSection from "../../../components/sections/FeaturesSection";
 import FAQSection from "../../../components/sections/FAQSection";
 import ProductHero from "../../../components/sections/ProductHero";
 import ProductFeatureImages from "../../../components/sections/ProductFeatureImages";
+import StatisticsSection from "../../../components/sections/StatisticsSection";
 
 export default function SchedulingPage() {
   const schedulingImages = [
     "/Products-features/scheduling/scheduling-automated reminders.png",
-    "/Products-features/scheduling/scheduling-hero section.png",
     "/Products-features/scheduling/Scheduling-integrated payments & invoices.png",
     "/Products-features/scheduling/Scheduling-smart calender view.png",
-    "/Products-features/scheduling/scheduling-team availabilty management.png"
+    "/Products-features/scheduling/scheduling-team availabilty management.png",
   ];
 
   const schedulingFAQs = [
@@ -36,18 +36,26 @@ export default function SchedulingPage() {
     <div className="bg-background">
       <main>
         <ProductHero
-          title="Scheduling keeps your calendar in<br />sync — and your clients on time."
-          description="Simplify your daily bookings with a calendar that works for you and your team."
+          title={`Scheduling: Keep Your Calendar in 
+Sync and Your Clients on Time`}
+          description={`Simplify bookings with a clean calendar view,
+             automated reminders, and smart scheduling tools — 
+             all in one place.`}
         />
 
-        <FeaturesSection />
+        <FeaturesSection
+          imageSrc="/Products-features/scheduling/scheduling-hero section.png"
+          imageAlt="Scheduling Feature Overview"
+        />
 
-        <ProductFeatureImages 
-          images={schedulingImages} 
+        <ProductFeatureImages
+          images={schedulingImages}
           productName="Scheduling"
         />
 
         <FAQSection faqs={schedulingFAQs} />
+
+        <StatisticsSection />
       </main>
     </div>
   );

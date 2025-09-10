@@ -23,7 +23,7 @@ const ScrollScaleImage = ({
   className = "",
   wrapperClassName = "",
   priority = false,
-  quality = 90,
+  quality = 100,
 }: ScrollScaleImageProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
