@@ -5,6 +5,7 @@ import Image from "next/image";
 import ButtonWithArrow from "../ui/ButtonWithArrow";
 import StartFreeTrialButton from "../ui/StartFreeTrialButton";
 import GetDemoButton from "../ui/GetDemoButton";
+import ButtonWithIcon from "../ui/ButtonWithIcon";
 import "material-symbols/outlined.css";
 import {
   navigationData,
@@ -12,25 +13,32 @@ import {
   resourcesData,
   companyData,
 } from "../../data/nav";
+import { motion } from "framer-motion";
 
 const Footer = () => {
   return (
     <footer className="bg-foreground text-background">
-      <div className="container-responsive pt-40 pb-6">
+      <div className="container-responsive  pt-10 pb-6">
         {/* CTA Section */}
-        <div className="text-center mb-12 sm:mb-16">
-          <div className="relative mb-6 sm:mb-8">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold max-w-4xl mx-auto leading-tight px-4">
+        <div className="text-center py-30">
+          <div className="relative mb-8">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold max-w-4xl mx-auto leading-tight">
               <span className="relative inline-block">
                 <span className="relative">R</span>
-                <div className="absolute -top-16 -left-19">
+                <motion.div
+                  className="absolute -top-12 md:-top-18 -left-4 md:-left-19"
+                  initial={{ opacity: 0, scale: 0.8, x: -20, y: -20 }}
+                  whileInView={{ opacity: 1, scale: 1, x: 0, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  viewport={{ once: true }}
+                >
                   <ButtonWithArrow
                     text="You"
                     className="bg-blue text-white"
                     arrowPosition="bottom-right"
                     cursorColor="text-blue"
                   />
-                </div>
+                </motion.div>
               </span>
               eady to elevate your business
               <br />
@@ -47,15 +55,15 @@ const Footer = () => {
         </div>
 
         {/* Footer Links */}
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 mb-8 sm:mb-12">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-12 mb-8">
           {/* Menu Sections Group */}
-          <div className="flex flex-wrap gap-6 sm:gap-8 lg:gap-20 flex-1">
+          <div className="flex flex-wrap space-y-8 lg:gap-20 flex-1 space-x-0">
             {/* Products */}
             <div className="flex-auto min-w-[200px]">
               <h4 className="font-semibold mb-4 text-white">
                 {navigationData[0].title}
               </h4>
-              <div className="flex flex-row gap-4 sm:gap-8 lg:gap-10">
+              <div className="flex flex-row gap-8 lg:gap-10">
                 {/* Features column */}
                 <div className="flex-1">
                   <div className="text-sm text-white/40 mb-3 whitespace-nowrap overflow-hidden text-ellipsis">
@@ -94,7 +102,7 @@ const Footer = () => {
             </div>
 
             {/* Solutions */}
-            <div className="flex-auto min-w-[160px]">
+            <div className="flex-auto min-w-[120px] md:min-w-[160px] ">
               <h4 className="font-semibold mb-4 text-white">
                 {navigationData[1].title}
               </h4>
@@ -175,22 +183,15 @@ const Footer = () => {
               experience.
             </p>
 
-            <Link
-              href="/contact"
-              className="w-full inline-flex items-center space-x-2 bg-white text-black px-6 py-3 rounded-xl hover:bg-gray-100 transition-colors font-medium justify-center"
-            >
-              <span>Email Us Today</span>
-              <span className="bg-black/20 rounded-full p-1.5 inline-flex items-center justify-center">
-                <span className="material-symbols-outlined text-sm">
-                  arrow_forward
-                </span>
-              </span>
-            </Link>
+            <ButtonWithIcon
+              text="Email Us Today"
+              href="mailto:info@cleomitra.com"
+            />
           </div>
         </div>
 
         {/* Profile Image - positioned at bottom right */}
-        <div className="flex justify-end mb-8 -mt-24 md:-mt-28">
+        <div className="flex justify-end mb-8 -mt-24 lg:-mt-28">
           <div className="w-16 h-16 rounded-full overflow-hidden">
             <Image
               src="/logo.png"
@@ -227,7 +228,7 @@ const Footer = () => {
             </Link>
           </div>
 
-          <div className="flex flex-row space-y-2 sm:space-y-0 sm:space-x-8 text-center gap-4">
+          <div className="flex flex-row space-y-2 text-center gap-4">
             <Link
               href="/privacy-policy"
               className="text-sm text-gray-400 hover:text-white transition-colors"

@@ -13,7 +13,7 @@ export default function MobileAppPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="bg-white">
       {/* Top Icons Section */}
       <div className="container-section pt-15 pb-30">
         <div className="w-fit flex justify-center space-x-2 mb-16 outline-1 outline-offset-[-1px] outline-black/10 mx-auto py-2 px-2.5 rounded-2xl">
@@ -43,15 +43,15 @@ export default function MobileAppPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl font-bold text-black mb-6">
-              Download Cleomitra
-              <br />
+            <h1 className="text-5xl font-bold text-black mb-6 whitespace-normal md:whitespace-pre-line">
+              Download Cleomitra{"\n"}
               for Mobile
             </h1>
 
-            <p className="text-base text-black/50 mb-12  mx-auto">
-              The Cleomitra app you love, on <br /> your mobile, with less
-              modules <br /> but even faster
+            <p className="text-base text-black/50 mb-12 mx-auto whitespace-normal md:whitespace-pre-line">
+              The Cleomitra app you love, on{"\n"}
+              your mobile, with less modules{"\n"}
+              but even faster
             </p>
 
             <motion.button

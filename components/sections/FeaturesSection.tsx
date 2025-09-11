@@ -88,13 +88,13 @@ const FeaturesSection = ({
               >
                 <div className="flex items-center justify-center">
                   <span
-                    className="material-symbols-outlined text-gray-600 group-hover:text-primary transition-colors duration-300"
+                    className="material-symbols-outlined text-gray-600 group-hover:text-main transition-colors duration-300"
                     style={{ fontSize: "20px" }}
                   >
                     {feature.icon}
                   </span>
                 </div>
-                <h3 className="text-sm font-medium text-foreground group-hover:text-primary transition-colors duration-300 text-center">
+                <h3 className="text-sm font-medium text-foreground group-hover:text-main transition-colors duration-300 text-center">
                   {feature.title}
                 </h3>
               </motion.div>

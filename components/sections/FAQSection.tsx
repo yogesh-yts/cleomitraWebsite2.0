@@ -31,7 +31,7 @@ const FAQSection = ({
         </h2>
       </div>
 
-      <div className=" mx-auto space-y-4 p-6 rounded-lg">
+      <div className=" mx-auto space-y-4 p-2 md:p-6 rounded-lg">
         {faqs.map((faq, index) => (
           <div
             key={index}

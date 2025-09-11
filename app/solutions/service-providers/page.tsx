@@ -38,11 +38,6 @@ export default function ServiceProvidersPage() {
       heroImages={heroImages}
       heroBackgroundImage="/Solutions-teams/bg/1 (4).png"
       contentSections={contentSections}
-      statistics={{
-        revenue: "20%",
-        bookings: "18%", 
-        sales: "32%"
-      }}
     />
   );
 }

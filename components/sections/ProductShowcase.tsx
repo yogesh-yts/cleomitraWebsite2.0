@@ -2,11 +2,11 @@
 
 import React from "react";
 import GradientTextButton from "../ui/GradientTextButton";
-import StartFreeTrialButton from "../ui/StartFreeTrialButton";
 import Image from "next/image";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import "material-symbols/outlined.css";
+import ButtonWithIcon from "../ui/ButtonWithIcon";
 
 export interface SliderData {
   id: number;
@@ -54,13 +54,13 @@ const ProductShowcase = ({
         className="mb-9 text-center"
       />
       <div
-        className={`flex flex-col md:flex-row gap-5 items-stretch ${
-          reverse ? "md:flex-row-reverse" : ""
+        className={`flex flex-col lg:flex-row gap-5 items-stretch ${
+          reverse ? "lg:flex-row-reverse" : ""
         }`}
       >
         {/* Left div - Image with background */}
         <motion.div
-          className={`flex flex-1 md:flex-[0.6] ${backgroundColor} py-15 pl-16 rounded-2xl`}
+          className={`flex flex-1 lg:flex-[0.6] ${backgroundColor} py-15 pl-16 rounded-2xl`}
           initial={{
             x: reverse ? "-20vw" : "20vw",
             y: 0,
@@ -86,7 +86,7 @@ const ProductShowcase = ({
 
         {/* Right div - Content and testimonial sections */}
         <motion.div
-          className="flex-1 md:flex-[0.4] flex flex-col gap-5"
+          className="flex-1 lg:flex-[0.4] flex flex-col gap-5"
           initial={{
             x: reverse ? "20vw" : "-20vw",
             y: 0,
@@ -123,15 +123,15 @@ const ProductShowcase = ({
                 <h3 className="text-xl font-semibold text-white mb-2">
                   {currentSlide.title}
                 </h3>
-                <p className="text-gray-300 text-sm mb-4">
+                <p className="text-gray-300 text-sm ">
                   {currentSlide.subtitle}
                 </p>
               </div>
             </div>
             <div className="p-5 bg-white/10">
               <div className="space-y-4">
-                <div className="flex justify-between items-center">
-                  <div className=" rounded-lg p-4 inline-block">
+                <div className="flex justify-between items-center leading-normal">
+                  <div className=" rounded-lg py-4 inline-block">
                     <div className="text-2xl font-bold text-white">40+</div>
                     <div className="text-gray-400 text-sm">Users</div>
                   </div>
@@ -182,13 +182,13 @@ const ProductShowcase = ({
 
               {/* Slider controls */}
             </div>
-            <div className="flex  flex-row items-center justify-between  space-x-4 p-5">
+            <div className="flex  flex-row items-center justify-between  space-x-4 p-5 mt-auto">
               {/* Dot indicators */}
               <div className="flex space-x-2">
                 {sliderData.map((_, index) => (
                   <div
                     key={index}
-                    className={`w-2 h-2 rounded-full cursor-pointer ${
+                    className={`w-3 h-3 rounded-full cursor-pointer ${
                       index === activeSlide ? "bg-white" : "bg-gray-500"
                     }`}
                     onClick={() => setActiveSlide(index)}
@@ -199,7 +199,7 @@ const ProductShowcase = ({
               {/* Arrow buttons */}
               <div className="flex space-x-2">
                 <button
-                  className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center text-white hover:bg-gray-600"
+                  className="w-10 h-10  rounded-full flex items-center justify-center text-white hover:bg-white/20 border-1 border-white/20"
                   onClick={prevSlide}
                 >
                   <span className="material-symbols-outlined text-lg">
@@ -207,7 +207,7 @@ const ProductShowcase = ({
                   </span>
                 </button>
                 <button
-                  className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center text-white hover:bg-gray-600"
+                  className="w-10 h-10  rounded-full flex items-center justify-center text-white hover:bg-white/20 border-1 border-white/20"
                   onClick={nextSlide}
                 >
                   <span className="material-symbols-outlined text-lg">
@@ -218,9 +218,12 @@ const ProductShowcase = ({
             </div>
           </div>
 
-          <StartFreeTrialButton className="bg-foreground text-background hover:bg-gray-800 px-6 py-3 rounded-2xl w-full mt-auto">
-            Start Free Trial Today
-          </StartFreeTrialButton>
+          <ButtonWithIcon
+            text="Start Free Trial Today"
+            className="bg-black text-white w-full"
+            href="/contact"
+            iconBg="bg-white/20"
+          />
         </motion.div>
       </div>
     </section>

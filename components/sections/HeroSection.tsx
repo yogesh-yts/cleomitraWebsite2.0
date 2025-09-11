@@ -28,7 +28,7 @@ const IconWithArrows = ({
 }: IconWithArrowsProps) => {
   return (
     <motion.div
-      className={`absolute ${position} w-16 h-16 ${bgColor} rounded-2xl flex items-center justify-center`}
+      className={`absolute ${position} w-16 h-16 ${bgColor} rounded-2xl flex items-center justify-center z-1`}
       initial={initial}
       whileInView={{ x: 0, y: 0 }}
       transition={{ duration: 0.8, delay }}
@@ -85,19 +85,19 @@ export default function HeroSection() {
       {/* Main Content */}
       <div className=" z-10 text-center max-w-7xl mx-auto ">
         {/* Hero Title */}
-        <div className="relative">
-          <h1 className="text-5xl  font-bold leading-tight mb-8">
+        <div className="relative z-5">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl  font-normal leading-relaxed  md:leading-tight mb-8 z-5">
             <span className="text-gray-100">The </span>
-            <span className="text-black">Customer Experience</span>
+            <span className="text-black font-bold">Customer Experience</span>
             <br />
-            <span className="text-black">Platform </span>
+            <span className="text-black font-bold">Platform </span>
             <span className="text-gray-100">You Need, To Turn Your</span>
             <br />
-            <span className="bg-gradient-to-r from-pink-900 to-pink-750 bg-clip-text text-transparent">
+            <span className="font-bold bg-gradient-to-r from-pink-900 to-pink-750 bg-clip-text text-transparent">
               Business{" "}
             </span>
             <span className="text-gray-100">Into a </span>
-            <span className="bg-gradient-to-b from-pink-950 to-pink-700 text-white px-4 py-2 rounded-lg inline-block">
+            <span className="bg-gradient-to-b from-pink-950 to-pink-700 text-white font-bold px-4 py-2 rounded-lg inline-block">
               Big Name
             </span>
           </h1>
@@ -117,11 +117,9 @@ export default function HeroSection() {
           </div>
         </div>
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <StartFreeTrialButton className="bg-black-100 text-white hover:bg-gray-900 px-8 py-4 text-lg">
-            Start Free Trial
-          </StartFreeTrialButton>
-          <GetDemoButton className="border-2 border-gray-300 text-gray-700 hover:bg-gray-50 bg-transparent hover:bg-gray-50 px-8 py-4 text-lg" />
+        <div className="flex flex-row gap-4 justify-center items-center">
+          <StartFreeTrialButton />
+          <GetDemoButton />
         </div>{" "}
         <IconWithArrows
           icon="mail"
@@ -156,7 +154,7 @@ export default function HeroSection() {
         <IconWithArrows
           icon="inventory_2"
           bgColor="bg-yellow"
-          position="bottom-32 left-1/2 transform -translate-x-80" // Bottom-left of content
+          position="bottom-22 left-1/2 transform -translate-x-80" // Bottom-left of content
           initial={{
             x: "calc(50vw - 50% - 5rem)",
             y: "calc(-50vh + 50% + 10rem)",
@@ -167,7 +165,7 @@ export default function HeroSection() {
         <IconWithArrows
           icon="analytics"
           bgColor="bg-blue"
-          position="bottom-32 left-1/2 transform translate-x-66" // Bottom-right of content
+          position="bottom-22 left-1/2 transform translate-x-66" // Bottom-right of content
           initial={{
             x: "calc(-50vw + 50% + 5rem)",
             y: "calc(-50vh + 50% - 5rem)",

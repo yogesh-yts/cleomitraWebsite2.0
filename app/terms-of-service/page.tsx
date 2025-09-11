@@ -16,7 +16,7 @@ const TermsOfService: React.FC = () => {
   };
 
   return (
-    <div className="bg-white text-black min-h-screen pt-10 pb-30 px-4 ">
+    <div className="bg-white text-black pt-10 pb-30 px-4 ">
       <main
         className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-6 border border-black/10"
         role="main"

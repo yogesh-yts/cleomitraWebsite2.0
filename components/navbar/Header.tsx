@@ -7,7 +7,6 @@ import Image from "next/image";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { navigationData, navbarSections, solutionsTeams } from "../../data/nav";
 import StartFreeTrialButton from "../ui/StartFreeTrialButton";
-import GetDemoButton from "../ui/GetDemoButton";
 
 const Header = () => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -73,11 +72,14 @@ const Header = () => {
       } else if (currentScrollY < lastScrollY) {
         // Scrolling up - show navbar
         setIsVisible(true);
-      } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        // Scrolling down and past 100px - hide navbar
+      } else if (
+        currentScrollY > lastScrollY &&
+        currentScrollY > 100 &&
+        !isMobileMenuOpen
+      ) {
+        // Scrolling down and past 100px - hide navbar (but not if mobile menu is open)
         setIsVisible(false);
         setActiveDropdown(null); // Close any open dropdowns
-        setIsMobileMenuOpen(false); // Close mobile menu
       }
 
       setLastScrollY(currentScrollY);
@@ -93,7 +95,7 @@ const Header = () => {
         clearTimeout(timeoutRef.current);
       }
     };
-  }, [activeDropdown, lastScrollY]);
+  }, [activeDropdown, lastScrollY, isMobileMenuOpen]);
 
   useEffect(() => {
     if (activeDropdown) {
@@ -135,7 +137,7 @@ const Header = () => {
             <span className="text-xl font-bold text-foreground">Cleomitra</span>
           </Link>
 
-          <nav className="hidden md:flex items-center space-x-6">
+          <nav className="hidden lg:flex items-center space-x-6">
             {navbarSections.map((item) => (
               <div
                 key={item.title}
@@ -160,31 +162,30 @@ const Header = () => {
         </div>
 
         <div className="flex items-center space-x-4">
-          <div className="hidden sm:block">
-            <GetDemoButton className="text-gray-600 hover:text-foreground bg-transparent border-none p-0 hover:bg-transparent" />
+          <div className="hidden lg:block ">
+            <Link
+              href="/contact"
+              className="block w-full text-left text-gray-600 hover:text-foreground py-2 mr-4"
+            >
+              Get A Demo
+            </Link>
           </div>
           <Link
             href="https://www.cleomitra.app/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:block text-gray-600 hover:text-foreground transition-colors"
+            className="hidden lg:block text-gray-600 hover:text-foreground transition-colors"
           >
             Login
           </Link>
-          <div className="hidden sm:block">
-            <StartFreeTrialButton className="bg-foreground text-background hover:bg-gray-800 px-6 py-2" />
+          <div className="hidden lg:block">
+            <StartFreeTrialButton />
           </div>
 
           {/* Mobile menu button */}
           <button
-            className="md:hidden p-2 text-gray-600 hover:text-foreground transition-colors z-50 relative"
-            onClick={() => {
-              console.log(
-                "Mobile menu clicked, current state:",
-                isMobileMenuOpen
-              );
-              setIsMobileMenuOpen(!isMobileMenuOpen);
-            }}
+            className="lg:hidden p-2 text-gray-600 hover:text-foreground transition-colors z-50 relative"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? (
               <X className="w-6 h-6" />
@@ -197,7 +198,7 @@ const Header = () => {
 
       {/* Debug indicator */}
       {isMobileMenuOpen && (
-        <div className="fixed top-20 right-4 bg-red-500 text-white p-2 rounded z-50 md:hidden">
+        <div className="fixed top-20 right-4 bg-red-500 text-white p-2 rounded z-50 lg:hidden">
           Mobile menu is open
         </div>
       )}
@@ -215,14 +216,14 @@ const Header = () => {
           <div className="h-2 w-full" />
           <div className="container-responsive">
             <div
-              className="bg-white rounded-lg shadow-lg border border-gray-200 p-6"
+              className="bg-white rounded-lg shadow-lg border border-gray-200 p-4"
               onMouseEnter={handleSubmenuMouseEnter}
               onMouseLeave={handleSubmenuMouseLeave}
             >
               {activeDropdown === "Products" && (
-                <div className="grid grid-cols-2 gap-12">
+                <div className="grid grid-cols-2 gap-8">
                   <div>
-                    <div className="text-sm text-gray-500 pb-2 mb-2">
+                    <div className="text-sm text-gray-500 pb-1 mb-1">
                       {navigationData[0].subtitle}
                     </div>
                     <div className="space-y-0">
@@ -230,7 +231,7 @@ const Header = () => {
                         <Link
                           key={index}
                           href={feature.href}
-                          className="block p-3 text-gray-600 hover:text-foreground hover:bg-gray-50 transition-colors rounded-md"
+                          className="block p-2 text-gray-600 hover:text-foreground hover:bg-gray-50 transition-colors rounded-md"
                         >
                           <div className="font-medium text-foreground mb-1 whitespace-nowrap">
                             {feature.title}
@@ -245,7 +246,7 @@ const Header = () => {
                     </div>
                   </div>
                   <div>
-                    <div className="text-sm text-gray-500 pb-2 mb-2">
+                    <div className="text-sm text-gray-500 pb-1 mb-1">
                       {navigationData[1].subtitle}
                     </div>
                     <div className="space-y-0">
@@ -305,7 +306,7 @@ const Header = () => {
                         <Link
                           key={index}
                           href={subItem.href}
-                          className="block p-3 text-gray-600 hover:text-foreground hover:bg-gray-50 transition-colors rounded-md"
+                          className="block p-2 text-gray-600 hover:text-foreground hover:bg-gray-50 transition-colors rounded-md"
                         >
                           <div className="font-medium text-foreground mb-1">
                             {subItem.title}
@@ -328,84 +329,95 @@ const Header = () => {
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <motion.div
-          className="md:hidden bg-white border-t border-gray-200 shadow-lg relative z-50"
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: "auto" }}
-          exit={{ opacity: 0, height: 0 }}
+          className="lg:hidden bg-white border-t border-gray-200 shadow-lg fixed top-[64px] left-0 right-0 bottom-0 z-50 overflow-y-auto"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.2 }}
         >
-          <div className="container-responsive py-4 space-y-4">
+          <div className="container-responsive pt-4 flex flex-col min-h-[calc(100vh-80px)]">
             {/* Mobile Navigation Links */}
-            {navbarSections.map((section) => (
-              <div key={section.title} className="space-y-2">
-                <div className="font-medium text-foreground text-lg">
-                  {section.title}
+            <div className="space-y-4">
+              {navbarSections.map((section) => (
+                <div key={section.title} className="space-y-2">
+                  <div className="font-medium text-foreground text-lg">
+                    {section.title}
+                  </div>
+                  {section.title === "Products" && (
+                    <div className="space-y-1 pl-4">
+                      {navigationData[0].items.map((item, index) => (
+                        <Link
+                          key={index}
+                          href={item.href}
+                          className="block text-gray-600 hover:text-foreground py-2"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          {item.title}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                  {section.title === "Solutions" && (
+                    <div className="space-y-1 pl-4">
+                      {solutionsTeams.items.map((item, index) => (
+                        <Link
+                          key={index}
+                          href={item.href}
+                          className="block text-gray-600 hover:text-foreground py-2"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          {item.title}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                  {section.title === "Resources" && (
+                    <div className="space-y-1 pl-4">
+                      {section.items?.map((item, index) => (
+                        <Link
+                          key={index}
+                          href={item.href}
+                          className="block text-gray-600 hover:text-foreground py-2"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          {item.title}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
                 </div>
-                {section.title === "Products" && (
-                  <div className="space-y-1 pl-4">
-                    {navigationData[0].items.map((item, index) => (
-                      <Link
-                        key={index}
-                        href={item.href}
-                        className="block text-gray-600 hover:text-foreground py-2"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                      >
-                        {item.title}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-                {section.title === "Solutions" && (
-                  <div className="space-y-1 pl-4">
-                    {solutionsTeams.items.map((item, index) => (
-                      <Link
-                        key={index}
-                        href={item.href}
-                        className="block text-gray-600 hover:text-foreground py-2"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                      >
-                        {item.title}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-                {section.title === "Resources" && (
-                  <div className="space-y-1 pl-4">
-                    {section.items?.map((item, index) => (
-                      <Link
-                        key={index}
-                        href={item.href}
-                        className="block text-gray-600 hover:text-foreground py-2"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                      >
-                        {item.title}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
+              ))}
 
-            <Link
-              href="/pricing"
-              className="block font-medium text-foreground text-lg py-2"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Pricing
-            </Link>
+              <Link
+                href="/pricing"
+                className="block font-medium text-foreground text-lg py-2 mb-6"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Pricing
+              </Link>
+            </div>
 
             {/* Mobile CTA Buttons */}
-            <div className="pt-4 space-y-3 border-t border-gray-200">
-              <GetDemoButton className="block w-full text-left text-gray-600 hover:text-foreground bg-transparent border-none p-2 hover:bg-transparent" />
+            <div className="pt-4 border-t border-gray-200 flex flex-row mt-auto">
+              <Link
+                href="/contact"
+                className="block w-full text-left text-gray-600 hover:text-foreground py-2 flex-1"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Get A Demo
+              </Link>
               <Link
                 href="https://www.cleomitra.app/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full text-left text-gray-600 hover:text-foreground py-2"
+                className="block w-full text-left text-gray-600 hover:text-foreground py-2 flex-1"
+                onClick={() => setIsMobileMenuOpen(false)}
               >
                 Login
               </Link>
-              <StartFreeTrialButton className="w-full bg-foreground text-background hover:bg-gray-800 px-6 py-3" />
+              <StartFreeTrialButton
+                onClose={() => setIsMobileMenuOpen(false)}
+              />
             </div>
           </div>
         </motion.div>

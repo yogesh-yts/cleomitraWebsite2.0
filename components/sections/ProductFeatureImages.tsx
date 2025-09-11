@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import ScrollScaleImage from "../ui/ScrollScaleImage";
 
 interface ProductFeatureImagesProps {

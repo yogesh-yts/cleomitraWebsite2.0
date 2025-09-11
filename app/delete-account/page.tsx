@@ -211,7 +211,7 @@ export default function DeleteAccount() {
         }
       `}</style>
 
-      <main className="min-h-screen bg-white pt-30 pb-20 px-3 md:px-10 lg:px-20 2xl:px-33">
+      <main className="bg-white pt-30 pb-20 px-3 md:px-10 lg:px-20 2xl:px-33">
         <div className="max-w-6xl mx-auto pt-10">
           {/* Header */}
           <div className="text-center mb-8">

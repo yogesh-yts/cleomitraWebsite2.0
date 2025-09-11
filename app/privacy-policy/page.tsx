@@ -15,7 +15,7 @@ const PrivacyPolicy: React.FC = () => {
   };
 
   return (
-    <div className="text-black min-h-screen px-4 pt-10 pb-30">
+    <div className="text-black px-4 pt-10 pb-30">
       <main
         className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-6 border border-black/10"
         role="main"

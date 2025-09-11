@@ -76,11 +76,6 @@ interface SolutionPageTemplateProps {
     title: string;
     description: string;
   }>;
-  statistics?: {
-    revenue: string;
-    bookings: string;
-    sales: string;
-  };
 }
 
 const SolutionPageTemplate = ({
@@ -90,8 +85,13 @@ const SolutionPageTemplate = ({
   heroImages,
   heroBackgroundImage,
   contentSections,
-  statistics,
 }: SolutionPageTemplateProps) => {
+  // Common statistics for all solution pages
+  const statistics = {
+    revenue: "20%",
+    bookings: "18%", 
+    sales: "32%"
+  };
   const displayImages = heroImages || (heroImage ? [heroImage] : []);
 
   const faqItems = [
@@ -157,13 +157,13 @@ const SolutionPageTemplate = ({
               {heroSubtitle}
             </motion.p>
             <motion.div
-              className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 mb-12"
+              className="flex flex-row gap-4 items-center justify-center mb-12"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <StartFreeTrialButton className="bg-foreground text-background hover:bg-gray-800 px-8 py-3" />
-              <GetDemoButton className="text-gray-600 hover:text-foreground bg-transparent border-none p-0 hover:bg-transparent" />
+              <StartFreeTrialButton />
+              <GetDemoButton />
             </motion.div>
             {displayImages.length > 0 && (
               <div className="w-full flex justify-center items-center">
@@ -218,14 +218,13 @@ const SolutionPageTemplate = ({
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Everything you need to run — and
-              <br />
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 whitespace-normal md:whitespace-pre-line">
+              Everything you need to run —{"\n"}
               grow — your business.
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {[
               {
                 id: "schedule",
@@ -255,7 +254,7 @@ const SolutionPageTemplate = ({
                 transition={{ duration: 0.6, delay: 0.1 + index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <div className="relative mb-6 w-96 h-80 bg-transparent rounded-2xl shadow-lg border-2 border-dashed border-gray-300 px-5 pt-5 transition-all duration-300 group-hover:shadow-xl ">
+                <div className="relative mb-6 w-full aspect-[4/3] bg-transparent rounded-2xl shadow-lg border-2 border-dashed border-gray-300 px-5 pt-5 transition-all duration-300 group-hover:shadow-xl ">
                   {section.type === "image" ? (
                     <div className="relative w-full h-full rounded-lg overflow-hidden">
                       <Image
@@ -347,7 +346,7 @@ const SolutionPageTemplate = ({
 
       {/* Industry Types Section */}
       <section className="">
-        <div className="container-responsive pt-15 pb-30">
+        <div className="container-responsive pt-15 pb-30 px-4">
           <motion.div
             className="text-center mb-8"
             initial={{ opacity: 0, y: 20 }}
@@ -355,9 +354,8 @@ const SolutionPageTemplate = ({
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground">
-              Complete software solution
-              <br />
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground whitespace-normal md:whitespace-pre-line">
+              Complete software solution{"\n"}
               tailored for your industry
             </h2>
           </motion.div>

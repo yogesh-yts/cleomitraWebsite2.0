@@ -100,7 +100,7 @@ export const companyData: NavSection = {
   subtitle: "Informations",
   items: [
     { title: "Contact", href: "/contact" },
-    { title: "Get a Demo", href: "/demo" },
+    { title: "Get a Demo", href: "/contact" },
     { title: "Pricing", href: "/pricing" },
   ],
 };

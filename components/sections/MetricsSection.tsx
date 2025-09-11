@@ -77,12 +77,10 @@ const MetricsSection = ({ statistics }: MetricsSectionProps) => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-2xl md:text-3xl font-bold text-black  mb-2">
-            Cleomitra is your complete solution for
-          </h2>
-          <p className="text-2xl md:text-3xl font-bold text-black ">
+          <h2 className="text-2xl md:text-3xl font-bold text-black mb-2 whitespace-normal md:whitespace-pre-line">
+            Cleomitra is your complete solution for{"\n"}
             running a seamless and efficient business.
-          </p>
+          </h2>
         </motion.div>
 
         <motion.div

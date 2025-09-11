@@ -34,11 +34,6 @@ export default function MarketingPage() {
       heroImage={heroImage}
       heroBackgroundImage="/Solutions-teams/bg/1 (1).png"
       contentSections={contentSections}
-      statistics={{
-        revenue: "20%",
-        bookings: "18%", 
-        sales: "32%"
-      }}
     />
   );
 }

@@ -6,6 +6,7 @@ import ProductShowcase, {
   SliderData,
 } from "@/components/sections/ProductShowcase";
 import StatisticsSection from "@/components/sections/StatisticsSection";
+import HeroLg from "@/components/sections/HeroLg";
 
 const HomePage = () => {
   const sliderData: SliderData[] = [
@@ -46,7 +47,8 @@ const HomePage = () => {
 
   return (
     <div className="bg-background">
-      <HeroSection />
+      {/* <HeroSection /> */}
+      <HeroLg />
       <FeaturesSection
         imageAlt="Features Overview"
         imageSrc="/Homepage/Homepage hero sec.png"

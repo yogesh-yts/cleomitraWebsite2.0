@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import SkeletonLoader from "./SkeletonLoader";
 
 const VideoPlayer = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -31,11 +32,13 @@ const VideoPlayer = () => {
           title="Cleomitra Demo Video"
         />
 
-        {/* Loading Spinner */}
+        {/* Skeleton Loader */}
         {isLoading && (
-          <div className="absolute inset-0 flex items-center justify-center bg-black/50">
-            <div className="w-8 h-8 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-          </div>
+          <SkeletonLoader
+            variant="video"
+            className="absolute inset-0 rounded-2xl"
+            showPlayButton={true}
+          />
         )}
       </div>
     </div>

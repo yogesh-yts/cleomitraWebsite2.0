@@ -9,7 +9,7 @@ interface GetDemoButtonProps {
 }
 
 const GetDemoButton: React.FC<GetDemoButtonProps> = ({
-  className = "",
+  className = "border border-black text-black hover:bg-black hover:text-white",
   children,
 }) => {
   const router = useRouter();
@@ -20,10 +20,8 @@ const GetDemoButton: React.FC<GetDemoButtonProps> = ({
 
   const baseStyles =
     "px-8 py-3 rounded-full font-medium transition-colors cursor-pointer inline-flex items-center justify-center gap-2";
-  const defaultStyles =
-    "border border-background text-background hover:bg-background hover:text-foreground";
 
-  const combinedClassName = `${baseStyles} ${defaultStyles} ${className}`;
+  const combinedClassName = `${baseStyles}  ${className}`;
 
   return (
     <button className={combinedClassName} onClick={handleClick}>

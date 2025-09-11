@@ -2,7 +2,8 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import SkeletonLoader from "./SkeletonLoader";
 
 interface ScrollScaleImageProps {
   src: string;
@@ -26,6 +27,7 @@ const ScrollScaleImage = ({
   quality = 100,
 }: ScrollScaleImageProps) => {
   const ref = useRef<HTMLDivElement>(null);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -55,16 +57,26 @@ const ScrollScaleImage = ({
         damping: 30,
       }}
     >
-      <div className="will-change-transform">
+      <div className="will-change-transform relative">
+        {!imageLoaded && (
+          <SkeletonLoader
+            variant="rectangle"
+            className={`${className} rounded-lg`}
+            width={width}
+            height={height}
+          />
+        )}
         <Image
           src={src}
           alt={alt}
           width={width}
           height={height}
-          className={className}
+          className={`${className} ${imageLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}
           priority={priority}
           quality={quality}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
+          onLoad={() => setImageLoaded(true)}
+          onError={() => setImageLoaded(true)}
         />
       </div>
     </motion.div>

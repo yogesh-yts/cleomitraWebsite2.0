@@ -6,7 +6,7 @@ interface ButtonProps {
   children: React.ReactNode;
   onClick?: () => void;
   variant?: 'primary' | 'secondary';
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'md' | 'lg';
   disabled?: boolean;
   className?: string;
 }
@@ -27,7 +27,6 @@ const Button: React.FC<ButtonProps> = ({
   };
 
   const sizeStyles = {
-    sm: 'px-4 py-2 text-[14px]',
     md: 'px-6 py-3 text-[18px]',
     lg: 'px-8 py-4 text-[20px]'
   };

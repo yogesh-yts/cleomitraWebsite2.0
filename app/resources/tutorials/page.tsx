@@ -72,7 +72,7 @@ export default function TutorialsPage() {
   return (
     <div className="bg-background">
       {/* Hero Section */}
-      <section className="container-responsive py-20">
+      <section className="container-responsive py-30 md:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -122,7 +122,7 @@ export default function TutorialsPage() {
                       href="https://www.youtube.com/watch?v=R2N32Twql5M"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-start space-x-4 p-4 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer group block"
+                      className="flex items-start space-x-4 p-2 md:p-4 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer group "
                     >
                       <div className="flex-shrink-0 w-8 h-8 text-black rounded-full flex items-center justify-center text-sm font-medium">
                         {tutorialIndex + 1}
