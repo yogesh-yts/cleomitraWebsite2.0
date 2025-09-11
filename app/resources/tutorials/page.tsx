@@ -115,7 +115,7 @@ export default function TutorialsPage() {
                 {section.title}
               </h2>
 
-              <div className="space-y-4">
+              <div className="space-y-1">
                 {section.tutorials.map((tutorial, tutorialIndex) => (
                   <motion.div key={tutorialIndex} whileHover={{ x: 5 }}>
                     <a
@@ -128,7 +128,7 @@ export default function TutorialsPage() {
                         {tutorialIndex + 1}
                       </div>
                       <div className="flex-1">
-                        <p className="text-gray-700 group-hover:text-foreground transition-colors">
+                        <p className="text-black text-xl group-hover:text-foreground transition-colors">
                           {tutorial}
                         </p>
                       </div>

@@ -55,21 +55,21 @@ const Footer = () => {
         </div>
 
         {/* Footer Links */}
-        <div className="flex flex-col lg:flex-row gap-10 lg:gap-12 mb-8">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-10 mb-8">
           {/* Menu Sections Group */}
-          <div className="flex flex-wrap space-y-8 lg:gap-20 flex-1 space-x-0">
+          <div className="flex flex-wrap  lg:gap-18 flex-1 md:space-x-10 space-y-10 lg:space-y-0 ">
             {/* Products */}
-            <div className="flex-auto min-w-[200px]">
-              <h4 className="font-semibold mb-4 text-white">
+            <div className="flex-auto min-w-[200px]  ">
+              <h4 className="text-lg font-bold mb-4 text-white">
                 {navigationData[0].title}
               </h4>
-              <div className="flex flex-row gap-8 lg:gap-10">
+              <div className="flex flex-row gap-8 lg:gap-10 lg:space-x-18">
                 {/* Features column */}
                 <div className="flex-1">
-                  <div className="text-sm text-white/40 mb-3 whitespace-nowrap overflow-hidden text-ellipsis">
+                  <div className="text-sm font-normal text-white/40 mb-3 whitespace-nowrap  ">
                     {navigationData[0].subtitle}
                   </div>
-                  <ul className="space-y-2 text-sm text-gray-400">
+                  <ul className="space-y-2 text-base text-gray-400">
                     {navigationData[0].items.map((item, index) => (
                       <li key={index}>
                         <Link
@@ -84,11 +84,11 @@ const Footer = () => {
                 </div>
 
                 {/* Engage with clients column */}
-                <div className="flex-1">
-                  <div className="text-sm text-white/40 mb-3 cursor-default whitespace-nowrap overflow-hidden text-ellipsis">
+                <div className="flex-1 ">
+                  <div className="text-sm font-normal text-white/40 mb-3 cursor-default whitespace-nowrap ">
                     {navigationData[1].subtitle}
                   </div>
-                  <ul className="space-y-2 text-sm text-gray-400">
+                  <ul className="space-y-2 text-base text-gray-400">
                     {navigationData[1].items.map((item, index) => (
                       <li key={index}>
                         <span className="cursor-default whitespace-nowrap">
@@ -102,14 +102,14 @@ const Footer = () => {
             </div>
 
             {/* Solutions */}
-            <div className="flex-auto min-w-[120px] md:min-w-[160px] ">
-              <h4 className="font-semibold mb-4 text-white">
+            <div className="flex-auto  min-w-[200px] ">
+              <h4 className="text-lg font-bold mb-4 text-white">
                 {navigationData[1].title}
               </h4>
-              <div className="text-sm text-white/40 mb-3 whitespace-nowrap">
+              <div className="text-sm font-normal text-white/40 mb-3 whitespace-nowrap">
                 {solutionsTeams.title}
               </div>
-              <ul className="space-y-2 text-sm text-gray-400">
+              <ul className="space-y-2 text-base text-gray-400">
                 {solutionsTeams.items.map((item, index) => (
                   <li key={index}>
                     <Link
@@ -124,16 +124,16 @@ const Footer = () => {
             </div>
 
             {/* Resources */}
-            <div className="flex-col min-w-[160px]  max-w-[200px]">
-              <h4 className="font-semibold mb-4 text-white">
+            <div className="flex-col min-w-[175px]">
+              <h4 className="text-lg font-bold mb-4 text-white">
                 {resourcesData.title}
               </h4>
               {resourcesData.subtitle && (
-                <div className="text-sm text-white/40 mb-3 whitespace-nowrap">
+                <div className="text-sm font-normal text-white/40 mb-3 whitespace-nowrap">
                   {resourcesData.subtitle}
                 </div>
               )}
-              <ul className="space-y-2 text-sm text-gray-400">
+              <ul className="space-y-2 text-base text-gray-400">
                 {resourcesData.items.map((item, index) => (
                   <li key={index}>
                     <Link
@@ -149,15 +149,15 @@ const Footer = () => {
 
             {/* Company */}
             <div className="flex-auto min-w-[160px]">
-              <h4 className="font-semibold mb-4 text-white">
+              <h4 className="text-lg font-bold mb-4 text-white">
                 {companyData.title}
               </h4>
               {companyData.subtitle && (
-                <div className="text-sm text-white/40 mb-3 whitespace-nowrap">
+                <div className="text-sm font-normal text-white/40 mb-3 whitespace-nowrap">
                   {companyData.subtitle}
                 </div>
               )}
-              <ul className="space-y-2 text-sm text-gray-400">
+              <ul className="space-y-2 text-base text-gray-400">
                 {companyData.items.map((item, index) => (
                   <li key={index}>
                     <Link
@@ -174,10 +174,10 @@ const Footer = () => {
 
           {/* Have Questions Section */}
           <div className="flex-1 min-w-[280px] max-w-[350px] w-full lg:w-auto ">
-            <h4 className="font-semibold mb-4 text-white">
+            <h4 className="text-lg font-bold mb-4 text-white">
               Have Questions? We&apos;re Here to Help!
             </h4>
-            <p className="text-sm text-gray-400 mb-6">
+            <p className="text-base font-normal text-gray-400 mb-6">
               Our team is ready to assist you with any inquiries. Reach out to
               us, and let&apos;s discuss how Cleomitra can transform your salon
               experience.
@@ -191,7 +191,7 @@ const Footer = () => {
         </div>
 
         {/* Profile Image - positioned at bottom right */}
-        <div className="flex justify-end mb-8 -mt-24 lg:-mt-28">
+        <div className="flex justify-end mb-8 -mt-24 lg:-mt-24">
           <div className="w-16 h-16 rounded-full overflow-hidden">
             <Image
               src="/logo.png"

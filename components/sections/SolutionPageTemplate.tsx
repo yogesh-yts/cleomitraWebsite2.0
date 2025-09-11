@@ -89,8 +89,8 @@ const SolutionPageTemplate = ({
   // Common statistics for all solution pages
   const statistics = {
     revenue: "20%",
-    bookings: "18%", 
-    sales: "32%"
+    bookings: "18%",
+    sales: "32%",
   };
   const displayImages = heroImages || (heroImage ? [heroImage] : []);
 
@@ -254,7 +254,7 @@ const SolutionPageTemplate = ({
                 transition={{ duration: 0.6, delay: 0.1 + index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <div className="relative mb-6 w-full aspect-[4/3] bg-transparent rounded-2xl shadow-lg border-2 border-dashed border-gray-300 px-5 pt-5 transition-all duration-300 group-hover:shadow-xl ">
+                <div className="relative mb-6 w-full aspect-[4/3] bg-transparent rounded-2xl shadow-lg border-2 border-dashed border-black/40 px-5 pt-5 transition-all duration-300 group-hover:shadow-xl ">
                   {section.type === "image" ? (
                     <div className="relative w-full h-full rounded-lg overflow-hidden">
                       <Image
@@ -294,7 +294,7 @@ const SolutionPageTemplate = ({
             >
               {/* Image Section - 60% width */}
               <motion.div
-                className={`w-full lg:w-[60%] ${
+                className={`w-full lg:w-[60%] pt-15 pl-15 rounded-lg border-2 border-dashed border-black/40 bg-black-400 ${
                   index % 2 === 0 ? "lg:order-1" : "lg:order-2"
                 }`}
                 initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
@@ -307,7 +307,7 @@ const SolutionPageTemplate = ({
                   alt={section.title}
                   width={800}
                   height={500}
-                  className="w-full h-auto rounded-lg shadow-lg"
+                  className="w-full h-auto  "
                   wrapperClassName="w-full"
                   quality={100}
                 />
@@ -323,11 +323,11 @@ const SolutionPageTemplate = ({
                 transition={{ duration: 0.8, delay: index * 0.2 + 0.1 }}
                 viewport={{ once: true }}
               >
-                <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground leading-tight mb-6">
+                <h3 className="text-xl md:text-2xl lg:text-4xl font-bold text-foreground leading-tight mb-6">
                   {section.title}
                 </h3>
 
-                <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                <p className="text-lg text-black/40  mb-10">
                   {section.description}
                 </p>
 
@@ -348,13 +348,13 @@ const SolutionPageTemplate = ({
       <section className="">
         <div className="container-responsive pt-15 pb-30 px-4">
           <motion.div
-            className="text-center mb-8"
+            className="text-center mb-15"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground whitespace-normal md:whitespace-pre-line">
+            <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold text-foreground whitespace-normal md:whitespace-pre-line">
               Complete software solution{"\n"}
               tailored for your industry
             </h2>

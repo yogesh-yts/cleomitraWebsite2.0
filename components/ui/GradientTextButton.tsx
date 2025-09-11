@@ -24,7 +24,7 @@ const GradientTextButton = ({
 
   return (
     <h3
-      className={`text-3xl lg:text-4xl font-bold text-foreground max-w-2xl mx-auto ${className}`}
+      className={`text-3xl lg:text-4xl font-bold text-foreground max-w-2xl mx-auto leading-snug ${className}`}
     >
       {textPart && <>{textPart} </>}
       <span className="inline-block bg-gradient-to-r from-black to-stone-300 text-white px-4 py-2 rounded-md">

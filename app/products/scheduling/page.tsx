@@ -7,11 +7,27 @@ import ProductFeatureImages from "../../../components/sections/ProductFeatureIma
 import StatisticsSection from "../../../components/sections/StatisticsSection";
 
 export default function SchedulingPage() {
-  const schedulingImages = [
-    "/Products-features/scheduling/scheduling-automated reminders.png",
-    "/Products-features/scheduling/Scheduling-integrated payments & invoices.png",
-    "/Products-features/scheduling/Scheduling-smart calender view.png",
-    "/Products-features/scheduling/scheduling-team availabilty management.png",
+  const schedulingFeatures = [
+    {
+      image: "/Products-features/scheduling/Scheduling-smart calender view.png",
+      heading: "Smart Calendar View",
+      description: "Get a comprehensive overview of your schedule with our intuitive calendar interface. Easily manage appointments, view availability, and organize your time efficiently with drag-and-drop functionality and multiple calendar views."
+    },
+    {
+      image: "/Products-features/scheduling/scheduling-automated reminders.png",
+      heading: "Automated Reminders",
+      description: "Never miss an appointment again with intelligent automated reminders. Send customizable SMS, email, and WhatsApp notifications to clients, reducing no-shows by up to 80% and improving client satisfaction."
+    },
+    {
+      image: "/Products-features/scheduling/Scheduling-integrated payments & invoices.png",
+      heading: "Integrated Payments & Invoices",
+      description: "Streamline your billing process with built-in payment processing and automated invoice generation. Accept payments at booking, send invoices automatically, and track payment status all within your scheduling system."
+    },
+    {
+      image: "/Products-features/scheduling/scheduling-team availabilty management.png",
+      heading: "Team Availability Management",
+      description: "Coordinate your entire team's schedule effortlessly. Manage staff availability, assign appointments, track working hours, and ensure optimal resource allocation across multiple locations and service providers."
+    },
   ];
 
   const schedulingFAQs = [
@@ -49,7 +65,7 @@ Sync and Your Clients on Time`}
         />
 
         <ProductFeatureImages
-          images={schedulingImages}
+          features={schedulingFeatures}
           productName="Scheduling"
         />
 

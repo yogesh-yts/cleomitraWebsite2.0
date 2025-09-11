@@ -7,12 +7,32 @@ import ProductFeatureImages from "../../../components/sections/ProductFeatureIma
 import StatisticsSection from "../../../components/sections/StatisticsSection";
 
 export default function BillingPage() {
-  const billingImages = [
-    "/Products-features/billing/billing-discount & taxes.png",
-    "/Products-features/billing/billing-flexible payment option.png",
-    "/Products-features/billing/billing-linked to appointment and services.png",
-    "/Products-features/billing/billing-one click invoice.png",
-    "/Products-features/billing/billing-revenue insights.png",
+  const billingFeatures = [
+    {
+      image: "/Products-features/billing/billing-discount & taxes.png",
+      heading: "Discount & Taxes Management",
+      description: "Apply flexible discounts, manage complex tax calculations, and handle multiple tax rates automatically. Create promotional offers, loyalty discounts, and ensure compliance with local tax regulations effortlessly."
+    },
+    {
+      image: "/Products-features/billing/billing-flexible payment option.png",
+      heading: "Flexible Payment Options",
+      description: "Accept payments through multiple channels including credit cards, digital wallets, bank transfers, and installment plans. Provide your customers with convenient payment methods that suit their preferences."
+    },
+    {
+      image: "/Products-features/billing/billing-linked to appointment and services.png",
+      heading: "Linked to Appointments & Services",
+      description: "Seamlessly connect billing with your scheduling system. Automatically generate invoices from completed appointments, link services to billing records, and ensure accurate service-to-payment tracking."
+    },
+    {
+      image: "/Products-features/billing/billing-one click invoice.png",
+      heading: "One-Click Invoice Generation",
+      description: "Create professional invoices instantly with a single click. Customize invoice templates, add your branding, and send invoices directly to clients via email or WhatsApp with automated delivery confirmations."
+    },
+    {
+      image: "/Products-features/billing/billing-revenue insights.png",
+      heading: "Revenue Insights & Analytics",
+      description: "Get comprehensive revenue analytics with detailed reporting on income trends, payment patterns, and financial performance. Track cash flow, identify revenue opportunities, and make informed business decisions."
+    },
   ];
 
   const billingFAQs = [
@@ -48,7 +68,7 @@ accurate, and fully connected.`}
           imageAlt="Billing Feature Overview"
         />
 
-        <ProductFeatureImages images={billingImages} productName="Billing" />
+        <ProductFeatureImages features={billingFeatures} productName="Billing" />
 
         <FAQSection faqs={billingFAQs} />
 

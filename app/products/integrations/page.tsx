@@ -6,13 +6,13 @@ import StatisticsSection from "../../../components/sections/StatisticsSection";
 import IntegrationsGrid from "../../../components/sections/IntegrationsGrid";
 
 export default function IntegrationsPage() {
-  const integrationsImages = [
-    "/Products-features/integrations/exotel.png",
-    "/Products-features/integrations/gmail.png",
-    "/Products-features/integrations/instagram.png",
-    "/Products-features/integrations/twilio.png",
-    "/Products-features/integrations/whatsapp.png",
-  ];
+  // const integrationsImages = [
+  //   "/Products-features/integrations/exotel.png",
+  //   "/Products-features/integrations/gmail.png",
+  //   "/Products-features/integrations/instagram.png",
+  //   "/Products-features/integrations/twilio.png",
+  //   "/Products-features/integrations/whatsapp.png",
+  // ];
 
   const integrationsFAQs = [
     {

@@ -1,6 +1,6 @@
 const HeroLg: React.FC = () => {
   return (
-    <div className="w-full  px-4 md:px-8 lg:px-16 xl:px-20 3xl:px-0  mx-auto  flex-col justify-center items-center my-10 lg:my-20  flex">
+    <div className="w-full  relative px-4 md:px-8 lg:px-16 xl:px-20 3xl:px-0  mx-auto  flex-col justify-center items-center my-10 lg:my-20  flex">
       <svg
         width="1040"
         height="345"
@@ -383,65 +383,65 @@ const HeroLg: React.FC = () => {
         <path
           d="M1001 101V284C1001 295.046 992.046 304 981 304H913"
           stroke="black"
-          stroke-opacity="0.26"
-          stroke-linecap="round"
-          stroke-dasharray="3 3"
+          strokeOpacity="0.26"
+          strokeLinecap="round"
+          strokeDasharray="3 3"
         />
         <path
           d="M746 244H754.959C764.071 244 771.459 236.613 771.459 227.5V227.5C771.459 218.387 778.846 211 787.959 211H837C848.046 211 857 219.954 857 231V252"
           stroke="black"
-          stroke-opacity="0.26"
-          stroke-linecap="round"
-          stroke-dasharray="3 3"
+          strokeOpacity="0.26"
+          strokeLinecap="round"
+          strokeDasharray="3 3"
         />
         <path
           d="M885 112H903.808C914.854 112 923.808 103.046 923.808 92V67C923.808 55.9543 932.762 47 943.808 47H948"
           stroke="black"
-          stroke-opacity="0.26"
-          stroke-linecap="round"
-          stroke-dasharray="3 3"
+          strokeOpacity="0.26"
+          strokeLinecap="round"
+          strokeDasharray="3 3"
         />
         <path
           d="M902 112V169.5C902 180.546 893.046 189.5 882 189.5H848C836.954 189.5 828 198.454 828 209.5V210.5"
           stroke="black"
-          stroke-opacity="0.26"
-          stroke-linecap="round"
-          stroke-dasharray="3 3"
+          strokeOpacity="0.26"
+          strokeLinecap="round"
+          strokeDasharray="3 3"
         />
         <path
           d="M174 39H185.779C196.824 39 205.779 47.9543 205.779 59V86C205.779 97.0457 214.733 106 225.779 106H231"
           stroke="black"
-          stroke-opacity="0.26"
-          stroke-linecap="round"
-          stroke-dasharray="3 3"
+          strokeOpacity="0.26"
+          strokeLinecap="round"
+          strokeDasharray="3 3"
         />
         <path
           d="M66 39H59C47.9543 39 39 47.9543 39 59V134"
           stroke="black"
-          stroke-opacity="0.26"
-          stroke-linecap="round"
-          stroke-dasharray="3 3"
+          strokeOpacity="0.26"
+          strokeLinecap="round"
+          strokeDasharray="3 3"
         />
         <path
           d="M39 241V286C39 297.046 47.9543 306 59 306H209"
           stroke="black"
-          stroke-opacity="0.26"
-          stroke-linecap="round"
-          stroke-dasharray="3 3"
+          strokeOpacity="0.26"
+          strokeLinecap="round"
+          strokeDasharray="3 3"
         />
         <path
           d="M93 187H241C252.046 187 261 195.954 261 207V252"
           stroke="black"
-          stroke-opacity="0.26"
-          stroke-linecap="round"
-          stroke-dasharray="3 3"
+          strokeOpacity="0.26"
+          strokeLinecap="round"
+          strokeDasharray="3 3"
         />
         <path
           d="M261 212H305.764C314.601 212 321.764 219.163 321.764 228V228C321.764 236.837 328.928 244 337.764 244H376"
           stroke="black"
-          stroke-opacity="0.26"
-          stroke-linecap="round"
-          stroke-dasharray="3 3"
+          strokeOpacity="0.26"
+          strokeLinecap="round"
+          strokeDasharray="3 3"
         />
         <defs>
           <linearGradient

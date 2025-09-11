@@ -7,10 +7,22 @@ import ProductFeatureImages from "../../../components/sections/ProductFeatureIma
 import StatisticsSection from "../../../components/sections/StatisticsSection";
 
 export default function DashboardPage() {
-  const dashboardImages = [
-    "/Products-features/dashboard/Dashboard-client & service insights.png",
-    "/Products-features/dashboard/Dashboard-real time overview.png",
-    "/Products-features/dashboard/Dashboard-team & branch performance.png",
+  const dashboardFeatures = [
+    {
+      image: "/Products-features/dashboard/Dashboard-client & service insights.png",
+      heading: "Client & Service Insights",
+      description: "Get deep insights into client behavior, service performance, and customer satisfaction. Track client lifetime value, service popularity, and identify opportunities to enhance customer experience and boost revenue."
+    },
+    {
+      image: "/Products-features/dashboard/Dashboard-real time overview.png",
+      heading: "Real-Time Business Overview",
+      description: "Monitor your business performance with live data updates. Track key metrics like daily revenue, appointment bookings, customer interactions, and inventory levels all in one comprehensive real-time dashboard."
+    },
+    {
+      image: "/Products-features/dashboard/Dashboard-team & branch performance.png",
+      heading: "Team & Branch Performance",
+      description: "Analyze individual team member performance and compare branch productivity. Track sales targets, service efficiency, customer ratings, and identify top performers to optimize your business operations."
+    },
   ];
 
   const dashboardFAQs = [
@@ -47,7 +59,7 @@ so you can make smarter, faster decisions.`}
         />
 
         <ProductFeatureImages
-          images={dashboardImages}
+          features={dashboardFeatures}
           productName="Dashboard"
         />
 

@@ -7,11 +7,27 @@ import ProductFeatureImages from "@/components/sections/ProductFeatureImages";
 import StatisticsSection from "@/components/sections/StatisticsSection";
 
 const CustomerManagementPage = () => {
-  const customerManagementImages = [
-    "/Products-features/customer management/customer management- centralized client profiles.png",
-    "/Products-features/customer management/customer management- integrated communication.png",
-    "/Products-features/customer management/customer management- service & purchase history.png",
-    "/Products-features/customer management/customer management- smart segmentation.png",
+  const customerManagementFeatures = [
+    {
+      image: "/Products-features/customer management/customer management- centralized client profiles.png",
+      heading: "Centralized Client Profiles",
+      description: "Maintain comprehensive client profiles with all essential information in one place. Store contact details, preferences, notes, and interaction history to provide personalized service and build stronger customer relationships."
+    },
+    {
+      image: "/Products-features/customer management/customer management- integrated communication.png",
+      heading: "Integrated Communication Hub",
+      description: "Communicate with clients seamlessly through multiple channels including WhatsApp, email, SMS, and phone calls, all from within their profile. Keep all conversations organized and accessible in one central location."
+    },
+    {
+      image: "/Products-features/customer management/customer management- service & purchase history.png",
+      heading: "Service & Purchase History",
+      description: "Access complete service and purchase history for every client. Track past appointments, services rendered, products purchased, and payment history to provide informed recommendations and better customer service."
+    },
+    {
+      image: "/Products-features/customer management/customer management- smart segmentation.png",
+      heading: "Smart Customer Segmentation",
+      description: "Automatically segment customers based on behavior, preferences, spending patterns, and engagement levels. Create targeted marketing campaigns, personalized offers, and tailored communication strategies for different customer groups."
+    },
   ];
 
   const customerFAQs = [
@@ -45,7 +61,7 @@ const CustomerManagementPage = () => {
         />
 
         <ProductFeatureImages
-          images={customerManagementImages}
+          features={customerManagementFeatures}
           productName="Customer Management"
         />
 

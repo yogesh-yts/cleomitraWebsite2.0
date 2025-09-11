@@ -77,7 +77,7 @@ const MetricsSection = ({ statistics }: MetricsSectionProps) => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-2xl md:text-3xl font-bold text-black mb-2 whitespace-normal md:whitespace-pre-line">
+          <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold text-black mb-15 whitespace-normal md:whitespace-pre-line">
             Cleomitra is your complete solution for{"\n"}
             running a seamless and efficient business.
           </h2>

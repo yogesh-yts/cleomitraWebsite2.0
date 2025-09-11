@@ -167,7 +167,7 @@ const Header = () => {
               href="/contact"
               className="block w-full text-left text-gray-600 hover:text-foreground py-2 mr-4"
             >
-              Get A Demo
+              Get a Demo
             </Link>
           </div>
           <Link
@@ -404,7 +404,7 @@ const Header = () => {
                 className="block w-full text-left text-gray-600 hover:text-foreground py-2 flex-1"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Get A Demo
+                Get a Demo
               </Link>
               <Link
                 href="https://www.cleomitra.app/"
