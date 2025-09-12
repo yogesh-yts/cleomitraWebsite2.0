@@ -7,6 +7,7 @@ import Image from "next/image";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { navigationData, navbarSections, solutionsTeams } from "../../data/nav";
 import StartFreeTrialButton from "../ui/StartFreeTrialButton";
+import "material-symbols/outlined.css";
 
 const Header = () => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -15,6 +16,31 @@ const Header = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Helper function to get Material Symbol icon for menu items
+  const getMenuIcon = (title: string): string => {
+    const iconMap: { [key: string]: string } = {
+      // Products
+      "Scheduling": "calendar_month",
+      "Customer Management": "people",
+      "Marketing and Messaging": "campaign",
+      "Dashboard": "dashboard",
+      "Integrations": "extension",
+      "Billing": "receipt",
+      "Inventory": "inventory_2",
+      // Solutions - Teams
+      "For Salon & Spa Owners": "spa",
+      "For Service Providers": "business_center",
+      "For Sales Teams": "trending_up",
+      "For Marketing": "ads_click",
+      // Resources
+      "Cleomitra Tutorials": "school",
+      "Download Mobile App": "smartphone",
+      // Other
+      "Pricing": "payments"
+    };
+    return iconMap[title] || "circle";
+  };
 
   const updateSubmenuPosition = () => {
     const headerElement = document.querySelector("header");
@@ -137,7 +163,7 @@ const Header = () => {
             <span className="text-xl font-bold text-foreground">Cleomitra</span>
           </Link>
 
-          <nav className="hidden lg:flex items-center space-x-6">
+          <nav className="hidden lg:flex items-center space-x-6" role="navigation" aria-label="Main navigation">
             {navbarSections.map((item) => (
               <div
                 key={item.title}
@@ -145,9 +171,14 @@ const Header = () => {
                 onMouseEnter={() => handleMouseEnter(item.title)}
                 onMouseLeave={handleMouseLeave}
               >
-                <button className="flex items-center space-x-1 text-gray-600 hover:text-foreground transition-colors">
+                <button 
+                  className="flex items-center space-x-1 text-gray-600 hover:text-foreground transition-colors"
+                  aria-expanded={activeDropdown === item.title}
+                  aria-haspopup="true"
+                  aria-label={`${item.title} menu`}
+                >
                   <span>{item.title}</span>
-                  <ChevronDown className="w-4 h-4" />
+                  <ChevronDown className="w-4 h-4" aria-hidden="true" />
                 </button>
               </div>
             ))}
@@ -175,6 +206,7 @@ const Header = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="hidden lg:block text-gray-600 hover:text-foreground transition-colors"
+            aria-label="Login (opens in new tab)"
           >
             Login
           </Link>
@@ -186,11 +218,13 @@ const Header = () => {
           <button
             className="lg:hidden p-2 text-gray-600 hover:text-foreground transition-colors z-50 relative"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-expanded={isMobileMenuOpen}
+            aria-label="Toggle mobile menu"
           >
             {isMobileMenuOpen ? (
-              <X className="w-6 h-6" />
+              <X className="w-6 h-6" aria-hidden="true" />
             ) : (
-              <Menu className="w-6 h-6" />
+              <Menu className="w-6 h-6" aria-hidden="true" />
             )}
           </button>
         </div>
@@ -232,6 +266,7 @@ const Header = () => {
                           key={index}
                           href={feature.href}
                           className="block p-2 text-gray-600 hover:text-foreground hover:bg-gray-50 transition-colors rounded-md"
+                          onClick={() => setActiveDropdown(null)}
                         >
                           <div className="font-medium text-foreground mb-1 whitespace-nowrap">
                             {feature.title}
@@ -253,7 +288,7 @@ const Header = () => {
                       {navigationData[1].items.map((clientItem, index) => (
                         <div
                           key={index}
-                          className="block p-3 text-gray-600 cursor-default"
+                          className="block p-3 text-gray-600 cursor-not-allowed"
                         >
                           <div className="font-medium text-foreground whitespace-nowrap">
                             {clientItem.title}
@@ -276,6 +311,7 @@ const Header = () => {
                         key={index}
                         href={subItem.href}
                         className="block p-3 text-gray-600 hover:text-foreground hover:bg-gray-50 transition-colors rounded-md"
+                        onClick={() => setActiveDropdown(null)}
                       >
                         <div className="font-medium text-foreground">
                           {subItem.title}
@@ -307,6 +343,7 @@ const Header = () => {
                           key={index}
                           href={subItem.href}
                           className="block p-2 text-gray-600 hover:text-foreground hover:bg-gray-50 transition-colors rounded-md"
+                          onClick={() => setActiveDropdown(null)}
                         >
                           <div className="font-medium text-foreground mb-1">
                             {subItem.title}
@@ -334,6 +371,8 @@ const Header = () => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.2 }}
+          role="navigation"
+          aria-label="Mobile navigation menu"
         >
           <div className="container-responsive pt-4 flex flex-col min-h-[calc(100vh-80px)]">
             {/* Mobile Navigation Links */}
@@ -349,10 +388,13 @@ const Header = () => {
                         <Link
                           key={index}
                           href={item.href}
-                          className="block text-gray-600 hover:text-foreground py-2"
+                          className="flex items-center space-x-3 text-gray-600 hover:text-foreground py-2"
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
-                          {item.title}
+                          <span className="material-symbols-outlined text-xl" aria-hidden="true">
+                            {getMenuIcon(item.title)}
+                          </span>
+                          <span>{item.title}</span>
                         </Link>
                       ))}
                     </div>
@@ -363,10 +405,13 @@ const Header = () => {
                         <Link
                           key={index}
                           href={item.href}
-                          className="block text-gray-600 hover:text-foreground py-2"
+                          className="flex items-center space-x-3 text-gray-600 hover:text-foreground py-2"
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
-                          {item.title}
+                          <span className="material-symbols-outlined text-xl" aria-hidden="true">
+                            {getMenuIcon(item.title)}
+                          </span>
+                          <span>{item.title}</span>
                         </Link>
                       ))}
                     </div>
@@ -377,10 +422,13 @@ const Header = () => {
                         <Link
                           key={index}
                           href={item.href}
-                          className="block text-gray-600 hover:text-foreground py-2"
+                          className="flex items-center space-x-3 text-gray-600 hover:text-foreground py-2"
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
-                          {item.title}
+                          <span className="material-symbols-outlined text-xl" aria-hidden="true">
+                            {getMenuIcon(item.title)}
+                          </span>
+                          <span>{item.title}</span>
                         </Link>
                       ))}
                     </div>
@@ -390,30 +438,40 @@ const Header = () => {
 
               <Link
                 href="/pricing"
-                className="block font-medium text-foreground text-lg py-2 mb-6"
+                className="flex items-center space-x-3 font-medium text-foreground text-lg py-2 mb-6"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Pricing
+                <span className="material-symbols-outlined text-xl" aria-hidden="true">
+                  {getMenuIcon("Pricing")}
+                </span>
+                <span>Pricing</span>
               </Link>
             </div>
 
             {/* Mobile CTA Buttons */}
-            <div className="pt-4 border-t border-gray-200 flex flex-row mt-auto">
+            <div className="pt-4 pb-4 md:pb-0 border-t border-gray-200 flex flex-row mt-auto">
               <Link
                 href="/contact"
-                className="block w-full text-left text-gray-600 hover:text-foreground py-2 flex-1"
+                className="flex items-center space-x-2 w-full text-left text-gray-600 hover:text-foreground py-2 flex-1"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Get a Demo
+                <span className="material-symbols-outlined text-lg" aria-hidden="true">
+                  play_circle
+                </span>
+                <span>Get a Demo</span>
               </Link>
               <Link
                 href="https://www.cleomitra.app/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full text-left text-gray-600 hover:text-foreground py-2 flex-1"
+                className="flex items-center space-x-2 w-full text-left text-gray-600 hover:text-foreground py-2 flex-1"
                 onClick={() => setIsMobileMenuOpen(false)}
+                aria-label="Login (opens in new tab)"
               >
-                Login
+                <span className="material-symbols-outlined text-lg" aria-hidden="true">
+                  login
+                </span>
+                <span>Login</span>
               </Link>
               <StartFreeTrialButton
                 onClose={() => setIsMobileMenuOpen(false)}

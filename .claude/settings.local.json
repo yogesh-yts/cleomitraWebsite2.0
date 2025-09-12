@@ -24,7 +24,11 @@
       "mcp__ide__getDiagnostics",
       "Read(//c/Users/yogesh/Pictures/Screenshots/**)",
       "Bash(claude doctor)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm run dev:*)",
+      "Bash(dir:*)",
+      "Bash(npx tsc:*)"
     ],
     "deny": [],
     "ask": []

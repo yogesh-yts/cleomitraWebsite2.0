@@ -46,7 +46,7 @@ const ContactPage = () => {
     {
       question: "How can I get in touch with the Cleomitra team?",
       answer:
-        "You can reach us through this contact form, email us directly, or schedule a demo. Our team typically responds within 24 hours during business days.",
+        "You can reach us through this contact form, email us directly at support@cleomitra.com, or schedule a demo. Our team typically responds within 24 hours during business days.",
     },
     {
       question: "Do you offer product demos?",
@@ -61,12 +61,12 @@ const ContactPage = () => {
     {
       question: "How soon can I expect a response after contacting you?",
       answer:
-        "We typically respond to all inquiries within 24 hours during business days (Monday-Friday). For urgent matters, you can also reach out through our live chat support.",
+        "We typically respond to all inquiries within 24 hours during business days (Monday-Friday). You can also reach us directly at support@cleomitra.com for any questions or assistance.",
     },
     {
       question: "Can I get support after office hours?",
       answer:
-        "While our primary support hours are during business days, we offer 24/7 chat support for urgent technical issues. You can also submit a ticket through our help center anytime.",
+        "While our primary support hours are during business days, you can always send us an email at support@cleomitra.com anytime. We'll get back to you as soon as possible during our next business day.",
     },
   ];
 
@@ -151,35 +151,43 @@ const ContactPage = () => {
               <form
                 onSubmit={handleSubmit}
                 className="space-y-6 overflow-visible"
+                role="form"
+                aria-labelledby="contact-form-title"
               >
+                <h2 id="contact-form-title" className="sr-only">Contact Form</h2>
                 {/* Name Field */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Name <span className="text-red-500">*</span>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                    Name <span className="text-red-500" aria-label="required">*</span>
                   </label>
                   <input
                     type="text"
+                    id="name"
                     name="name"
                     placeholder="Enter your name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-400 transition-colors"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg transition-colors"
                     required
+                    aria-describedby="name-error"
                   />
+                  <div id="name-error" className="sr-only" aria-live="polite"></div>
                 </div>
 
                 {/* Business Type and Phone Row */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 overflow-visible">
                   <div className="relative z-[100]">
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Business Type <span className="text-red-500">*</span>
+                    <label htmlFor="businessType" className="block text-sm font-medium text-gray-700 mb-2">
+                      Business Type <span className="text-red-500" aria-label="required">*</span>
                     </label>
                     <select
+                      id="businessType"
                       name="businessType"
                       value={formData.businessType}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-400 transition-colors relative z-[45] bg-white"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg transition-colors relative z-[45] bg-white"
                       required
+                      aria-describedby="businessType-error"
                     >
                       <option value="">Select business type</option>
                       {businessTypes.map((type) => (
@@ -188,18 +196,22 @@ const ContactPage = () => {
                         </option>
                       ))}
                     </select>
+                    <div id="businessType-error" className="sr-only" aria-live="polite"></div>
                   </div>
 
                   <div className="relative">
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Phone Number <span className="text-red-500">*</span>
+                    <label htmlFor="phoneNumber" className="block text-sm font-medium text-gray-700 mb-2">
+                      Phone Number <span className="text-red-500" aria-label="required">*</span>
                     </label>
-                    <div className="flex flex-1">
+                    <div className="flex flex-1" role="group" aria-labelledby="phone-label">
+                      <label htmlFor="countryCode" className="sr-only">Country Code</label>
                       <select
+                        id="countryCode"
                         name="countryCode"
                         value={formData.countryCode}
                         onChange={handleInputChange}
-                        className="flex-shrink-0 px-3 py-3 border border-gray-300 rounded-l-lg focus:outline-none focus:border-gray-400 bg-gray-50"
+                        className="flex-shrink-0 px-3 py-3 border border-gray-300 rounded-l-lg bg-gray-50"
+                        aria-label="Country code"
                       >
                         <option value="+91">+91</option>
                         <option value="+1">+1</option>
@@ -207,64 +219,76 @@ const ContactPage = () => {
                       </select>
                       <input
                         type="tel"
+                        id="phoneNumber"
                         name="phoneNumber"
                         placeholder="98765 - 43210"
                         value={formData.phoneNumber}
                         onChange={handleInputChange}
-                        className="flex-1 min-w-0 px-4 py-3 border border-l-0 border-gray-300 rounded-r-lg focus:outline-none focus:border-gray-400 transition-colors"
+                        className="flex-1 min-w-0 px-4 py-3 border border-l-0 border-gray-300 rounded-r-lg transition-colors"
                         required
+                        aria-describedby="phone-error"
                       />
                     </div>
+                    <div id="phone-error" className="sr-only" aria-live="polite"></div>
                   </div>
                 </div>
 
                 {/* Email Field */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                     Business Email Address{" "}
-                    <span className="text-red-500">*</span>
+                    <span className="text-red-500" aria-label="required">*</span>
                   </label>
                   <input
                     type="email"
+                    id="email"
                     name="email"
                     placeholder="your@company.com"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-400 transition-colors"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg transition-colors"
                     required
+                    aria-describedby="email-error"
                   />
+                  <div id="email-error" className="sr-only" aria-live="polite"></div>
                 </div>
 
                 {/* Message Field */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Message <span className="text-red-500">*</span>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                    Message <span className="text-red-500" aria-label="required">*</span>
                   </label>
                   <textarea
+                    id="message"
                     name="message"
                     placeholder="Your Message"
                     rows={4}
                     value={formData.message}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-400 transition-colors resize-none"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg transition-colors resize-none"
                     required
+                    aria-describedby="message-error"
                   />
+                  <div id="message-error" className="sr-only" aria-live="polite"></div>
                 </div>
 
                 {/* Submit Button */}
                 <button
                   type="submit"
                   className={`w-full inline-flex items-center space-x-4 group font-medium justify-center px-9 py-3 rounded-lg  transition-colors bg-foreground text-background`}
+                  aria-describedby="submit-description"
                 >
                   <span>Submit</span>
                   <span
                     className={`rounded-full p-1.5 inline-flex items-center justify-center group-hover:translate-x-4 transform transition-transform duration-400 ease-in-out bg-white/20`}
+                    aria-hidden="true"
                   >
                     <span className="material-symbols-outlined text-sm">
                       arrow_forward
                     </span>
                   </span>
                 </button>
+                <div id="submit-description" className="sr-only">Submit the contact form to get in touch with our team</div>
 
                 <p className="text-xs text-gray-500 text-center">
                   By submitting this form you agree to our friendly privacy

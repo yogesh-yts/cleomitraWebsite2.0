@@ -17,12 +17,12 @@ import { motion } from "framer-motion";
 
 const Footer = () => {
   return (
-    <footer className="bg-foreground text-background">
+    <footer className="bg-foreground text-background" role="contentinfo">
       <div className="container-responsive  pt-10 pb-6">
         {/* CTA Section */}
-        <div className="text-center py-30">
+        <section className="text-center py-30" aria-label="Call to action">
           <div className="relative mb-8">
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold max-w-4xl mx-auto leading-tight">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold max-w-4xl mx-auto leading-tight" id="footer-cta-heading">
               <span className="relative inline-block">
                 <span className="relative">R</span>
                 <motion.div
@@ -37,6 +37,7 @@ const Footer = () => {
                     className="bg-blue text-white"
                     arrowPosition="bottom-right"
                     cursorColor="text-blue"
+                    aria-label="Decorative button"
                   />
                 </motion.div>
               </span>
@@ -52,10 +53,10 @@ const Footer = () => {
             <StartFreeTrialButton className="bg-background text-black hover:bg-gray-100 hover:text-black px-6 sm:px-8 py-3 w-full sm:w-auto text-center" />
             <GetDemoButton className="text-background bg-black border border-gray-600 hover:bg-white hover:text-black hover:bg-opacity-10 px-6 sm:px-8 py-3 w-full sm:w-auto text-center" />
           </div>
-        </div>
+        </section>
 
         {/* Footer Links */}
-        <div className="flex flex-col lg:flex-row gap-10 lg:gap-10 mb-8">
+        <nav className="flex flex-col lg:flex-row gap-10 lg:gap-10 mb-8" aria-label="Footer navigation">
           {/* Menu Sections Group */}
           <div className="flex flex-wrap  lg:gap-18 flex-1 md:space-x-10 space-y-10 lg:space-y-0 ">
             {/* Products */}
@@ -91,7 +92,7 @@ const Footer = () => {
                   <ul className="space-y-2 text-base text-gray-400">
                     {navigationData[1].items.map((item, index) => (
                       <li key={index}>
-                        <span className="cursor-default whitespace-nowrap">
+                        <span className="cursor-not-allowed whitespace-nowrap">
                           {item.title}
                         </span>
                       </li>
@@ -188,7 +189,7 @@ const Footer = () => {
               href="mailto:info@cleomitra.com"
             />
           </div>
-        </div>
+        </nav>
 
         {/* Profile Image - positioned at bottom right */}
         <div className="flex justify-end mb-8 -mt-24 lg:-mt-24">

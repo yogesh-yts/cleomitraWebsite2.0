@@ -6,6 +6,8 @@ export interface ButtonWithArrowProps {
   cursorColor?: string;
   arrowPosition: "top-left" | "top-right" | "bottom-left" | "bottom-right";
   className?: string;
+  onClick?: () => void;
+  'aria-label'?: string;
 }
 
 export default function ButtonWithArrow({
@@ -13,6 +15,8 @@ export default function ButtonWithArrow({
   cursorColor = "#ffffff",
   arrowPosition,
   className = "",
+  onClick,
+  'aria-label': ariaLabel,
 }: ButtonWithArrowProps) {
   const getCursorPositionAndRotation = () => {
     switch (arrowPosition) {
@@ -50,16 +54,19 @@ export default function ButtonWithArrow({
 
   return (
     <div className={`relative inline-block  `}>
-      <div
+      <button
         className={`px-3 py-1.5 md:px-5 md:py-2 rounded-full text-xs font-medium whitespace-nowrap cursor-pointer hover:opacity-90 transition-opacity ${className}`}
+        onClick={onClick}
+        aria-label={ariaLabel || text}
       >
         {text}
-      </div>
+      </button>
       <MousePointer2
         size={16}
         className={`${position} ${rotation} ${cursorColor} md:w-6 md:h-6`}
         strokeWidth={2}
         fill="none"
+        aria-hidden="true"
       />
     </div>
   );

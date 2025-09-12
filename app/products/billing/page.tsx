@@ -4,58 +4,73 @@ import FeaturesSection from "../../../components/sections/FeaturesSection";
 import FAQSection from "../../../components/sections/FAQSection";
 import ProductHero from "../../../components/sections/ProductHero";
 import ProductFeatureImages from "../../../components/sections/ProductFeatureImages";
-import StatisticsSection from "../../../components/sections/StatisticsSection";
+import Seo from "../../../components/Seo";
 
 export default function BillingPage() {
   const billingFeatures = [
     {
-      image: "/Products-features/billing/billing-discount & taxes.png",
-      heading: "Discount & Taxes Management",
-      description: "Apply flexible discounts, manage complex tax calculations, and handle multiple tax rates automatically. Create promotional offers, loyalty discounts, and ensure compliance with local tax regulations effortlessly."
+      image: "/Products-features/billing/billing-one click invoice.png",
+      heading: "One-Click Invoicing",
+      description:
+        "Create invoices instantly from completed appointments or product sales — no duplicate work.",
     },
     {
       image: "/Products-features/billing/billing-flexible payment option.png",
       heading: "Flexible Payment Options",
-      description: "Accept payments through multiple channels including credit cards, digital wallets, bank transfers, and installment plans. Provide your customers with convenient payment methods that suit their preferences."
+      description:
+        "Accept payments via cash, card, UPI, or integrated gateways, making it easy for clients to pay their way.",
     },
     {
-      image: "/Products-features/billing/billing-linked to appointment and services.png",
+      image:
+        "/Products-features/billing/billing-linked to appointment and services.png",
       heading: "Linked to Appointments & Services",
-      description: "Seamlessly connect billing with your scheduling system. Automatically generate invoices from completed appointments, link services to billing records, and ensure accurate service-to-payment tracking."
+      description:
+        "Every invoice is automatically tied to services, providers, and clients, ensuring accurate revenue tracking.",
     },
     {
-      image: "/Products-features/billing/billing-one click invoice.png",
-      heading: "One-Click Invoice Generation",
-      description: "Create professional invoices instantly with a single click. Customize invoice templates, add your branding, and send invoices directly to clients via email or WhatsApp with automated delivery confirmations."
+      image: "/Products-features/billing/billing-discount & taxes.png",
+      heading: "Discounts & Taxes",
+      description:
+        "Apply discounts and taxes effortlessly — Cleomitra handles the calculations for you.",
     },
+
     {
       image: "/Products-features/billing/billing-revenue insights.png",
-      heading: "Revenue Insights & Analytics",
-      description: "Get comprehensive revenue analytics with detailed reporting on income trends, payment patterns, and financial performance. Track cash flow, identify revenue opportunities, and make informed business decisions."
+      heading: "Revenue Insights",
+      description:
+        "Monitor earnings, outstanding payments, and staff performance with clear billing reports and dashboards.",
     },
   ];
 
   const billingFAQs = [
     {
-      question: "What payment methods are supported?",
+      question: "Can I generate invoices without an appointment?",
       answer:
-        "We support all major payment methods including credit cards, PayPal, bank transfers, and various digital wallets for maximum flexibility.",
+        "Absolutely! Cleomitra's billing system allows you to create standalone invoices for product sales, consultations, packages, or any other services that don't require appointment scheduling. You can generate invoices manually for walk-in customers, retail purchases, or custom services with just a few clicks.",
     },
     {
-      question: "Can I automate recurring billing?",
+      question: "Does Cleomitra support multiple payment methods?",
       answer:
-        "Yes, our system supports automated recurring billing for subscriptions, memberships, and regular services with smart retry logic.",
+        "Yes! Cleomitra supports a wide range of payment methods including credit cards, debit cards, digital wallets (PayPal, Apple Pay, Google Pay), bank transfers, cash payments, and installment plans. This flexibility allows your customers to pay using their preferred method, improving satisfaction and reducing payment delays.",
     },
     {
-      question: "How does invoice tracking work?",
+      question: "How does billing connect with other modules?",
       answer:
-        "Our billing system provides real-time tracking of invoice status, payment confirmations, and automatic follow-ups for overdue payments.",
+        "Cleomitra's billing module is fully integrated with all other systems. It automatically pulls appointment data for service billing, syncs with inventory for product sales, connects with customer management for payment history, links with marketing for promotional discounts, and feeds data to the dashboard for financial reporting. This seamless integration ensures accurate billing and comprehensive business insights.",
     },
   ];
 
   return (
-    <div className="bg-background">
-      <main>
+    <>
+      <Seo
+        title="Billing Software for Salons & Spas - Cleomitra CRM"
+        description="Streamline your salon billing with Cleomitra's integrated billing software. Generate invoices, track payments, manage discounts & taxes. Best billing CRM for salons in India."
+        keywords="billing software for salon, salon billing system, spa billing software, invoice generator for salon, best billing crm india, payment tracking software"
+        url="https://www.cleomitra.com/products/billing"
+        siteName="Cleomitra"
+      />
+      <div className="bg-background pb-10">
+        <main>
         <ProductHero
           title={`Billing made simple — for you 
 and your clients.`}
@@ -68,12 +83,14 @@ accurate, and fully connected.`}
           imageAlt="Billing Feature Overview"
         />
 
-        <ProductFeatureImages features={billingFeatures} productName="Billing" />
+        <ProductFeatureImages
+          features={billingFeatures}
+          productName="Billing"
+        />
 
         <FAQSection faqs={billingFAQs} />
-
-        <StatisticsSection />
-      </main>
-    </div>
+        </main>
+      </div>
+    </>
   );
 }

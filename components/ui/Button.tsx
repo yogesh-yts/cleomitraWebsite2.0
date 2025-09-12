@@ -9,6 +9,8 @@ interface ButtonProps {
   size?: 'md' | 'lg';
   disabled?: boolean;
   className?: string;
+  'aria-label'?: string;
+  'aria-describedby'?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -17,7 +19,9 @@ const Button: React.FC<ButtonProps> = ({
   variant = 'primary',
   size = 'md',
   disabled = false,
-  className = ''
+  className = '',
+  'aria-label': ariaLabel,
+  'aria-describedby': ariaDescribedBy
 }) => {
   const baseStyles = 'box-border flex gap-2.5 items-center justify-center relative rounded-[40px] transition-colors font-normal font-[\'Lato\',_sans-serif] text-nowrap';
   
@@ -40,6 +44,8 @@ const Button: React.FC<ButtonProps> = ({
       className={combinedClassName}
       onClick={onClick}
       disabled={disabled}
+      aria-label={ariaLabel}
+      aria-describedby={ariaDescribedBy}
       data-node-id="11:236"
     >
       {children}

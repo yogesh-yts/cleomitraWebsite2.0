@@ -2,12 +2,13 @@
 
 import { motion } from "framer-motion";
 import ButtonWithArrow from "../ui/ButtonWithArrow";
+import Link from "next/link";
 
 const StatisticsSection = () => {
   return (
     <section className="container-responsive pt-15">
       <div
-        className="relative flex justify-center items-center border-2 border-dashed border-black/40 border-b-0 py-10 md:py-16 lg:py-20 px-4 md:px-6 lg:px-8"
+        className="relative flex justify-center items-center border-2 border-dashed border-black/40 border-b-0 py-16 md:py-24 lg:py-30 px-4 md:px-6 lg:px-8"
         style={{
           borderTopLeftRadius: "var(--radius-20)",
           borderTopRightRadius: "var(--radius-20)",
@@ -22,8 +23,16 @@ const StatisticsSection = () => {
           viewport={{ once: true }}
         >
           <h2 className="text-xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-foreground leading-tight px-4 md:px-0">
-            Discover <span className="underline decoration-2">cleomitra</span> a
-            customer <br className="hidden" />
+            Discover{" "}
+            <Link
+              href="https://www.cleomitra.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline decoration-2 "
+            >
+              cleomitra
+            </Link>{" "}
+            a customer <br className="hidden" />
             experience platform, made by 15+
             <br className="hidden" />
             passionate people

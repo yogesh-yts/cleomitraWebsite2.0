@@ -3,52 +3,61 @@ import ProductHero from "../../../components/sections/ProductHero";
 import FeaturesSection from "../../../components/sections/FeaturesSection";
 import FAQSection from "../../../components/sections/FAQSection";
 import ProductFeatureImages from "../../../components/sections/ProductFeatureImages";
-import StatisticsSection from "../../../components/sections/StatisticsSection";
 
 export default function MarketingMessagingPage() {
   const marketingMessagingFeatures = [
     {
-      image: "/Products-features/marketing & marketing/marketing and messaging-automated remiinder & followups.png",
-      heading: "Automated Reminders & Follow-ups",
-      description: "Set up intelligent automated reminders for appointments, payments, and follow-ups. Reduce no-shows, improve customer retention, and maintain engagement with personalized automated messaging sequences."
-    },
-    {
-      image: "/Products-features/marketing & marketing/marketing and messaging-bulk messaging & broadcasting.png",
+      image:
+        "/Products-features/marketing & marketing/marketing and messaging-bulk messaging & broadcasting.png",
       heading: "Bulk Messaging & Broadcasting",
-      description: "Reach thousands of customers instantly with targeted bulk messaging campaigns. Send promotional offers, announcements, and updates across multiple channels including WhatsApp, SMS, and email simultaneously."
+      description:
+        "Reach hundreds of clients instantly with offers, reminders, and updates, without juggling multiple apps.",
     },
     {
-      image: "/Products-features/marketing & marketing/marketing and messaging-personalized campaigns.png",
+      image:
+        "/Products-features/marketing & marketing/marketing and messaging-personalized campaigns.png",
       heading: "Personalized Campaigns",
-      description: "Create highly targeted marketing campaigns using customer data and behavior insights. Deliver personalized content that resonates with individual customers, increasing engagement and conversion rates."
+      description:
+        "Segment clients by preferences, habits, or history to send targeted messages that truly resonate.",
     },
     {
-      image: "/Products-features/marketing & marketing/marketing and messaging-real time insights.png",
+      image:
+        "/Products-features/marketing & marketing/marketing and messaging-automated remiinder & followups.png",
+      heading: "Automated Reminders & Follow-ups",
+      description:
+        "Never miss a touchpoint — from appointment confirmations to post-service follow-ups, Cleomitra keeps clients engaged.",
+    },
+
+    {
+      image:
+        "/Products-features/marketing & marketing/marketing and messaging-real time insights.png",
       heading: "Real-Time Campaign Insights",
-      description: "Track campaign performance with detailed analytics and real-time insights. Monitor open rates, click-through rates, conversions, and customer engagement to optimize your marketing strategies effectively."
+      description:
+        "Track campaign performance with detailed analytics and real-time insights. Monitor open rates, click-through rates, conversions, and customer engagement to optimize your marketing strategies effectively.",
     },
   ];
 
   const marketingFAQs = [
     {
-      question: "How does email campaign automation work?",
+      question:
+        "Can I send WhatsApp and Instagram messages directly from Cleomitra?",
       answer:
-        "Our system allows you to set up automated email sequences based on customer behavior, preferences, and lifecycle stages to maximize engagement.",
+        "Absolutely! Cleomitra provides native integration with WhatsApp Business API and Instagram messaging, allowing you to send messages, create broadcast campaigns, and manage conversations directly from our unified platform without switching between multiple apps or tools.",
     },
     {
-      question: "Can I segment my audience for targeted messaging?",
+      question: "How does Cleomitra personalize marketing?",
       answer:
-        "Yes, you can create detailed customer segments based on demographics, behavior, purchase history, and engagement to send highly targeted messages.",
+        "Cleomitra uses customer data, purchase history, preferences, and behavior patterns to create highly personalized marketing campaigns. Our smart segmentation automatically groups customers based on their interests, spending habits, and engagement levels, ensuring each message is tailored and relevant to the recipient.",
     },
     {
-      question: "What messaging channels are supported?",
+      question: "Will I know if my campaigns are working?",
       answer:
-        "We support email, SMS, WhatsApp, social media messaging, and in-app notifications to reach customers on their preferred channels.",
+        "Yes! Cleomitra provides comprehensive real-time analytics and campaign insights. You can track open rates, click-through rates, conversion rates, response rates, and customer engagement metrics. Our detailed reporting helps you understand what's working and optimize your campaigns for better results.",
     },
   ];
 
   return (
-    <div className="bg-background">
+    <div className="bg-background pb-10">
       <main>
         <ProductHero
           title={`Marketing that connects — and 
@@ -69,7 +78,6 @@ export default function MarketingMessagingPage() {
 
         <FAQSection faqs={marketingFAQs} />
 
-        <StatisticsSection />
       </main>
     </div>
   );

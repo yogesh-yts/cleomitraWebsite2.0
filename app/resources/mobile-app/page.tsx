@@ -15,7 +15,7 @@ export default function MobileAppPage() {
   return (
     <div className="bg-white">
       {/* Top Icons Section */}
-      <div className="container-section pt-15 pb-30">
+      <section className="container-section pt-15 pb-30" aria-label="Mobile app download">
         <div className="w-fit flex justify-center space-x-2 mb-16 outline-1 outline-offset-[-1px] outline-black/10 mx-auto py-2 px-2.5 rounded-2xl">
           {appIcons.map((app, index) => (
             <motion.div
@@ -27,7 +27,7 @@ export default function MobileAppPage() {
             >
               <Image
                 src={app.image}
-                alt={app.name}
+                alt={`${app.name} mobile app icon`}
                 width={64}
                 height={64}
                 className="w-full h-full object-cover"
@@ -43,12 +43,12 @@ export default function MobileAppPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl font-bold text-black mb-6 whitespace-normal md:whitespace-pre-line">
+            <h1 className="text-5xl font-bold text-black mb-4 whitespace-normal md:whitespace-pre-line">
               Download Cleomitra{"\n"}
               for Mobile
             </h1>
 
-            <p className="text-base text-black/50 mb-12 mx-auto whitespace-normal md:whitespace-pre-line">
+            <p className="text-base text-black/50 mb-10 mx-auto whitespace-normal md:whitespace-pre-line">
               The Cleomitra app you love, on{"\n"}
               your mobile, with less modules{"\n"}
               but even faster
@@ -57,13 +57,13 @@ export default function MobileAppPage() {
             <motion.button
               whileHover={{ scale: 0.8 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-black/90 text-white px-6 py-3 rounded-full font-medium text-lg hover:bg-black transition-colors"
+              className="bg-black text-white px-6 py-3 rounded-full font-medium text-lg hover:bg-black/90 transition-colors"
             >
               Download Mobile App
             </motion.button>
           </motion.div>
         </div>
-      </div>
+      </section>
 
       <StatisticsSection />
     </div>

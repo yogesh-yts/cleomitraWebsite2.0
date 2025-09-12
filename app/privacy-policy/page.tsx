@@ -33,7 +33,7 @@ const PrivacyPolicy: React.FC = () => {
             At CLEOMITRA, we value your privacy and are committed to protecting
             your personal information. This Privacy Policy explains how we
             collect, use, disclose, and safeguard your information when you use
-            our CLEOMITRA salon management application (&quot;App&quot; &amp;
+            our CLEOMITRA customer relationship management (CRM) platform (&quot;App&quot; &amp;
             &quot;Web&quot;). Please read this privacy policy carefully. If you
             do not agree with the terms of this privacy policy, please do not
             access the App.
@@ -59,7 +59,7 @@ const PrivacyPolicy: React.FC = () => {
                       Contact Information: Name, email, phone, business address
                     </li>
                     <li>
-                      Business Information: Salon name, service offerings,
+                      Business Information: Company name, service offerings,
                       pricing
                     </li>
                     <li>
@@ -67,7 +67,7 @@ const PrivacyPolicy: React.FC = () => {
                       account info
                     </li>
                     <li>
-                      Client Information: Appointment history, preferences, and
+                      Customer Information: Interaction history, preferences, and
                       contact details
                     </li>
                   </ul>

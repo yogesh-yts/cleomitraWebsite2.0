@@ -29,7 +29,11 @@ const StartFreeTrialButton: React.FC<StartFreeTrialButtonProps> = ({
   const combinedClassName = `${baseStyles}  ${className}`;
 
   return (
-    <button className={combinedClassName} onClick={handleClick}>
+    <button 
+      className={combinedClassName} 
+      onClick={handleClick}
+      aria-label="Start free trial - navigate to contact page"
+    >
       <span>{children || "Start Free Trial"}</span>
     </button>
   );

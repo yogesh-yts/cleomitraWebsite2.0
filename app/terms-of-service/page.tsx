@@ -31,7 +31,7 @@ const TermsOfService: React.FC = () => {
 
         <div className="mb-6">
           <p className="text-black/80">
-            Welcome to CLEOMITRA, the comprehensive salon management platform.
+            Welcome to CLEOMITRA, the comprehensive customer relationship management (CRM) platform.
             These Terms of Use govern your access to and use of our services
             across all platforms, including our Android application, iOS
             application, and web interface.
@@ -49,7 +49,7 @@ const TermsOfService: React.FC = () => {
             {
               title: "2. SERVICE DESCRIPTION",
               content:
-                "CLEOMITRA is a salon management platform designed to help salon owners and professionals manage appointments, client information, inventory, and business operations efficiently.",
+                "CLEOMITRA is a customer relationship management (CRM) platform designed to help businesses manage customer relationships, appointments, communications, inventory, and business operations efficiently.",
             },
             {
               title: "3. ACCOUNT REGISTRATION",

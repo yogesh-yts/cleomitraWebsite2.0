@@ -86,7 +86,7 @@ const ProductShowcase = ({
 
         {/* Right div - Content and testimonial sections */}
         <motion.div
-          className="flex-1 lg:flex-[0.4] flex flex-col gap-5"
+          className="flex-1 lg:flex-[0.4] flex flex-col gap-5 "
           initial={{
             x: reverse ? "20vw" : "-20vw",
             y: 0,
@@ -100,19 +100,21 @@ const ProductShowcase = ({
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           viewport={{ once: true, amount: 0.3 }}
         >
-          <div className="flex-1 flex flex-col space-y-4  bg-black rounded-2xl">
+          <div className="flex-1 flex flex-col space-y-4  bg-black rounded-2xl pt-4 pb-2">
             <div className="p-5">
               <div className="flex items-center mb-4">
                 {sliderData.map((slide, index) => (
                   <React.Fragment key={slide.id}>
-                    <div
+                    <button
                       className={`w-12 h-12 ${
                         index === activeSlide ? backgroundColor : "bg-gray-400"
                       } rounded-lg flex items-center justify-center text-white font-bold cursor-pointer`}
                       onClick={() => setActiveSlide(index)}
+                      aria-label={`View ${slide.title} slide`}
+                      aria-pressed={index === activeSlide}
                     >
-                      {slide.id}
-                    </div>
+                      <span aria-hidden="true">{slide.id}</span>
+                    </button>
                     {index < sliderData.length - 1 && (
                       <div className="flex-1 h-0 border-t-2 border-dotted border-white/20 mx-4"></div>
                     )}
@@ -128,28 +130,39 @@ const ProductShowcase = ({
                 </p>
               </div>
             </div>
-            <div className="p-5 bg-white/10">
+            <div className="px-5 bg-white/10 pb-8 pt-2">
               <div className="space-y-4">
                 <div className="flex justify-between items-center leading-normal">
                   <div className=" rounded-lg py-4 inline-block">
                     <div className="text-2xl font-bold text-white">40+</div>
                     <div className="text-gray-400 text-sm">Users</div>
                   </div>
-                  <Image
-                    src="/Group 608.png"
-                    alt="Product Image"
-                    width={1010}
-                    height={1100}
-                    className="rounded-lg w-28 h-10"
-                    quality={100}
-                  />
+                  <div
+                    className="w-28 h-10 relative rounded-lg"
+                    role="img"
+                    aria-label="User avatars animation"
+                  >
+                    {[0.3, 0.4, 0.5, 0.6].map((opacity, index) => (
+                      <div
+                        key={index}
+                        className={`w-10 h-10 absolute top-0 rounded-lg bg-gray-300 animate-pulse`}
+                        style={{
+                          left: `${index * 24}px`,
+                          opacity,
+                          animationDelay: `${index * 0.2}s`,
+                          animationDuration: "2s",
+                        }}
+                        aria-hidden="true"
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
               {/* Bottom section - Profile with testimonial */}
-              <div className="flex flex-row p-4 rounded-xl items-center justify-between gap-6 bg-gray/20 ">
+              <div className="flex flex-row p-4 rounded-xl items-start justify-between gap-6 bg-gray/20 ">
                 {/* Profile */}
                 <div
-                  className={`w-12 h-12 ${backgroundColor} rounded-full flex items-center justify-center text-white font-bold text-lg`}
+                  className={`w-12 h-12 ${backgroundColor} rounded-lg flex items-center justify-center text-white font-bold text-lg flex-shrink-0`}
                 >
                   {currentSlide.name.charAt(0)}
                 </div>

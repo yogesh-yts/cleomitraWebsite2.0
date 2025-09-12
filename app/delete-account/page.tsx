@@ -277,7 +277,8 @@ export default function DeleteAccount() {
                 Account Deletion Request Form
               </h2>
 
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4" role="form" aria-labelledby="delete-form-title">
+                <h2 id="delete-form-title" className="sr-only">Account deletion request form</h2>
                 {/* Email Field */}
                 <div>
                   <label
@@ -293,9 +294,11 @@ export default function DeleteAccount() {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-black/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-black text-sm font-primary transition-all duration-200"
+                    className="w-full px-4 py-3 border border-black/20 rounded-lg  text-black text-sm font-primary transition-all duration-200"
                     placeholder="your-email@example.com"
+                    aria-describedby="email-help"
                   />
+                  <div id="email-help" className="sr-only">Enter the email address associated with your account</div>
                 </div>
 
                 {/* Phone Field */}
@@ -312,7 +315,7 @@ export default function DeleteAccount() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-black/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-black text-sm font-primary transition-all duration-200"
+                    className="w-full px-4 py-3 border border-black/20 rounded-lg  text-black text-sm font-primary transition-all duration-200"
                     placeholder="+91 978720***9"
                   />
                 </div>
@@ -331,7 +334,7 @@ export default function DeleteAccount() {
                     value={formData.reason}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-black/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-black text-sm font-primary transition-all duration-200 bg-white"
+                    className="w-full px-4 py-3 border border-black/20 rounded-lg  text-black text-sm font-primary transition-all duration-200 bg-white"
                   >
                     <option value="">Select a reason</option>
                     <option value="no-longer-needed">
@@ -361,7 +364,7 @@ export default function DeleteAccount() {
                     value={formData.additionalInfo}
                     onChange={handleInputChange}
                     rows={3}
-                    className="w-full px-4 py-3 border border-black/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-black text-sm font-primary transition-all duration-200 resize-none"
+                    className="w-full px-4 py-3 border border-black/20 rounded-lg  text-black text-sm font-primary transition-all duration-200 resize-none"
                     placeholder="Any additional details you'd like to share..."
                   />
                 </div>
@@ -381,7 +384,7 @@ export default function DeleteAccount() {
                     value={formData.confirmText}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-black/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-black text-sm font-primary transition-all duration-200"
+                    className="w-full px-4 py-3 border border-black/20 rounded-lg  text-black text-sm font-primary transition-all duration-200"
                     placeholder="DELETE MY ACCOUNT"
                   />
                   <p className="text-xs text-black/60 mt-1 font-primary">

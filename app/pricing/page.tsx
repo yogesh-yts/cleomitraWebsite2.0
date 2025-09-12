@@ -27,7 +27,7 @@ const PricingPage: React.FC = () => {
   return (
     <div className="bg-background">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-indigo-100">
+      <section className="py-20 bg-gradient-to-br from-blue-50 to-indigo-100" aria-labelledby="pricing-title">
         <div className="container-responsive">
           <motion.div
             className="text-center max-w-4xl mx-auto"
@@ -35,7 +35,7 @@ const PricingPage: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
+            <h1 id="pricing-title" className="text-4xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
               Simple, transparent pricing
               <br />
               for every business

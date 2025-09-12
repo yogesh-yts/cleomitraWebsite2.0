@@ -2,38 +2,29 @@
 
 import ProductHero from "../../../components/sections/ProductHero";
 import FAQSection from "../../../components/sections/FAQSection";
-import StatisticsSection from "../../../components/sections/StatisticsSection";
 import IntegrationsGrid from "../../../components/sections/IntegrationsGrid";
 
 export default function IntegrationsPage() {
-  // const integrationsImages = [
-  //   "/Products-features/integrations/exotel.png",
-  //   "/Products-features/integrations/gmail.png",
-  //   "/Products-features/integrations/instagram.png",
-  //   "/Products-features/integrations/twilio.png",
-  //   "/Products-features/integrations/whatsapp.png",
-  // ];
-
   const integrationsFAQs = [
     {
-      question: "How many integrations does Cleomitra support?",
+      question: "Why should I connect my tools with Cleomitra?",
       answer:
-        "Cleomitra supports over 100+ popular integrations including payment processors, email services, social media platforms, and business tools.",
+        "Connecting your existing tools with Cleomitra eliminates data silos and creates a unified workflow. You can sync customer data, automate processes between platforms, reduce manual data entry, and get a complete view of your business operations. This integration saves time, reduces errors, and helps you provide better customer service by having all information in one centralized location.",
     },
     {
-      question: "How long does it take to set up integrations?",
+      question: "Do I need technical knowledge to set up integrations?",
       answer:
-        "Most integrations can be set up in seconds with our one-click connection system. Complex integrations typically take just a few minutes.",
+        "No! Cleomitra is designed for non-technical users. Most integrations can be set up with simple one-click connections or easy step-by-step wizards. Our intuitive interface guides you through the process, and our support team is available to help if needed. No coding or technical expertise is required to connect your favorite business tools.",
     },
     {
-      question: "Can I create custom integrations?",
+      question: "How do integrations improve client experience?",
       answer:
-        "Yes, we provide API access and webhook support to create custom integrations tailored to your specific business needs.",
+        "Integrations create seamless client experiences by ensuring consistent information across all touchpoints. Your clients receive faster responses, personalized service based on complete data history, automated appointment reminders, synchronized communication across channels, and smoother booking processes. This unified approach reduces waiting times and provides a more professional, cohesive experience.",
     },
   ];
 
   return (
-    <div className="bg-background">
+    <div className="bg-background pb-10">
       <main>
         <ProductHero
           title={`Integrations help you optimize
@@ -47,7 +38,6 @@ enhance client experience.`}
 
         <FAQSection faqs={integrationsFAQs} />
 
-        <StatisticsSection />
       </main>
     </div>
   );

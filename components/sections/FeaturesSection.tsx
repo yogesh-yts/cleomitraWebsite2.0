@@ -26,6 +26,7 @@ const FeaturesSection = ({
     { icon: "smart_toy", title: "Automation & Quick Replies" },
     { icon: "attach_money", title: "Billing" },
     { icon: "email", title: "Email Marketing" },
+    { icon: "business_center", title: "Services & Products" },
     { icon: "receipt", title: "Invoice" },
     { icon: "chat", title: "WhatsApp Broadcast" },
     { icon: "dashboard", title: "Dashboard & Reports" },
@@ -69,7 +70,7 @@ const FeaturesSection = ({
             return (
               <motion.div
                 key={index}
-                className="bg-white border border-gray-200 rounded-full px-6 py-4 group cursor-pointer hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-3"
+                className="bg-white border border-gray-200 rounded-full px-6 py-4 group cursor-text hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-3"
                 initial={{ opacity: 0, y: 30, scale: 0.9 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{

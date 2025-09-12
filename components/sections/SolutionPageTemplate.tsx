@@ -7,6 +7,7 @@ import MetricsSection from "./MetricsSection";
 import ScrollScaleImage from "../ui/ScrollScaleImage";
 import StartFreeTrialButton from "../ui/StartFreeTrialButton";
 import GetDemoButton from "../ui/GetDemoButton";
+import SlideUpText from "../ui/ElasticText";
 import "material-symbols/outlined.css";
 import Image from "next/image";
 
@@ -71,11 +72,6 @@ interface SolutionPageTemplateProps {
   heroImage?: string;
   heroImages?: string[];
   heroBackgroundImage?: string;
-  contentSections?: Array<{
-    image: string;
-    title: string;
-    description: string;
-  }>;
 }
 
 const SolutionPageTemplate = ({
@@ -84,7 +80,6 @@ const SolutionPageTemplate = ({
   heroImage,
   heroImages,
   heroBackgroundImage,
-  contentSections,
 }: SolutionPageTemplateProps) => {
   // Common statistics for all solution pages
   const statistics = {
@@ -94,28 +89,50 @@ const SolutionPageTemplate = ({
   };
   const displayImages = heroImages || (heroImage ? [heroImage] : []);
 
+  // Common content sections for all solution pages
+  const contentSections = [
+    {
+      image:
+        "/Solutions-teams/for sales team/Keep your calendar and client in sync.png",
+      title: "Keep your calendar and clients in sync.",
+      description:
+        "Streamline your business operations with unified scheduling and client management. Track appointments, client preferences, and service history all in one centralized platform that keeps your entire workflow organized.",
+    },
+    {
+      image:
+        "/Solutions-teams/for sales team/Run your business not your stockroom.png",
+      title: "Run your business, not your stockroom.",
+      description:
+        "Focus on what matters most - growing your business and serving your clients. Our platform handles inventory management, administrative tasks, and routine operations so you can concentrate on strategic growth and customer relationships.",
+    },
+    {
+      image: "/Solutions-teams/for sales team/reach clients where they are.png",
+      title: "Reach clients where they are.",
+      description:
+        "Connect with your clients through their preferred communication channels. Whether it's email, phone, social media, or messaging apps, engage with your audience at the right time with personalized, targeted communication.",
+    },
+  ];
+
   const faqItems = [
     {
-      question: "What is Role-Based Access Control and how does it work?",
+      question: "Role-Based Access Control",
       answer:
-        "Role-Based Access Control allows you to assign different permission levels to your team members. Owners get full access, managers can handle scheduling and reports, while staff can only access their own appointments and client information. This ensures security and proper workflow management.",
+        "Assign different permission levels to your team members based on their roles. Owners get full system access, managers handle scheduling and reports, while staff access only their appointments and client information. This ensures proper security and streamlined workflow management across your organization.",
     },
     {
-      question: "How does Cleomitra help me manage my salon with ease?",
+      question: "Manage Your Business with Ease",
       answer:
-        "Cleomitra centralizes all your salon operations in one platform - from appointment scheduling and client management to inventory tracking and staff coordination. Our intuitive dashboard gives you complete visibility and control over your business operations.",
+        "Centralize all your business operations in one comprehensive platform. From appointment scheduling and client management to inventory tracking and team coordination, our intuitive dashboard provides complete visibility and control over every aspect of your business operations.",
     },
     {
-      question:
-        "Can I handle booking, payroll, and other operations in one place?",
+      question: "Easy Booking, Payroll, and More in One Place",
       answer:
-        "Absolutely! Cleomitra combines appointment booking, staff payroll management, inventory tracking, client communications, and payment processing all in one comprehensive platform. No need to juggle multiple software solutions.",
+        "Streamline all your business processes with our all-in-one solution. Combine appointment booking, staff payroll management, inventory tracking, client communications, and payment processing in one comprehensive platform. Eliminate the need for multiple software solutions and reduce operational complexity.",
     },
     {
-      question:
-        "What are the benefits of cloud-based software for seamless access?",
+      question: "Cloud-Based Software for Seamless Access",
       answer:
-        "Our cloud-based platform means you can access your salon management system from anywhere, anytime. Whether you're at home, traveling, or at the salon, you can manage appointments, check reports, and stay connected with your business 24/7 from any device.",
+        "Access your business management system from anywhere, anytime with our cloud-based platform. Whether you're at home, traveling, or at your business location, manage appointments, check reports, and stay connected with your operations 24/7 from any device with internet access.",
     },
   ];
 
@@ -130,158 +147,159 @@ const SolutionPageTemplate = ({
   return (
     <div className="bg-background">
       {/* Hero Section */}
-      <section
-        className="relative pt-20 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: heroBackgroundImage
-            ? `url('${heroBackgroundImage}')`
-            : "url('/Solutions-teams/bg/1 (1).png')",
-        }}
-      >
-        <div className="container-responsive">
-          <div className="text-center  mx-auto">
-            <motion.h1
-              className="text-4xl md:text-6xl font-bold text-foreground mb-6 leading-tight"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              {heroTitle}
-            </motion.h1>
-            <motion.p
-              className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              {heroSubtitle}
-            </motion.p>
-            <motion.div
-              className="flex flex-row gap-4 items-center justify-center mb-12"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-              <StartFreeTrialButton />
-              <GetDemoButton />
-            </motion.div>
-            {displayImages.length > 0 && (
-              <div className="w-full flex justify-center items-center">
-                {displayImages.length > 1 ? (
-                  <div className="flex gap-4 md:gap-8 items-center justify-center w-full max-w-6xl">
-                    {displayImages.map((image, index) => (
-                      <motion.div
-                        key={index}
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: index * 0.2 }}
-                        className="flex-1 max-w-xs"
-                      >
-                        <ScrollScaleImage
-                          src={image}
-                          alt={`Hero Image ${index + 1}`}
-                          width={400}
-                          height={600}
-                          className="w-full h-auto rounded-lg shadow-lg"
-                          wrapperClassName="w-full"
-                          priority={index === 0}
-                          quality={100}
-                        />
-                      </motion.div>
-                    ))}
-                  </div>
-                ) : (
-                  <ScrollScaleImage
-                    src={displayImages[0]}
-                    alt="Hero Image"
-                    width={1200}
-                    height={600}
-                    className="w-full h-auto rounded-lg shadow-lg"
-                    wrapperClassName="w-full"
-                    priority={true}
-                    quality={100}
-                  />
-                )}
-              </div>
-            )}{" "}
-          </div>{" "}
-        </div>
-      </section>
-
-      {/* Three Features Section */}
-      <section className="pt-20 ">
-        <div className="container-responsive">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 whitespace-normal md:whitespace-pre-line">
-              Everything you need to run —{"\n"}
-              grow — your business.
-            </h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {[
-              {
-                id: "schedule",
-                imageSrc: "/Add Appointment filled.png",
-                alt: "Add Appointment",
-                title: "Schedule without the stress",
-                type: "image",
-              },
-              {
-                id: "engage",
-                title: "Engage on every channel",
-                type: "social",
-              },
-              {
-                id: "grow",
-                imageSrc: "/Frame 2968.png",
-                alt: "Business Analytics",
-                title: "Grow together with insights",
-                type: "image",
-              },
-            ].map((section, index) => (
-              <motion.div
-                key={section.id}
-                className="flex flex-col items-center text-center group"
+      <main>
+        <section
+          className="relative pt-20 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: heroBackgroundImage
+              ? `url('${heroBackgroundImage}')`
+              : "url('/Solutions-teams/bg/1 (1).png')",
+          }}
+          aria-label="Hero section"
+        >
+          <div className="container-responsive">
+            <div className="text-center  mx-auto">
+              <motion.h1
+                className="text-4xl md:text-6xl font-bold text-foreground mb-6 leading-tight"
                 initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 + index * 0.1 }}
-                viewport={{ once: true }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
               >
-                <div className="relative mb-6 w-full aspect-[4/3] bg-transparent rounded-2xl shadow-lg border-2 border-dashed border-black/40 px-5 pt-5 transition-all duration-300 group-hover:shadow-xl ">
-                  {section.type === "image" ? (
-                    <div className="relative w-full h-full rounded-lg overflow-hidden">
-                      <Image
-                        src={section.imageSrc!}
-                        alt={section.alt!}
-                        fill
-                        className="object-cover transition-all duration-300 group-hover:scale-110"
-                        quality={100}
-                      />
+                {heroTitle}
+              </motion.h1>
+              <motion.p
+                className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                {heroSubtitle}
+              </motion.p>
+              <motion.div
+                className="flex flex-row gap-4 items-center justify-center mb-12"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
+                <StartFreeTrialButton />
+                <GetDemoButton />
+              </motion.div>
+              {displayImages.length > 0 && (
+                <div className="w-full flex justify-center items-center">
+                  {displayImages.length > 1 ? (
+                    <div className="flex gap-4 md:gap-8 items-center justify-center w-full max-w-6xl">
+                      {displayImages.map((image, index) => (
+                        <motion.div
+                          key={index}
+                          initial={{ opacity: 0, y: 30 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.6, delay: index * 0.2 }}
+                          className="flex-1 max-w-xs"
+                        >
+                          <ScrollScaleImage
+                            src={image}
+                            alt={`Hero Image ${index + 1}`}
+                            width={400}
+                            height={600}
+                            className="w-full h-auto rounded-lg shadow-lg"
+                            wrapperClassName="w-full"
+                            priority={index === 0}
+                            quality={100}
+                          />
+                        </motion.div>
+                      ))}
                     </div>
                   ) : (
-                    <div className="w-full h-full flex justify-center items-center -mt-4">
-                      <SocialIconsGrid />
-                    </div>
+                    <ScrollScaleImage
+                      src={displayImages[0]}
+                      alt="Hero Image"
+                      width={1200}
+                      height={600}
+                      className="w-full h-auto rounded-lg shadow-lg"
+                      wrapperClassName="w-full"
+                      priority={true}
+                      quality={100}
+                    />
                   )}
                 </div>
-                <h3 className="text-xl font-semibold text-foreground mb-2 transition-colors duration-300 group-hover:text-blue-600">
-                  {section.title}
-                </h3>
-              </motion.div>
-            ))}
+              )}{" "}
+            </div>{" "}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Content Sections */}
-      {contentSections && (
+        {/* Three Features Section */}
+        <section className="pt-20" aria-label="Key features">
+          <div className="container-responsive">
+            <motion.div
+              className="text-center mb-16"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 whitespace-normal md:whitespace-pre-line">
+                Everything you need to run —{"\n"}
+                grow — your business.
+              </h2>
+            </motion.div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              {[
+                {
+                  id: "schedule",
+                  imageSrc: "/Add Appointment filled.png",
+                  alt: "Add Appointment",
+                  title: "Schedule without the stress",
+                  type: "image",
+                },
+                {
+                  id: "engage",
+                  title: "Engage on every channel",
+                  type: "social",
+                },
+                {
+                  id: "grow",
+                  imageSrc: "/Frame 2968.png",
+                  alt: "Business Analytics",
+                  title: "Grow together with insights",
+                  type: "image",
+                },
+              ].map((section, index) => (
+                <motion.div
+                  key={section.id}
+                  className="flex flex-col items-center text-center group"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.1 + index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="relative mb-6 w-full aspect-[4/3] bg-transparent rounded-2xl shadow-lg border-2 border-dashed border-black/40 px-5 pt-5 transition-all duration-300 group-hover:shadow-xl ">
+                    {section.type === "image" ? (
+                      <div className="relative w-full h-full rounded-lg overflow-hidden">
+                        <Image
+                          src={section.imageSrc!}
+                          alt={section.alt!}
+                          fill
+                          className="object-cover transition-all duration-300 group-hover:scale-110"
+                          quality={100}
+                        />
+                      </div>
+                    ) : (
+                      <div className="w-full h-full flex justify-center items-center -mt-4">
+                        <SocialIconsGrid />
+                      </div>
+                    )}
+                  </div>
+                  <h3 className="text-xl font-semibold text-foreground mb-2 transition-colors duration-300 group-hover:text-blue-600">
+                    {section.title}
+                  </h3>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Content Sections */}
         <div className="container-responsive section-spacing space-y-20">
           {contentSections.map((section, index) => (
             <motion.section
@@ -291,6 +309,7 @@ const SolutionPageTemplate = ({
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
               viewport={{ once: true }}
+              aria-label={section.title}
             >
               {/* Image Section - 60% width */}
               <motion.div
@@ -314,77 +333,85 @@ const SolutionPageTemplate = ({
               </motion.div>
 
               {/* Content Section - 40% width */}
-              <motion.div
+              <div
                 className={`w-full lg:w-[40%] ${
                   index % 2 === 0 ? "lg:order-2" : "lg:order-1"
                 }`}
-                initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.2 + 0.1 }}
-                viewport={{ once: true }}
               >
-                <h3 className="text-xl md:text-2xl lg:text-4xl font-bold text-foreground leading-tight mb-6">
+                <SlideUpText
+                  as="h3"
+                  delay={0.1}
+                  className="text-xl md:text-2xl lg:text-4xl font-bold text-foreground leading-tight mb-6"
+                >
                   {section.title}
-                </h3>
+                </SlideUpText>
 
-                <p className="text-lg text-black/40  mb-10">
+                <SlideUpText
+                  as="p"
+                  delay={0.3}
+                  className="text-lg text-black/40 mb-10"
+                >
                   {section.description}
-                </p>
+                </SlideUpText>
 
-                <StartFreeTrialButton className="bg-foreground text-background hover:bg-gray-800 px-8 py-3" />
-              </motion.div>
+                <SlideUpText delay={0.5}>
+                  <StartFreeTrialButton className="bg-foreground text-background hover:bg-gray-800 px-8 py-3" />
+                </SlideUpText>
+              </div>
             </motion.section>
           ))}
         </div>
-      )}
 
-      {/* Metrics Section */}
-      <MetricsSection statistics={statistics} />
+        {/* Metrics Section */}
+        <MetricsSection statistics={statistics} />
 
-      {/* FAQ Section */}
-      <FAQSection faqs={faqItems} />
+        {/* FAQ Section */}
+        <FAQSection faqs={faqItems} title="" />
 
-      {/* Industry Types Section */}
-      <section className="">
-        <div className="container-responsive pt-15 pb-30 px-4">
-          <motion.div
-            className="text-center mb-15"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold text-foreground whitespace-normal md:whitespace-pre-line">
-              Complete software solution{"\n"}
-              tailored for your industry
-            </h2>
-          </motion.div>
+        {/* Industry Types Section */}
+        <section aria-label="Industry solutions">
+          <div className="container-responsive pt-15 pb-30 px-4">
+            <motion.div
+              className="text-center mb-15"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold text-foreground whitespace-normal md:whitespace-pre-line">
+                Complete software solution{"\n"}
+                tailored for your industry
+              </h2>
+            </motion.div>
 
-          <motion.div
-            className="w-full  rounded-lg"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              {industryTypes.map((industry, index) => (
-                <motion.div
-                  key={industry}
-                  className="bg-white border-2 border-dashed border-black/40 p-4 rounded-lg text-center hover:border-gray-300 transition-colors cursor-pointer"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <span className="text-gray-700 font-medium">{industry}</span>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-        <StatisticsSection />
-      </section>
+            <motion.div
+              className="w-full  rounded-lg"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                {industryTypes.map((industry, index) => (
+                  <motion.div
+                    key={industry}
+                    className="bg-white border-2 border-dashed border-black/40 p-4 rounded-lg text-center hover:border-gray-300 transition-colors cursor-pointer"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                  >
+                    <span className="text-gray-700 font-medium">
+                      {industry}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+          <StatisticsSection />
+        </section>
+      </main>
     </div>
   );
 };

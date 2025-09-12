@@ -4,6 +4,7 @@ interface SkeletonLoaderProps {
   className?: string;
   variant?: "image" | "video" | "rectangle";
   showPlayButton?: boolean;
+  'aria-label'?: string;
 }
 
 export default function SkeletonLoader({
@@ -12,6 +13,7 @@ export default function SkeletonLoader({
   className = "",
   variant = "rectangle",
   showPlayButton = false,
+  'aria-label': ariaLabel,
 }: SkeletonLoaderProps) {
   const getAspectRatio = () => {
     switch (variant) {
@@ -28,6 +30,8 @@ export default function SkeletonLoader({
     <div
       className={`relative bg-gray-200 animate-pulse overflow-hidden ${getAspectRatio()} ${className}`}
       style={{ width, height: variant === "rectangle" ? height : undefined }}
+      role="status"
+      aria-label={ariaLabel || `Loading ${variant} content`}
     >
       {/* Shimmer effect */}
       <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 bg-[length:200%_100%] animate-[shimmer_2s_infinite]"></div>
@@ -51,6 +55,7 @@ export default function SkeletonLoader({
               className="w-8 h-8 text-white/40"
               fill="currentColor"
               viewBox="0 0 20 20"
+              aria-hidden="true"
             >
               <path
                 fillRule="evenodd"

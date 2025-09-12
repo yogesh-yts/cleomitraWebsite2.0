@@ -64,6 +64,7 @@ const ScrollScaleImage = ({
             className={`${className} rounded-lg`}
             width={width}
             height={height}
+            aria-label={`Loading image: ${alt}`}
           />
         )}
         <Image

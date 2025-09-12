@@ -38,7 +38,7 @@ const integrationData = [
 
 export default function IntegrationsGrid() {
   return (
-    <section className="py-16">
+    <section className="py-16" aria-label="Integration partners">
       <div className="container-responsive mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {integrationData.map((integration, index) => (
@@ -61,7 +61,7 @@ export default function IntegrationsGrid() {
                 >
                   <Image
                     src={integration.image}
-                    alt={integration.name}
+                    alt={`${integration.name} integration logo`}
                     width={112}
                     height={112}
                     className="w-20 h-20 md:w-28 md:h-28 object-contain rounded-lg"

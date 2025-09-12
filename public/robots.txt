@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.cleomitra.com/sitemap.xml
+
+# Best CRM in India - Cleomitra
+# Top CRM Solutions for Salons, Spas & Service Providers
+# Affordable CRM with WhatsApp Integration & Inventory Management
+# Only CRM with Complete Salon Management & Franchise Support
+
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+Disallow: /*.json$
+Disallow: /*?*utm_source=
+Disallow: /*?*utm_medium=
+Disallow: /*?*utm_campaign=
+
+# Crawl delay
+Crawl-delay: 1

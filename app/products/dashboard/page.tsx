@@ -4,47 +4,51 @@ import ProductHero from "../../../components/sections/ProductHero";
 import FeaturesSection from "../../../components/sections/FeaturesSection";
 import FAQSection from "../../../components/sections/FAQSection";
 import ProductFeatureImages from "../../../components/sections/ProductFeatureImages";
-import StatisticsSection from "../../../components/sections/StatisticsSection";
 
 export default function DashboardPage() {
   const dashboardFeatures = [
     {
-      image: "/Products-features/dashboard/Dashboard-client & service insights.png",
-      heading: "Client & Service Insights",
-      description: "Get deep insights into client behavior, service performance, and customer satisfaction. Track client lifetime value, service popularity, and identify opportunities to enhance customer experience and boost revenue."
-    },
-    {
       image: "/Products-features/dashboard/Dashboard-real time overview.png",
-      heading: "Real-Time Business Overview",
-      description: "Monitor your business performance with live data updates. Track key metrics like daily revenue, appointment bookings, customer interactions, and inventory levels all in one comprehensive real-time dashboard."
+      heading: "Real-Time Overview",
+      description:
+        "See your key metrics — revenue, appointments, Service/products, Inventory and client activity — all updated instantly.",
     },
     {
-      image: "/Products-features/dashboard/Dashboard-team & branch performance.png",
+      image:
+        "/Products-features/dashboard/Dashboard-team & branch performance.png",
       heading: "Team & Branch Performance",
-      description: "Analyze individual team member performance and compare branch productivity. Track sales targets, service efficiency, customer ratings, and identify top performers to optimize your business operations."
+      description:
+        "Track staff productivity and branch-level results to identify what’s working and where to improve.",
+    },
+    {
+      image:
+        "/Products-features/dashboard/Dashboard-client & service insights.png",
+      heading: "Client & Service Insights",
+      description:
+        "Understand client trends, service demand, and product usage to plan smarter offers and inventory.",
     },
   ];
 
   const dashboardFAQs = [
     {
-      question: "What analytics are available in the dashboard?",
+      question: "What kind of data can I see on my dashboard?",
       answer:
-        "Our dashboard provides comprehensive analytics including sales funnel analysis, customer engagement metrics, revenue tracking, and business performance indicators.",
+        "Your Cleomitra dashboard displays comprehensive business data including real-time revenue metrics, appointment bookings, client engagement rates, inventory levels, team performance statistics, customer satisfaction scores, marketing campaign results, and financial analytics. All data is visualized through interactive charts and graphs for easy interpretation.",
     },
     {
       question: "Can I customize my dashboard view?",
       answer:
-        "Yes, you can customize your dashboard by rearranging widgets, choosing relevant metrics, and creating personalized views for different team members.",
+        "Yes! Cleomitra's dashboard offers limited customization options including choosing which metrics to display, creating different views for different team roles, and setting up personalized KPI tracking to match your business preferences and workflow needs.",
     },
     {
-      question: "How often is dashboard data updated?",
+      question: "How is the dashboard different from reports?",
       answer:
-        "Dashboard data is updated in real-time, ensuring you always have the latest information about your business performance and customer activities.",
+        "The dashboard provides real-time, at-a-glance insights with interactive widgets and live data updates, perfect for daily monitoring and quick decision-making. Reports, on the other hand, offer detailed, comprehensive analysis with historical data comparisons, exportable formats, and in-depth breakdowns ideal for strategic planning and detailed business analysis.",
     },
   ];
 
   return (
-    <div className="bg-background">
+    <div className="bg-background pb-10">
       <main>
         <ProductHero
           title={`Stay on top of your business with 
@@ -65,7 +69,6 @@ so you can make smarter, faster decisions.`}
 
         <FAQSection faqs={dashboardFAQs} />
 
-        <StatisticsSection />
       </main>
     </div>
   );

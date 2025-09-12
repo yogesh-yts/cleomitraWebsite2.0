@@ -4,29 +4,34 @@ import FeaturesSection from "../../../components/sections/FeaturesSection";
 import FAQSection from "../../../components/sections/FAQSection";
 import ProductHero from "../../../components/sections/ProductHero";
 import ProductFeatureImages from "../../../components/sections/ProductFeatureImages";
-import StatisticsSection from "../../../components/sections/StatisticsSection";
 
 export default function SchedulingPage() {
   const schedulingFeatures = [
     {
       image: "/Products-features/scheduling/Scheduling-smart calender view.png",
       heading: "Smart Calendar View",
-      description: "Get a comprehensive overview of your schedule with our intuitive calendar interface. Easily manage appointments, view availability, and organize your time efficiently with drag-and-drop functionality and multiple calendar views."
+      description:
+        "See all appointments at a glance with day, week, and month views. Quickly identify available slots and manage bookings with ease.",
     },
     {
       image: "/Products-features/scheduling/scheduling-automated reminders.png",
       heading: "Automated Reminders",
-      description: "Never miss an appointment again with intelligent automated reminders. Send customizable SMS, email, and WhatsApp notifications to clients, reducing no-shows by up to 80% and improving client satisfaction."
+      description:
+        "Reduce no-shows by sending instant confirmations and timely reminders via WhatsApp.",
     },
     {
-      image: "/Products-features/scheduling/Scheduling-integrated payments & invoices.png",
-      heading: "Integrated Payments & Invoices",
-      description: "Streamline your billing process with built-in payment processing and automated invoice generation. Accept payments at booking, send invoices automatically, and track payment status all within your scheduling system."
-    },
-    {
-      image: "/Products-features/scheduling/scheduling-team availabilty management.png",
+      image:
+        "/Products-features/scheduling/scheduling-team availabilty management.png",
       heading: "Team Availability Management",
-      description: "Coordinate your entire team's schedule effortlessly. Manage staff availability, assign appointments, track working hours, and ensure optimal resource allocation across multiple locations and service providers."
+      description:
+        "Set working hours and availability for each staff member. Ensure fair distribution of appointments and prevent double-bookings.",
+    },
+    {
+      image:
+        "/Products-features/scheduling/Scheduling-integrated payments & invoices.png",
+      heading: "Integrated Payments & Invoices",
+      description:
+        "Link appointments directly to services, payments, and invoices for a seamless end-to-end experience.",
     },
   ];
 
@@ -49,7 +54,7 @@ export default function SchedulingPage() {
   ];
 
   return (
-    <div className="bg-background">
+    <div className="bg-background pb-10">
       <main>
         <ProductHero
           title={`Scheduling: Keep Your Calendar in 
@@ -70,8 +75,6 @@ Sync and Your Clients on Time`}
         />
 
         <FAQSection faqs={schedulingFAQs} />
-
-        <StatisticsSection />
       </main>
     </div>
   );

@@ -49,6 +49,7 @@ const ProductShowcaseSlider = ({
       <span
         key={index}
         className={`text-yellow-400 ${index < rating ? "★" : "☆"}`}
+        aria-hidden="true"
       >
         ★
       </span>
@@ -56,7 +57,7 @@ const ProductShowcaseSlider = ({
   };
 
   return (
-    <section className="container-responsive section-spacing">
+    <section className="container-responsive section-spacing" aria-label="Product showcase carousel">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         {/* Left Side - Content */}
         <motion.div
@@ -70,6 +71,8 @@ const ProductShowcaseSlider = ({
             <GradientTextButton 
               text={gradientText} 
               className="mb-8 text-white"
+              aria-label={gradientText}
+              as="h2"
             />
           </div>
         </motion.div>
@@ -158,6 +161,8 @@ const ProductShowcaseSlider = ({
                       index === currentSlide ? "bg-gray-800" : "bg-gray-300"
                     }`}
                     onClick={() => setCurrentSlide(index)}
+                    aria-label={`Go to slide ${index + 1} of ${slides.length}`}
+                    aria-pressed={index === currentSlide}
                   />
                 ))}
               </div>
@@ -165,23 +170,28 @@ const ProductShowcaseSlider = ({
                 <button
                   onClick={prevSlide}
                   className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50 transition-colors"
+                  aria-label="Previous slide"
                 >
-                  <ChevronLeft className="w-5 h-5" />
+                  <ChevronLeft className="w-5 h-5" aria-hidden="true" />
                 </button>
                 <button
                   onClick={nextSlide}
                   className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50 transition-colors"
+                  aria-label="Next slide"
                 >
-                  <ChevronRight className="w-5 h-5" />
+                  <ChevronRight className="w-5 h-5" aria-hidden="true" />
                 </button>
               </div>
             </div>
           </div>
 
           {/* Bottom Box - CTA Button */}
-          <button className="w-full bg-gray-800 text-white py-4 px-6 rounded-2xl flex items-center justify-center space-x-3 hover:bg-gray-900 transition-colors">
+          <button 
+            className="w-full bg-gray-800 text-white py-4 px-6 rounded-2xl flex items-center justify-center space-x-3 hover:bg-gray-900 transition-colors"
+            aria-label={buttonText}
+          >
             <span className="text-lg font-semibold">{buttonText}</span>
-            {buttonIcon && <span>{buttonIcon}</span>}
+            {buttonIcon && <span aria-hidden="true">{buttonIcon}</span>}
           </button>
         </motion.div>
       </div>
