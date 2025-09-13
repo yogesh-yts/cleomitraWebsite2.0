@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
   env: {
     // MongoDB
     MONGODB_URI: process.env.MONGODB_URI,
-    
+
     // SMTP Configuration
     SMTP_HOST: process.env.SMTP_HOST,
     SMTP_PORT: process.env.SMTP_PORT,
@@ -15,10 +15,13 @@ const nextConfig: NextConfig = {
     SMTP_TO: process.env.SMTP_TO,
     SMTP_SECURE: process.env.SMTP_SECURE,
     SMTP_TLS: process.env.SMTP_TLS,
-    
-    // Optional SMTP Auth (for non-relay setups)
-    SMTP_USER: process.env.SMTP_USER,
-    SMTP_PASS: process.env.SMTP_PASS,
+
+    // NextAuth Configuration
+    NEXTAUTH_URL: process.env.NEXTAUTH_URL,
+    NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
+
+    // Environment
+    NODE_ENV: process.env.NODE_ENV,
   },
 };
 
