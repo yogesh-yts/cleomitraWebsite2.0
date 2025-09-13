@@ -28,7 +28,9 @@
       "Bash(npm run build:*)",
       "Bash(npm run dev:*)",
       "Bash(dir:*)",
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "Bash(findstr:*)",
+      "Bash(curl:*)"
     ],
     "deny": [],
     "ask": []

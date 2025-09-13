@@ -4,6 +4,7 @@ import ProductHero from "../../../components/sections/ProductHero";
 import FeaturesSection from "../../../components/sections/FeaturesSection";
 import FAQSection from "../../../components/sections/FAQSection";
 import ProductFeatureImages from "../../../components/sections/ProductFeatureImages";
+import Seo from "../../../components/Seo";
 
 export default function DashboardPage() {
   const dashboardFeatures = [
@@ -48,8 +49,16 @@ export default function DashboardPage() {
   ];
 
   return (
-    <div className="bg-background pb-10">
-      <main>
+    <>
+      <Seo
+        title="Business Dashboard & Analytics for Salons - Cleomitra CRM"
+        description="Real-time business dashboard for salons & spas. Track revenue, appointments, team performance & insights. Best analytics dashboard CRM for salons in India."
+        keywords="salon dashboard software, business analytics for salon, spa dashboard, salon reporting software, business intelligence crm, salon metrics dashboard"
+        url="https://www.cleomitra.com/products/dashboard"
+        siteName="Cleomitra"
+      />
+      <div className="bg-background pb-10">
+        <main>
         <ProductHero
           title={`Stay on top of your business with 
   real-time insights`}
@@ -69,7 +78,8 @@ so you can make smarter, faster decisions.`}
 
         <FAQSection faqs={dashboardFAQs} />
 
-      </main>
-    </div>
+        </main>
+      </div>
+    </>
   );
 }

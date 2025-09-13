@@ -4,6 +4,7 @@ import ProductHero from "../../../components/sections/ProductHero";
 import FeaturesSection from "../../../components/sections/FeaturesSection";
 import FAQSection from "../../../components/sections/FAQSection";
 import ProductFeatureImages from "../../../components/sections/ProductFeatureImages";
+import Seo from "../../../components/Seo";
 
 export default function InventoryPage() {
   const inventoryFeatures = [
@@ -55,8 +56,16 @@ export default function InventoryPage() {
   ];
 
   return (
-    <div className="bg-background pb-10">
-      <main>
+    <>
+      <Seo
+        title="Inventory Management Software for Salons & Spas - Cleomitra CRM"
+        description="Advanced inventory management for salons & spas. Track stock, manage products, low stock alerts, usage reports. Best inventory CRM for salons in India."
+        keywords="inventory management for salon, salon inventory software, spa inventory system, stock management salon, inventory tracking crm, best inventory software india"
+        url="https://www.cleomitra.com/products/inventory"
+        siteName="Cleomitra"
+      />
+      <div className="bg-background pb-10">
+        <main>
         <ProductHero
           title={`Streamlined inventory management — 
   built for control and clarity`}
@@ -76,7 +85,8 @@ and sales monitoring.`}
         />
 
         <FAQSection faqs={inventoryFAQs} />
-      </main>
-    </div>
+        </main>
+      </div>
+    </>
   );
 }

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import FAQSection from "@/components/sections/FAQSection";
+import Seo from "@/components/Seo";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +15,12 @@ const ContactPage = () => {
     countryCode: "+91",
     message: "",
   });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' });
 
   const businessTypes = [
     { value: "salon-spa", label: "Salon/Spa" },
@@ -37,9 +44,52 @@ const ContactPage = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitStatus({
+          type: 'success',
+          message: 'Thank you! Your message has been sent successfully. We\'ll get back to you within 24 hours.'
+        });
+        
+        // Reset form
+        setFormData({
+          name: "",
+          businessType: "",
+          email: "",
+          phoneNumber: "",
+          countryCode: "+91",
+          message: "",
+        });
+      } else {
+        setSubmitStatus({
+          type: 'error',
+          message: result.error || 'Failed to send message. Please try again.'
+        });
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitStatus({
+        type: 'error',
+        message: 'Network error. Please check your connection and try again.'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactFAQs = [
@@ -71,8 +121,16 @@ const ContactPage = () => {
   ];
 
   return (
-    <div className="bg-background">
-      {/* Hero Section with Form */}
+    <>
+      <Seo
+        title="Contact Cleomitra - Get Demo & Support for Best CRM in India"
+        description="Contact Cleomitra for product demo, support & pricing. Best CRM software for salons, spas & service providers in India. Get in touch with our sales team."
+        keywords="contact cleomitra, crm demo, cleomitra support, best crm in india contact, salon crm demo, get cleomitra demo, crm sales team"
+        url="https://www.cleomitra.com/contact"
+        siteName="Cleomitra"
+      />
+      <div className="bg-background">
+        {/* Hero Section with Form */}
       <section className="relative overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0">
@@ -272,21 +330,54 @@ const ContactPage = () => {
                   <div id="message-error" className="sr-only" aria-live="polite"></div>
                 </div>
 
+                {/* Status Message */}
+                {submitStatus.type && (
+                  <div
+                    className={`p-4 rounded-lg ${
+                      submitStatus.type === 'success'
+                        ? 'bg-green-50 text-green-800 border border-green-200'
+                        : 'bg-red-50 text-red-800 border border-red-200'
+                    }`}
+                    role="alert"
+                  >
+                    <div className="flex items-center space-x-2">
+                      <span className="material-symbols-outlined text-sm">
+                        {submitStatus.type === 'success' ? 'check_circle' : 'error'}
+                      </span>
+                      <span>{submitStatus.message}</span>
+                    </div>
+                  </div>
+                )}
+
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  className={`w-full inline-flex items-center space-x-4 group font-medium justify-center px-9 py-3 rounded-lg  transition-colors bg-foreground text-background`}
+                  disabled={isSubmitting}
+                  className={`w-full inline-flex items-center space-x-4 group font-medium justify-center px-9 py-3 rounded-lg transition-colors ${
+                    isSubmitting
+                      ? 'bg-gray-400 text-white cursor-not-allowed'
+                      : 'bg-foreground text-background hover:bg-gray-800'
+                  }`}
                   aria-describedby="submit-description"
                 >
-                  <span>Submit</span>
-                  <span
-                    className={`rounded-full p-1.5 inline-flex items-center justify-center group-hover:translate-x-4 transform transition-transform duration-400 ease-in-out bg-white/20`}
-                    aria-hidden="true"
-                  >
-                    <span className="material-symbols-outlined text-sm">
-                      arrow_forward
-                    </span>
-                  </span>
+                  {isSubmitting ? (
+                    <>
+                      <span>Sending...</span>
+                      <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent" />
+                    </>
+                  ) : (
+                    <>
+                      <span>Submit</span>
+                      <span
+                        className={`rounded-full p-1.5 inline-flex items-center justify-center group-hover:translate-x-4 transform transition-transform duration-400 ease-in-out bg-white/20`}
+                        aria-hidden="true"
+                      >
+                        <span className="material-symbols-outlined text-sm">
+                          arrow_forward
+                        </span>
+                      </span>
+                    </>
+                  )}
                 </button>
                 <div id="submit-description" className="sr-only">Submit the contact form to get in touch with our team</div>
 
@@ -300,9 +391,10 @@ const ContactPage = () => {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <FAQSection faqs={contactFAQs} />
-    </div>
+        {/* FAQ Section */}
+        <FAQSection faqs={contactFAQs} />
+      </div>
+    </>
   );
 };
 

@@ -5,29 +5,32 @@ import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ChevronDown, Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { navigationData, navbarSections, solutionsTeams } from "../../data/nav";
 import StartFreeTrialButton from "../ui/StartFreeTrialButton";
 import "material-symbols/outlined.css";
 
 const Header = () => {
+  const pathname = usePathname();
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [submenuStyle, setSubmenuStyle] = useState<React.CSSProperties>({});
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Helper function to get Material Symbol icon for menu items
   const getMenuIcon = (title: string): string => {
     const iconMap: { [key: string]: string } = {
       // Products
-      "Scheduling": "calendar_month",
+      Scheduling: "calendar_month",
       "Customer Management": "people",
       "Marketing and Messaging": "campaign",
-      "Dashboard": "dashboard",
-      "Integrations": "extension",
-      "Billing": "receipt",
-      "Inventory": "inventory_2",
+      Dashboard: "dashboard",
+      Integrations: "extension",
+      Billing: "receipt",
+      Inventory: "inventory_2",
       // Solutions - Teams
       "For Salon & Spa Owners": "spa",
       "For Service Providers": "business_center",
@@ -37,9 +40,21 @@ const Header = () => {
       "Cleomitra Tutorials": "school",
       "Download Mobile App": "smartphone",
       // Other
-      "Pricing": "payments"
+      Pricing: "payments",
     };
     return iconMap[title] || "circle";
+  };
+
+  // Check if current path matches section
+  const isActiveSection = (sectionTitle: string) => {
+    if (sectionTitle === "Products" && pathname.startsWith("/products"))
+      return true;
+    if (sectionTitle === "Solutions" && pathname.startsWith("/solutions"))
+      return true;
+    if (sectionTitle === "Resources" && pathname.startsWith("/resources"))
+      return true;
+    if (sectionTitle === "Pricing" && pathname === "/pricing") return true;
+    return false;
   };
 
   const updateSubmenuPosition = () => {
@@ -61,18 +76,21 @@ const Header = () => {
       clearTimeout(timeoutRef.current);
     }
     setActiveDropdown(itemTitle);
+    setHoveredItem(itemTitle);
     updateSubmenuPosition();
   };
 
   const handleMouseLeave = () => {
     timeoutRef.current = setTimeout(() => {
       setActiveDropdown(null);
+      setHoveredItem(null);
     }, 300);
   };
 
   const handleSubmenuMouseLeave = () => {
     timeoutRef.current = setTimeout(() => {
       setActiveDropdown(null);
+      setHoveredItem(null);
     }, 300);
   };
 
@@ -163,7 +181,11 @@ const Header = () => {
             <span className="text-xl font-bold text-foreground">Cleomitra</span>
           </Link>
 
-          <nav className="hidden lg:flex items-center space-x-6" role="navigation" aria-label="Main navigation">
+          <nav
+            className="hidden lg:flex items-center space-x-6"
+            role="navigation"
+            aria-label="Main navigation"
+          >
             {navbarSections.map((item) => (
               <div
                 key={item.title}
@@ -171,24 +193,72 @@ const Header = () => {
                 onMouseEnter={() => handleMouseEnter(item.title)}
                 onMouseLeave={handleMouseLeave}
               >
-                <button 
-                  className="flex items-center space-x-1 text-gray-600 hover:text-foreground transition-colors"
+                <motion.button
+                  className={`flex items-center space-x-1 relative px-3 py-2 rounded-t-lg transition-colors ${
+                    isActiveSection(item.title)
+                      ? "text-main"
+                      : "text-gray-600 hover:text-foreground"
+                  }`}
                   aria-expanded={activeDropdown === item.title}
                   aria-haspopup="true"
                   aria-label={`${item.title} menu`}
                 >
+                  {/* Morphing Top Shape */}
+                  {(hoveredItem === item.title ||
+                    isActiveSection(item.title)) && (
+                    <motion.div
+                      className="absolute -top-0.5 left-0 right-0 h-0.5 bg-main rounded-t-lg"
+                      layoutId="navbar-indicator"
+                      initial={false}
+                      transition={{
+                        type: "spring",
+                        stiffness: 400,
+                        damping: 30,
+                      }}
+                    />
+                  )}
                   <span>{item.title}</span>
-                  <ChevronDown className="w-4 h-4" aria-hidden="true" />
-                </button>
+                  <motion.div
+                    animate={{
+                      rotate: activeDropdown === item.title ? 180 : 0,
+                    }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <ChevronDown className="w-4 h-4" aria-hidden="true" />
+                  </motion.div>
+                </motion.button>
               </div>
             ))}
 
-            <Link
-              href="/pricing"
-              className="text-gray-600 hover:text-foreground transition-colors"
+            <div
+              className="relative"
+              onMouseEnter={() => setHoveredItem("Pricing")}
+              onMouseLeave={() => setHoveredItem(null)}
             >
-              Pricing
-            </Link>
+              <Link
+                href="/pricing"
+                className={`relative px-3 py-2 rounded-t-lg transition-colors ${
+                  isActiveSection("Pricing")
+                    ? "text-main"
+                    : "text-gray-600 hover:text-foreground"
+                }`}
+              >
+                {/* Morphing Top Shape for Pricing */}
+                {(hoveredItem === "Pricing" || isActiveSection("Pricing")) && (
+                  <motion.div
+                    className="absolute -top-0.5 left-0 right-0 h-0.5 bg-main rounded-t-lg"
+                    layoutId="navbar-indicator"
+                    initial={false}
+                    transition={{
+                      type: "spring",
+                      stiffness: 400,
+                      damping: 30,
+                    }}
+                  />
+                )}
+                Pricing
+              </Link>
+            </div>
           </nav>
         </div>
 
@@ -196,9 +266,18 @@ const Header = () => {
           <div className="hidden lg:block ">
             <Link
               href="/contact"
-              className="block w-full text-left text-gray-600 hover:text-foreground py-2 mr-4"
+              className="relative flex items-center justify-center text-gray-600 hover:text-foreground py-2 mr-4 group transition-colors w-[100px] h-[40px] overflow-hidden"
             >
-              Get a Demo
+              <span className="absolute inset-0 flex items-center justify-center group-hover:opacity-0 group-hover:translate-x-4 transition-all duration-300 ease-in-out whitespace-nowrap text-sm">
+                Get a Demo
+              </span>
+              <span className="absolute inset-0 opacity-0 transform -translate-x-full group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-in-out">
+                <div className="w-full h-full flex items-center justify-center">
+                  <span className="material-symbols-outlined text-xl text-gray-600 block leading-none">
+                    play_circle
+                  </span>
+                </div>
+              </span>
             </Link>
           </div>
           <Link
@@ -229,13 +308,6 @@ const Header = () => {
           </button>
         </div>
       </header>
-
-      {/* Debug indicator */}
-      {isMobileMenuOpen && (
-        <div className="fixed top-20 right-4 bg-red-500 text-white p-2 rounded z-50 lg:hidden">
-          Mobile menu is open
-        </div>
-      )}
 
       {/* Submenu Panel - Positioned to match navbar width */}
       {activeDropdown && (
@@ -281,14 +353,14 @@ const Header = () => {
                     </div>
                   </div>
                   <div>
-                    <div className="text-sm text-gray-500 pb-1 mb-1">
+                    <div className="text-sm text-gray-500 pb-1 mb-1 cursor-text">
                       {navigationData[1].subtitle}
                     </div>
                     <div className="space-y-0">
                       {navigationData[1].items.map((clientItem, index) => (
                         <div
                           key={index}
-                          className="block p-3 text-gray-600 cursor-not-allowed"
+                          className="block p-3 text-gray-600 cursor-text"
                         >
                           <div className="font-medium text-foreground whitespace-nowrap">
                             {clientItem.title}
@@ -374,7 +446,10 @@ const Header = () => {
           role="navigation"
           aria-label="Mobile navigation menu"
         >
-          <div className="container-responsive pt-4 flex flex-col min-h-[calc(100vh-80px)]">
+          <div
+            className="container-responsive pt-4 flex flex-col"
+            style={{ minHeight: "var(--height-mobile-menu)" }}
+          >
             {/* Mobile Navigation Links */}
             <div className="space-y-4">
               {navbarSections.map((section) => (
@@ -391,7 +466,10 @@ const Header = () => {
                           className="flex items-center space-x-3 text-gray-600 hover:text-foreground py-2"
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
-                          <span className="material-symbols-outlined text-xl" aria-hidden="true">
+                          <span
+                            className="material-symbols-outlined text-xl"
+                            aria-hidden="true"
+                          >
                             {getMenuIcon(item.title)}
                           </span>
                           <span>{item.title}</span>
@@ -408,7 +486,10 @@ const Header = () => {
                           className="flex items-center space-x-3 text-gray-600 hover:text-foreground py-2"
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
-                          <span className="material-symbols-outlined text-xl" aria-hidden="true">
+                          <span
+                            className="material-symbols-outlined text-xl"
+                            aria-hidden="true"
+                          >
                             {getMenuIcon(item.title)}
                           </span>
                           <span>{item.title}</span>
@@ -425,7 +506,10 @@ const Header = () => {
                           className="flex items-center space-x-3 text-gray-600 hover:text-foreground py-2"
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
-                          <span className="material-symbols-outlined text-xl" aria-hidden="true">
+                          <span
+                            className="material-symbols-outlined text-xl"
+                            aria-hidden="true"
+                          >
                             {getMenuIcon(item.title)}
                           </span>
                           <span>{item.title}</span>
@@ -441,7 +525,10 @@ const Header = () => {
                 className="flex items-center space-x-3 font-medium text-foreground text-lg py-2 mb-6"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                <span className="material-symbols-outlined text-xl" aria-hidden="true">
+                <span
+                  className="material-symbols-outlined text-xl"
+                  aria-hidden="true"
+                >
                   {getMenuIcon("Pricing")}
                 </span>
                 <span>Pricing</span>
@@ -449,13 +536,16 @@ const Header = () => {
             </div>
 
             {/* Mobile CTA Buttons */}
-            <div className="pt-4 pb-4 md:pb-0 border-t border-gray-200 flex flex-row mt-auto">
+            <div className="pt-4 pb-4 lg:pb-0 border-t border-gray-200 flex flex-row mt-auto">
               <Link
                 href="/contact"
                 className="flex items-center space-x-2 w-full text-left text-gray-600 hover:text-foreground py-2 flex-1"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                <span className="material-symbols-outlined text-lg" aria-hidden="true">
+                <span
+                  className="material-symbols-outlined text-lg"
+                  aria-hidden="true"
+                >
                   play_circle
                 </span>
                 <span>Get a Demo</span>
@@ -468,7 +558,10 @@ const Header = () => {
                 onClick={() => setIsMobileMenuOpen(false)}
                 aria-label="Login (opens in new tab)"
               >
-                <span className="material-symbols-outlined text-lg" aria-hidden="true">
+                <span
+                  className="material-symbols-outlined text-lg"
+                  aria-hidden="true"
+                >
                   login
                 </span>
                 <span>Login</span>

@@ -4,6 +4,7 @@ import FeaturesSection from "../../../components/sections/FeaturesSection";
 import FAQSection from "../../../components/sections/FAQSection";
 import ProductHero from "../../../components/sections/ProductHero";
 import ProductFeatureImages from "../../../components/sections/ProductFeatureImages";
+import Seo from "../../../components/Seo";
 
 export default function SchedulingPage() {
   const schedulingFeatures = [
@@ -54,8 +55,16 @@ export default function SchedulingPage() {
   ];
 
   return (
-    <div className="bg-background pb-10">
-      <main>
+    <>
+      <Seo
+        title="Appointment Scheduling Software for Salons - Cleomitra CRM"
+        description="Advanced appointment scheduling for salons & spas. Smart calendar, automated reminders, team management. Best scheduling CRM for salons in India."
+        keywords="appointment scheduling for salon, salon booking software, spa scheduling system, appointment management salon, booking calendar salon, scheduling crm"
+        url="https://www.cleomitra.com/products/scheduling"
+        siteName="Cleomitra"
+      />
+      <div className="bg-background pb-10">
+        <main>
         <ProductHero
           title={`Scheduling: Keep Your Calendar in 
 Sync and Your Clients on Time`}
@@ -75,7 +84,8 @@ Sync and Your Clients on Time`}
         />
 
         <FAQSection faqs={schedulingFAQs} />
-      </main>
-    </div>
+        </main>
+      </div>
+    </>
   );
 }

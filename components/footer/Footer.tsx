@@ -86,13 +86,13 @@ const Footer = () => {
 
                 {/* Engage with clients column */}
                 <div className="flex-1 ">
-                  <div className="text-sm font-normal text-white/40 mb-3 cursor-default whitespace-nowrap ">
+                  <div className="text-sm font-normal text-white/40 mb-3 cursor-text whitespace-nowrap ">
                     {navigationData[1].subtitle}
                   </div>
                   <ul className="space-y-2 text-base text-gray-400">
                     {navigationData[1].items.map((item, index) => (
                       <li key={index}>
-                        <span className="cursor-not-allowed whitespace-nowrap">
+                        <span className="cursor-text whitespace-nowrap">
                           {item.title}
                         </span>
                       </li>

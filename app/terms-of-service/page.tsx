@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Seo from "@/components/Seo";
 
 const TermsOfService: React.FC = () => {
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
@@ -16,7 +17,15 @@ const TermsOfService: React.FC = () => {
   };
 
   return (
-    <div className="bg-white text-black pt-10 pb-30 px-4 ">
+    <>
+      <Seo
+        title="Terms of Service - Cleomitra CRM Usage Agreement"
+        description="Cleomitra CRM terms of service and usage agreement. Legal terms for salon CRM software, service conditions, user responsibilities & platform policies."
+        keywords="cleomitra terms of service, crm terms and conditions, salon software terms, user agreement, service terms, cleomitra legal"
+        url="https://www.cleomitra.com/terms-of-service"
+        siteName="Cleomitra"
+      />
+      <div className="bg-white text-black pt-10 pb-30 px-4 ">
       <main
         className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-6 border border-black/10"
         role="main"
@@ -91,8 +100,9 @@ const TermsOfService: React.FC = () => {
           </p>
           <hr className="my-4 border-black/10" />
         </div>
-      </main>
-    </div>
+        </main>
+      </div>
+    </>
   );
 };
 

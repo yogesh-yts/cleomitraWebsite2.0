@@ -158,7 +158,7 @@ const HomePage = () => {
   return (
     <>
       <Seo
-        title="Cleomitra - Best CRM Software for Salons & Service Providers in India"
+        title="Cleomitra - Best CRM Software in India"
         description="Best CRM in India for salon management, spa, and service providers. All-in-one CRM with WhatsApp integration, inventory management, billing, email marketing & scheduling."
         keywords="best crm in india, top crm solutions, affordable crm, best crm for salon, salon management crm, crm with whatsapp integration, crm with inventory management, crm for franchise management"
         url="https://www.cleomitra.com"

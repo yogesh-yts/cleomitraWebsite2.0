@@ -4,6 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import StatisticsSection from "@/components/sections/StatisticsSection";
 import FAQSection from "@/components/sections/FAQSection";
+import Seo from "@/components/Seo";
 
 const PricingPage: React.FC = () => {
   const pricingFAQs = [
@@ -25,7 +26,15 @@ const PricingPage: React.FC = () => {
   ];
 
   return (
-    <div className="bg-background">
+    <>
+      <Seo
+        title="Cleomitra Pricing - Affordable CRM Plans for Salons & Spas"
+        description="Transparent pricing for Cleomitra CRM. Affordable plans for salons, spas & service providers. Best value CRM software in India with no hidden fees."
+        keywords="cleomitra pricing, affordable crm plans, salon crm pricing, spa management software cost, best crm pricing india, transparent crm pricing"
+        url="https://www.cleomitra.com/pricing"
+        siteName="Cleomitra"
+      />
+      <div className="bg-background">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-blue-50 to-indigo-100" aria-labelledby="pricing-title">
         <div className="container-responsive">
@@ -50,8 +59,9 @@ const PricingPage: React.FC = () => {
 
       <FAQSection faqs={pricingFAQs} />
 
-      <StatisticsSection />
-    </div>
+        <StatisticsSection />
+      </div>
+    </>
   );
 };
 

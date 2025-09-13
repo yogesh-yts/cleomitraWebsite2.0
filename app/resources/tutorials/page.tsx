@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 import StatisticsSection from "@/components/sections/StatisticsSection";
 import VideoPlayer from "@/components/ui/VideoPlayer";
+import Seo from "@/components/Seo";
 
 export default function TutorialsPage() {
   const tutorialSections = [
@@ -72,7 +73,15 @@ export default function TutorialsPage() {
   ];
 
   return (
-    <div className="bg-background">
+    <>
+      <Seo
+        title="Cleomitra Tutorials & Training - Learn CRM Best Practices"
+        description="Free Cleomitra tutorials and training videos. Learn CRM setup, salon management, WhatsApp automation, inventory management. Best CRM training in India."
+        keywords="cleomitra tutorials, crm training videos, salon management training, crm setup guide, whatsapp automation tutorial, inventory management training"
+        url="https://www.cleomitra.com/resources/tutorials"
+        siteName="Cleomitra"
+      />
+      <div className="bg-background">
       {/* Hero Section */}
       <section className="container-responsive py-30 md:py-20" aria-labelledby="tutorials-title">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
@@ -147,7 +156,8 @@ export default function TutorialsPage() {
         </div>
       </section>
 
-      <StatisticsSection />
-    </div>
+        <StatisticsSection />
+      </div>
+    </>
   );
 }

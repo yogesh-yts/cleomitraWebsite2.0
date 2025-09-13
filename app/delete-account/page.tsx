@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import Seo from "@/components/Seo";
 
 // Snackbar Component
 interface SnackbarProps {
@@ -194,6 +195,13 @@ export default function DeleteAccount() {
 
   return (
     <>
+      <Seo
+        title="Delete Account - Cleomitra CRM Data Removal Request"
+        description="Request account deletion and data removal from Cleomitra CRM. Secure data deletion process, GDPR compliance. Remove your salon business data safely."
+        keywords="delete cleomitra account, remove crm data, account deletion request, data privacy cleomitra, gdpr data removal, delete salon crm account"
+        url="https://www.cleomitra.com/delete-account"
+        siteName="Cleomitra"
+      />
       {/* Add custom CSS for animation */}
       <style jsx>{`
         @keyframes slide-up {

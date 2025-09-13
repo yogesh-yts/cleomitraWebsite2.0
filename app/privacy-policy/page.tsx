@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Seo from "@/components/Seo";
 
 const PrivacyPolicy: React.FC = () => {
   const currentDate = new Date();
@@ -15,7 +16,15 @@ const PrivacyPolicy: React.FC = () => {
   };
 
   return (
-    <div className="text-black px-4 pt-10 pb-30">
+    <>
+      <Seo
+        title="Privacy Policy - Cleomitra CRM Data Protection & Security"
+        description="Cleomitra CRM privacy policy. Learn how we protect your salon & business data, customer information security, GDPR compliance. Trust & transparency."
+        keywords="cleomitra privacy policy, crm data protection, salon data security, customer information privacy, gdpr compliance, data privacy policy"
+        url="https://www.cleomitra.com/privacy-policy"
+        siteName="Cleomitra"
+      />
+      <div className="text-black px-4 pt-10 pb-30">
       <main
         className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-6 border border-black/10"
         role="main"
@@ -164,8 +173,9 @@ const PrivacyPolicy: React.FC = () => {
             © {currentDate.getFullYear()} CLEOMITRA. All Rights Reserved.
           </p>
         </div>
-      </main>
-    </div>
+        </main>
+      </div>
+    </>
   );
 };
 

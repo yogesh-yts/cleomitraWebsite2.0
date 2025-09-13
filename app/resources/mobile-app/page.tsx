@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import StatisticsSection from "@/components/sections/StatisticsSection";
 import Image from "next/image";
+import Seo from "@/components/Seo";
 
 export default function MobileAppPage() {
   const appIcons = [
@@ -13,7 +14,15 @@ export default function MobileAppPage() {
   ];
 
   return (
-    <div className="bg-white">
+    <>
+      <Seo
+        title="Download Cleomitra Mobile App - Best CRM on Mobile"
+        description="Download Cleomitra mobile app for iOS & Android. Manage your salon, spa business on the go. Best mobile CRM app for service providers in India."
+        keywords="cleomitra mobile app, salon management app, spa mobile app, crm mobile app, download cleomitra app, mobile crm india"
+        url="https://www.cleomitra.com/resources/mobile-app"
+        siteName="Cleomitra"
+      />
+      <div className="bg-white">
       {/* Top Icons Section */}
       <section className="container-section pt-15 pb-30" aria-label="Mobile app download">
         <div className="w-fit flex justify-center space-x-2 mb-16 outline-1 outline-offset-[-1px] outline-black/10 mx-auto py-2 px-2.5 rounded-2xl">
@@ -65,7 +74,8 @@ export default function MobileAppPage() {
         </div>
       </section>
 
-      <StatisticsSection />
-    </div>
+        <StatisticsSection />
+      </div>
+    </>
   );
 }

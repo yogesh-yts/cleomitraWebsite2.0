@@ -3,6 +3,7 @@ import ProductHero from "../../../components/sections/ProductHero";
 import FeaturesSection from "../../../components/sections/FeaturesSection";
 import FAQSection from "../../../components/sections/FAQSection";
 import ProductFeatureImages from "../../../components/sections/ProductFeatureImages";
+import Seo from "../../../components/Seo";
 
 export default function MarketingMessagingPage() {
   const marketingMessagingFeatures = [
@@ -57,8 +58,16 @@ export default function MarketingMessagingPage() {
   ];
 
   return (
-    <div className="bg-background pb-10">
-      <main>
+    <>
+      <Seo
+        title="WhatsApp Marketing & Messaging for Salons - Cleomitra CRM"
+        description="WhatsApp marketing & messaging for salons. Bulk messaging, automated reminders, personalized campaigns. Best CRM with WhatsApp integration in India."
+        keywords="whatsapp marketing for salon, salon messaging software, whatsapp crm, bulk messaging salon, automated marketing salon, crm with whatsapp integration"
+        url="https://www.cleomitra.com/products/marketing-messaging"
+        siteName="Cleomitra"
+      />
+      <div className="bg-background pb-10">
+        <main>
         <ProductHero
           title={`Marketing that connects — and 
             messaging that converts.`}
@@ -78,7 +87,8 @@ export default function MarketingMessagingPage() {
 
         <FAQSection faqs={marketingFAQs} />
 
-      </main>
-    </div>
+        </main>
+      </div>
+    </>
   );
 }

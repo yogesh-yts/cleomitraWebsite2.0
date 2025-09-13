@@ -3,6 +3,7 @@
 import ProductHero from "../../../components/sections/ProductHero";
 import FAQSection from "../../../components/sections/FAQSection";
 import IntegrationsGrid from "../../../components/sections/IntegrationsGrid";
+import Seo from "../../../components/Seo";
 
 export default function IntegrationsPage() {
   const integrationsFAQs = [
@@ -24,8 +25,16 @@ export default function IntegrationsPage() {
   ];
 
   return (
-    <div className="bg-background pb-10">
-      <main>
+    <>
+      <Seo
+        title="CRM Integrations for Salon & Business Tools - Cleomitra"
+        description="Seamless CRM integrations for salons. Connect payment gateways, social media, email marketing tools. Best integrated CRM solution for salons in India."
+        keywords="crm integrations, salon software integrations, business tool integrations, payment gateway integration, social media crm integration, integrated salon management"
+        url="https://www.cleomitra.com/products/integrations"
+        siteName="Cleomitra"
+      />
+      <div className="bg-background pb-10">
+        <main>
         <ProductHero
           title={`Integrations help you optimize
 your sales workflow`}
@@ -38,7 +47,8 @@ enhance client experience.`}
 
         <FAQSection faqs={integrationsFAQs} />
 
-      </main>
-    </div>
+        </main>
+      </div>
+    </>
   );
 }
