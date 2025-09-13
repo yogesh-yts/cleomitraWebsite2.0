@@ -72,7 +72,7 @@ export async function POST(request: NextRequest) {
     await contact.save();
 
     // Send notification email to admin
-    let emailResults = { notification: null, autoReply: null };
+    const emailResults: { notification: unknown; autoReply: unknown } = { notification: null, autoReply: null };
     
     try {
       const notificationResult = await sendContactNotification(contactData);
@@ -86,7 +86,7 @@ export async function POST(request: NextRequest) {
       emailResults.autoReply = autoReplyResult;
       
       // Update emailSent status if at least one email was sent successfully
-      if (notificationResult.success || autoReplyResult.success) {
+      if (notificationResult?.success || autoReplyResult?.success) {
         await Contact.findByIdAndUpdate(contact._id, { emailSent: true });
       }
       
@@ -105,8 +105,8 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('Contact form submission error:', error);
     
-    if (error.name === 'ValidationError') {
-      const validationErrors = Object.values(error.errors).map(err => err.message);
+    if (error instanceof Error && error.name === 'ValidationError') {
+      const validationErrors = Object.values((error as unknown as { errors: Record<string, { message: string }> }).errors).map((err: { message: string }) => err.message);
       return NextResponse.json(
         { success: false, error: validationErrors.join(', ') },
         { status: 400 }

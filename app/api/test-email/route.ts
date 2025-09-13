@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
-export async function POST(request: NextRequest) {
+export async function POST() {
   try {
     console.log('Testing email configuration...');
     console.log('Environment variables:');
@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
     console.log('SMTP_USER:', process.env.SMTP_USER ? 'Set' : 'Not set');
     console.log('SMTP_PASS:', process.env.SMTP_PASS ? 'Set' : 'Not set');
 
-    const config: any = {
+    const config: Record<string, unknown> = {
       host: process.env.SMTP_HOST || 'smtp-relay.gmail.com',
       port: parseInt(process.env.SMTP_PORT || '587'),
       secure: process.env.SMTP_SECURE === 'true',
@@ -70,10 +70,13 @@ export async function POST(request: NextRequest) {
 
   } catch (error) {
     console.error('Email test failed:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    const errorCode = (error as { code?: string })?.code || 'Unknown error';
+    
     return NextResponse.json({
       success: false,
-      error: error.message,
-      details: error.code || 'Unknown error'
+      error: errorMessage,
+      details: errorCode
     }, { status: 500 });
   }
 }

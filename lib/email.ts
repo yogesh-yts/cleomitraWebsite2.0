@@ -3,7 +3,7 @@ import { IContact } from '@/models/Contact';
 
 // Create reusable transporter object using Google Workspace SMTP Relay
 const createEmailTransporter = () => {
-  const config: any = {
+  const config: Record<string, unknown> = {
     host: process.env.SMTP_HOST || 'smtp-relay.gmail.com',
     port: parseInt(process.env.SMTP_PORT || '587'),
     secure: process.env.SMTP_SECURE === 'true', // true for 465, false for other ports
@@ -31,17 +31,18 @@ const createEmailTransporter = () => {
 };
 
 // Retry function for failed email attempts
-const retryEmailSend = async (transporter: any, mailOptions: any, maxRetries = 3) => {
+const retryEmailSend = async (transporter: nodemailer.Transporter, mailOptions: nodemailer.SendMailOptions, maxRetries = 3) => {
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
       const result = await transporter.sendMail(mailOptions);
       console.log(`Email sent successfully on attempt ${attempt}:`, result.messageId);
       return { success: true, messageId: result.messageId };
     } catch (error) {
-      console.error(`Email attempt ${attempt} failed:`, error.message);
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      console.error(`Email attempt ${attempt} failed:`, errorMessage);
       
       if (attempt === maxRetries) {
-        return { success: false, error: error.message };
+        return { success: false, error: errorMessage };
       }
       
       // Wait before retry (exponential backoff)
@@ -152,7 +153,8 @@ Please respond to the customer at: ${contactData.email}
     
   } catch (error) {
     console.error('Error sending email:', error);
-    return { success: false, error: error.message };
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    return { success: false, error: errorMessage };
   }
 };
 
@@ -241,6 +243,7 @@ Visit us at www.cleomitra.com
     
   } catch (error) {
     console.error('Error sending auto-reply:', error);
-    return { success: false, error: error.message };
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    return { success: false, error: errorMessage };
   }
 };
