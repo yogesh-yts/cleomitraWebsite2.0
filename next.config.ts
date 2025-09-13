@@ -19,9 +19,6 @@ const nextConfig: NextConfig = {
     // NextAuth Configuration
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
     NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
-
-    // Environment
-    NODE_ENV: process.env.NODE_ENV,
   },
 };
 

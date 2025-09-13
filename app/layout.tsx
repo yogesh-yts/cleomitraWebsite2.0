@@ -19,6 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <meta name="theme-color" content="#660033" />
         <style>
           @import
           url(&#39;https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap&#39;);
@@ -106,7 +107,9 @@ export default function RootLayout({
           Skip to main content
         </a>
         <Header />
-        <main id="main-content" className="pt-20">{children}</main>
+        <main id="main-content" className="pt-20">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>
