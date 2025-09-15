@@ -66,25 +66,25 @@ export default function InventoryPage() {
       />
       <div className="bg-background pb-10">
         <main>
-        <ProductHero
-          title={`Streamlined inventory management — 
+          <ProductHero
+            title={`Streamlined inventory management — 
   built for control and clarity`}
-          description={`Cleomitra simplifies the way you manage 
+            description={`Cleomitra simplifies the way you manage 
 products by centralizing stock tracking 
 and sales monitoring.`}
-        />
+          />
 
-        <FeaturesSection
-          imageSrc="/Products-features/inventory/Inventory-hero sectionpng.png"
-          imageAlt="Inventory Feature Overview"
-        />
+          <FeaturesSection
+            imageSrc="/Products-features/inventory/Inventory Management.svg"
+            imageAlt="Inventory Feature Overview"
+          />
 
-        <ProductFeatureImages
-          features={inventoryFeatures}
-          productName="Inventory"
-        />
+          <ProductFeatureImages
+            features={inventoryFeatures}
+            productName="Inventory"
+          />
 
-        <FAQSection faqs={inventoryFAQs} />
+          <FAQSection faqs={inventoryFAQs} />
         </main>
       </div>
     </>

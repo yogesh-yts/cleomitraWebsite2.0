@@ -1,8 +1,8 @@
-import SolutionPageTemplate from '../../../components/sections/SolutionPageTemplate';
-import Seo from '../../../components/Seo';
+import SolutionPageTemplate from "../../../components/sections/SolutionPageTemplate";
+import Seo from "../../../components/Seo";
 
 export default function MarketingPage() {
-  const heroImage = "/Solutions-teams/For marketing/for marketing hero section.png";
+  const heroImage = "/Solutions-teams/For marketing/marketing-hero.svg";
 
   return (
     <>

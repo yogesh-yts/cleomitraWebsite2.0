@@ -68,25 +68,24 @@ export default function MarketingMessagingPage() {
       />
       <div className="bg-background pb-10">
         <main>
-        <ProductHero
-          title={`Marketing that connects — and 
+          <ProductHero
+            title={`Marketing that connects — and 
             messaging that converts.`}
-          description={`Reach your clients where they are. With Cleomitra, you can broadcast
+            description={`Reach your clients where they are. With Cleomitra, you can broadcast
              offers, send reminders, and personalize campaigns across WhatsApp,
               Instagram, email, and SMS — all from one platform.`}
-        />
-        <FeaturesSection
-          imageSrc="/Products-features/marketing & marketing/marketing and messaging-hero section.png"
-          imageAlt="Marketing & Messaging Feature Overview"
-        />
+          />
+          <FeaturesSection
+            imageSrc="/Products-features/marketing & marketing/Image Template.svg"
+            imageAlt="Marketing & Messaging Feature Overview"
+          />
 
-        <ProductFeatureImages
-          features={marketingMessagingFeatures}
-          productName="Marketing & Messaging"
-        />
+          <ProductFeatureImages
+            features={marketingMessagingFeatures}
+            productName="Marketing & Messaging"
+          />
 
-        <FAQSection faqs={marketingFAQs} />
-
+          <FAQSection faqs={marketingFAQs} />
         </main>
       </div>
     </>

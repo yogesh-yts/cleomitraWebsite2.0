@@ -11,7 +11,7 @@ interface ProductHeroProps {
 
 const ProductHero = ({ title, description }: ProductHeroProps) => {
   return (
-    <section className="container-responsive section-spacing">
+    <section className="container-responsive pt-30">
       <div className="text-center  mx-auto ">
         <SlideUpText
           as="h1"

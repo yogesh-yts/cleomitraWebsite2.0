@@ -71,24 +71,24 @@ export default function BillingPage() {
       />
       <div className="bg-background pb-10">
         <main>
-        <ProductHero
-          title={`Billing made simple — for you 
+          <ProductHero
+            title={`Billing made simple — for you 
 and your clients.`}
-          description={`Generate invoices, track payments, and manage
+            description={`Generate invoices, track payments, and manage
 revenue in one place. With Cleomitra, billing is fast, 
 accurate, and fully connected.`}
-        />
-        <FeaturesSection
-          imageSrc="/Products-features/billing/billing-hero section.png"
-          imageAlt="Billing Feature Overview"
-        />
+          />
+          <FeaturesSection
+            imageSrc="/Products-features/billing/details filled.svg"
+            imageAlt="Billing Feature Overview"
+          />
 
-        <ProductFeatureImages
-          features={billingFeatures}
-          productName="Billing"
-        />
+          <ProductFeatureImages
+            features={billingFeatures}
+            productName="Billing"
+          />
 
-        <FAQSection faqs={billingFAQs} />
+          <FAQSection faqs={billingFAQs} />
         </main>
       </div>
     </>

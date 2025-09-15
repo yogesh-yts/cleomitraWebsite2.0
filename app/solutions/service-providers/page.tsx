@@ -1,11 +1,11 @@
-import SolutionPageTemplate from '../../../components/sections/SolutionPageTemplate';
-import Seo from '../../../components/Seo';
+import SolutionPageTemplate from "../../../components/sections/SolutionPageTemplate";
+import Seo from "../../../components/Seo";
 
 export default function ServiceProvidersPage() {
   const heroImages = [
-    "/Solutions-teams/For Service Providers/for service providers-hero section-1.png",
-    "/Solutions-teams/For Service Providers/for service providers-hero section02.png", 
-    "/Solutions-teams/For Service Providers/for service providers-hero section-3.png"
+    "/Solutions-teams/For Service Providers/sp1.svg",
+    "/Solutions-teams/For Service Providers/sp2.svg",
+    "/Solutions-teams/For Service Providers/sp3.png",
   ];
 
   return (

@@ -1,6 +1,6 @@
 const HeroLg: React.FC = () => {
   return (
-    <div className="w-full  relative px-4 md:px-8 lg:px-16 xl:px-20 3xl:px-0  mx-auto  flex-col justify-center items-center my-10 lg:my-20  flex">
+    <div className="container-responsive  flex flex-col justify-center items-center my-10 lg:my-20  ">
       <svg
         width="1040"
         height="345"

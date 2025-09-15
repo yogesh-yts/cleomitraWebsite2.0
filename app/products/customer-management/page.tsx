@@ -68,21 +68,21 @@ const CustomerManagementPage = () => {
       />
       <div className="bg-background pb-10">
         <main>
-        <ProductHero
-          title={`Client management keeps every detail in one place — and every experience personal.`}
-          description={`Keep every client detail — from contact info to service history — in one place. With Cleomitra, you can turn first-time visitors into loyal clients.`}
-        />
-        <FeaturesSection
-          imageSrc="/Products-features/customer management/customer management- hero secrion.png"
-          imageAlt="Customer Management Feature Overview"
-        />
+          <ProductHero
+            title={`Client management keeps every detail in one place — and every experience personal.`}
+            description={`Keep every client detail — from contact info to service history — in one place. With Cleomitra, you can turn first-time visitors into loyal clients.`}
+          />
+          <FeaturesSection
+            imageSrc="/Products-features/customer management/More Customer details.svg"
+            imageAlt="Customer Management Feature Overview"
+          />
 
-        <ProductFeatureImages
-          features={customerManagementFeatures}
-          productName="Customer Management"
-        />
+          <ProductFeatureImages
+            features={customerManagementFeatures}
+            productName="Customer Management"
+          />
 
-        <FAQSection faqs={customerFAQs} />
+          <FAQSection faqs={customerFAQs} />
         </main>
       </div>
     </>

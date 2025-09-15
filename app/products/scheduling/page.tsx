@@ -65,25 +65,25 @@ export default function SchedulingPage() {
       />
       <div className="bg-background pb-10">
         <main>
-        <ProductHero
-          title={`Scheduling: Keep Your Calendar in 
+          <ProductHero
+            title={`Scheduling: Keep Your Calendar in 
 Sync and Your Clients on Time`}
-          description={`Simplify bookings with a clean calendar view,
+            description={`Simplify bookings with a clean calendar view,
              automated reminders, and smart scheduling tools — 
              all in one place.`}
-        />
+          />
 
-        <FeaturesSection
-          imageSrc="/Products-features/scheduling/scheduling-hero section.png"
-          imageAlt="Scheduling Feature Overview"
-        />
+          <FeaturesSection
+            imageSrc="/Products-features/scheduling/Customer appointments.svg"
+            imageAlt="Scheduling Feature Overview"
+          />
 
-        <ProductFeatureImages
-          features={schedulingFeatures}
-          productName="Scheduling"
-        />
+          <ProductFeatureImages
+            features={schedulingFeatures}
+            productName="Scheduling"
+          />
 
-        <FAQSection faqs={schedulingFAQs} />
+          <FAQSection faqs={schedulingFAQs} />
         </main>
       </div>
     </>

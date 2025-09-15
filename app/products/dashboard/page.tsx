@@ -59,25 +59,24 @@ export default function DashboardPage() {
       />
       <div className="bg-background pb-10">
         <main>
-        <ProductHero
-          title={`Stay on top of your business with 
+          <ProductHero
+            title={`Stay on top of your business with 
   real-time insights`}
-          description={`From revenue to appointments, Cleomitra 
+            description={`From revenue to appointments, Cleomitra 
   dashboards bring every metric into one clear view
 so you can make smarter, faster decisions.`}
-        />
-        <FeaturesSection
-          imageSrc="/Products-features/dashboard/Dashboard-herosection.png"
-          imageAlt="Dashboard Feature Overview"
-        />
+          />
+          <FeaturesSection
+            imageSrc="/Products-features/dashboard/Appointment & Source.svg"
+            imageAlt="Dashboard Feature Overview"
+          />
 
-        <ProductFeatureImages
-          features={dashboardFeatures}
-          productName="Dashboard"
-        />
+          <ProductFeatureImages
+            features={dashboardFeatures}
+            productName="Dashboard"
+          />
 
-        <FAQSection faqs={dashboardFAQs} />
-
+          <FAQSection faqs={dashboardFAQs} />
         </main>
       </div>
     </>

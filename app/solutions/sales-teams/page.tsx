@@ -1,8 +1,8 @@
-import SolutionPageTemplate from '../../../components/sections/SolutionPageTemplate';
-import Seo from '../../../components/Seo';
+import SolutionPageTemplate from "../../../components/sections/SolutionPageTemplate";
+import Seo from "../../../components/Seo";
 
 export default function SalesTeamsPage() {
-  const heroImage = "/Solutions-teams/for sales team/for sales team-hero section.png";
+  const heroImage = "/Solutions-teams/for sales team/Product selected.svg";
 
   return (
     <>
