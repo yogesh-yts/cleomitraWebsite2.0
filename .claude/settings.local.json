@@ -36,7 +36,8 @@
       "Bash(npm run lint)",
       "Bash(timeout 60 npm run build)",
       "Bash(taskkill:*)",
-      "Bash(netstat:*)"
+      "Bash(netstat:*)",
+      "Bash(del clear-database.js)"
     ],
     "deny": [],
     "ask": []

@@ -47,7 +47,20 @@ const SocialIconsGrid = () => {
         return (
           <div key={position} className="flex items-center justify-center">
             {image ? (
-              <div className="w-20 h-20 rounded-lg overflow-hidden shadow-md relative">
+              <motion.div
+                className="w-20 h-20 rounded-lg overflow-hidden shadow-md relative cursor-pointer"
+                whileHover={{
+                  scale: 1.1,
+                  rotate: 5,
+                  boxShadow: "0 10px 25px rgba(0, 0, 0, 0.2)"
+                }}
+                whileTap={{ scale: 0.95 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 20
+                }}
+              >
                 <Image
                   src={image}
                   alt={getAltForPosition(position)}
@@ -55,7 +68,7 @@ const SocialIconsGrid = () => {
                   className="object-cover"
                   quality={100}
                 />
-              </div>
+              </motion.div>
             ) : (
               <div className="w-20 h-20 bg-transparent rounded-lg "></div>
             )}

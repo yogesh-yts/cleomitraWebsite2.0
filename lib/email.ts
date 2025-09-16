@@ -1,4 +1,5 @@
 import nodemailer from 'nodemailer';
+import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
 import { IContact } from '@/models/Contact';
 
 // Create reusable transporter object using Google Workspace SMTP Relay
@@ -30,6 +31,76 @@ const createEmailTransporter = () => {
   return nodemailer.createTransport(config);
 };
 
+// Initialize SES client
+const createSESClient = () => {
+  const config: {
+    region: string;
+    credentials?: {
+      accessKeyId: string;
+      secretAccessKey: string;
+    };
+  } = {
+    region: process.env.AWS_REGION || 'us-east-1',
+  };
+
+  // Only add explicit credentials if provided (for local development)
+  // In production (Amplify), IAM role will be used automatically
+  if (process.env.AWS_ACCESS_KEY_ID && process.env.AWS_SECRET_ACCESS_KEY) {
+    config.credentials = {
+      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    };
+  }
+
+  return new SESClient(config);
+};
+
+// Send email using Amazon SES
+const sendEmailWithSES = async (params: {
+  from: string;
+  to: string;
+  subject: string;
+  html: string;
+  text: string;
+  replyTo?: string;
+}): Promise<{ success: boolean; messageId?: string; error?: string }> => {
+  try {
+    const sesClient = createSESClient();
+
+    const command = new SendEmailCommand({
+      Source: params.from,
+      Destination: {
+        ToAddresses: [params.to],
+      },
+      Message: {
+        Subject: {
+          Data: params.subject,
+          Charset: 'UTF-8',
+        },
+        Body: {
+          Html: {
+            Data: params.html,
+            Charset: 'UTF-8',
+          },
+          Text: {
+            Data: params.text,
+            Charset: 'UTF-8',
+          },
+        },
+      },
+      ReplyToAddresses: params.replyTo ? [params.replyTo] : undefined,
+    });
+
+    const result = await sesClient.send(command);
+    console.log('Email sent successfully via SES:', result.MessageId);
+    return { success: true, messageId: result.MessageId };
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown SES error';
+    console.error('SES email error:', errorMessage);
+    return { success: false, error: errorMessage };
+  }
+};
+
 // Retry function for failed email attempts
 const retryEmailSend = async (transporter: nodemailer.Transporter, mailOptions: nodemailer.SendMailOptions, maxRetries = 3) => {
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
@@ -55,8 +126,6 @@ const retryEmailSend = async (transporter: nodemailer.Transporter, mailOptions: 
 
 export const sendContactNotification = async (contactData: IContact) => {
   try {
-    const transporter = createEmailTransporter();
-
     // Email template for notification
     const htmlTemplate = `
 <!DOCTYPE html>
@@ -139,17 +208,33 @@ This email was automatically generated from the Cleomitra contact form.
 Please respond to the customer at: ${contactData.email}
 `;
 
-    const mailOptions = {
-      from: `"Cleomitra Website" <${process.env.SMTP_FROM}>`,
-      to: process.env.SMTP_TO,
-      subject: `New Contact: ${contactData.name} - ${contactData.businessType}`,
-      text: textTemplate,
-      html: htmlTemplate,
-      replyTo: contactData.email,
-    };
+    // Check if using SES or SMTP
+    const usesSES = process.env.EMAIL_SERVICE === 'ses';
 
-    const result = await retryEmailSend(transporter, mailOptions);
-    return result;
+    if (usesSES) {
+      const result = await sendEmailWithSES({
+        from: `"Cleomitra Website" <${process.env.SMTP_FROM}>`,
+        to: process.env.SMTP_TO!,
+        subject: `New Contact: ${contactData.name} - ${contactData.businessType}`,
+        text: textTemplate,
+        html: htmlTemplate,
+        replyTo: contactData.email,
+      });
+      return result;
+    } else {
+      const transporter = createEmailTransporter();
+      const mailOptions = {
+        from: `"Cleomitra Website" <${process.env.SMTP_FROM}>`,
+        to: process.env.SMTP_TO,
+        subject: `New Contact: ${contactData.name} - ${contactData.businessType}`,
+        text: textTemplate,
+        html: htmlTemplate,
+        replyTo: contactData.email,
+      };
+
+      const result = await retryEmailSend(transporter, mailOptions);
+      return result;
+    }
     
   } catch (error) {
     console.error('Error sending email:', error);
@@ -160,8 +245,6 @@ Please respond to the customer at: ${contactData.email}
 
 export const sendAutoReply = async (contactData: IContact) => {
   try {
-    const transporter = createEmailTransporter();
-
     const autoReplyHtml = `
 <!DOCTYPE html>
 <html>
@@ -230,16 +313,31 @@ Cleomitra - Empowering businesses with smart CRM solutions
 Visit us at www.cleomitra.com
 `;
 
-    const autoReplyOptions = {
-      from: `"Cleomitra Team" <${process.env.SMTP_FROM}>`,
-      to: contactData.email,
-      subject: `Thank you for contacting Cleomitra, ${contactData.name}!`,
-      text: autoReplyText,
-      html: autoReplyHtml,
-    };
+    // Check if using SES or SMTP
+    const usesSES = process.env.EMAIL_SERVICE === 'ses';
 
-    const result = await retryEmailSend(transporter, autoReplyOptions);
-    return result;
+    if (usesSES) {
+      const result = await sendEmailWithSES({
+        from: `"Cleomitra Team" <${process.env.SMTP_FROM}>`,
+        to: contactData.email,
+        subject: `Thank you for contacting Cleomitra, ${contactData.name}!`,
+        text: autoReplyText,
+        html: autoReplyHtml,
+      });
+      return result;
+    } else {
+      const transporter = createEmailTransporter();
+      const autoReplyOptions = {
+        from: `"Cleomitra Team" <${process.env.SMTP_FROM}>`,
+        to: contactData.email,
+        subject: `Thank you for contacting Cleomitra, ${contactData.name}!`,
+        text: autoReplyText,
+        html: autoReplyHtml,
+      };
+
+      const result = await retryEmailSend(transporter, autoReplyOptions);
+      return result;
+    }
     
   } catch (error) {
     console.error('Error sending auto-reply:', error);

@@ -101,7 +101,7 @@ export const companyData: NavSection = {
   items: [
     { title: "Contact", href: "/contact" },
     { title: "Get a Demo", href: "/contact" },
-    { title: "Pricing", href: "/pricing" },
+    // { title: "Pricing", href: "/pricing" }, // Temporarily hidden
   ],
 };
 

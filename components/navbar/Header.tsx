@@ -231,7 +231,7 @@ const Header = () => {
             ))}
 
             <div
-              className="relative"
+              className="relative hidden"
               onMouseEnter={() => setHoveredItem("Pricing")}
               onMouseLeave={() => setHoveredItem(null)}
             >
@@ -520,9 +520,9 @@ const Header = () => {
                 </div>
               ))}
 
-              <Link
+              {/* <Link
                 href="/pricing"
-                className="flex items-center space-x-3 font-medium text-foreground text-lg py-2 mb-6"
+                className="flex items-center space-x-3 font-medium text-foreground text-lg py-2 mb-6 "
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 <span
@@ -532,7 +532,7 @@ const Header = () => {
                   {getMenuIcon("Pricing")}
                 </span>
                 <span>Pricing</span>
-              </Link>
+              </Link> */}
             </div>
 
             {/* Mobile CTA Buttons */}

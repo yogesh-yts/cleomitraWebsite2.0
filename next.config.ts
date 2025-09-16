@@ -5,16 +5,16 @@ const nextConfig: NextConfig = {
     qualities: [75, 95, 100], // Add all the quality values you are using
   },
   env: {
-    // MongoDB
+    // MongoDB Configuration
     MONGODB_URI: process.env.MONGODB_URI,
 
-    // SMTP Configuration
-    SMTP_HOST: process.env.SMTP_HOST,
-    SMTP_PORT: process.env.SMTP_PORT,
+    // Amazon SES Configuration
+    SES_REGION: process.env.SES_REGION,
+
+    // Email Configuration
     SMTP_FROM: process.env.SMTP_FROM,
     SMTP_TO: process.env.SMTP_TO,
-    SMTP_SECURE: process.env.SMTP_SECURE,
-    SMTP_TLS: process.env.SMTP_TLS,
+    EMAIL_SERVICE: process.env.EMAIL_SERVICE,
 
     // NextAuth Configuration
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
