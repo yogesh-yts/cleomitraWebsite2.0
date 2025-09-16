@@ -40,7 +40,7 @@ const createSESClient = () => {
       secretAccessKey: string;
     };
   } = {
-    region: process.env.AWS_REGION || 'us-east-1',
+    region: process.env.SES_REGION || 'us-east-1',
   };
 
   // Only add explicit credentials if provided (for local development)
