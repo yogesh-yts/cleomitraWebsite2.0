@@ -451,7 +451,7 @@ const Header = () => {
             style={{ minHeight: "var(--height-mobile-menu)" }}
           >
             {/* Mobile Navigation Links */}
-            <div className="space-y-4">
+            <div className="space-y-4 pb-10">
               {navbarSections.map((section) => (
                 <div key={section.title} className="space-y-2">
                   <div className="font-medium text-foreground text-lg">

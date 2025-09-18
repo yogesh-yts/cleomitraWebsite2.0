@@ -37,7 +37,7 @@ const Seo: React.FC<SeoProps> = ({
       {/* Open Graph */}
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content="https://www.cleomitra.com/og.png" />
+      <meta property="og:image" content="https://www.cleomitra.com/og.jpg" />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       {url && <meta property="og:url" content={url} />}

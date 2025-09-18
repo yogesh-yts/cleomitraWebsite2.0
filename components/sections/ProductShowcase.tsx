@@ -62,16 +62,20 @@ const ProductShowcase = ({
         <motion.div
           className={`flex flex-1 lg:flex-[0.6] ${backgroundColor} py-15 pl-16 rounded-2xl`}
           initial={{
-            x: reverse ? "-20vw" : "20vw",
-            y: 0,
+            rotateY: 90,
             opacity: 0,
+            scale: 0.8,
           }}
           whileInView={{
-            x: 0,
-            y: 0,
+            rotateY: 0,
             opacity: 1,
+            scale: 1,
           }}
           transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
+          style={{
+            transformStyle: "preserve-3d",
+            transformOrigin: "right center"
+          }}
           viewport={{ once: true, amount: 0.3 }}
         >
           <Image
@@ -88,16 +92,20 @@ const ProductShowcase = ({
         <motion.div
           className="flex-1 lg:flex-[0.4] flex flex-col gap-5 "
           initial={{
-            x: reverse ? "20vw" : "-20vw",
-            y: 0,
+            rotateY: -90,
             opacity: 0,
+            scale: 0.8,
           }}
           whileInView={{
-            x: 0,
-            y: 0,
+            rotateY: 0,
             opacity: 1,
+            scale: 1,
           }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          style={{
+            transformStyle: "preserve-3d",
+            transformOrigin: "left center"
+          }}
           viewport={{ once: true, amount: 0.3 }}
         >
           <div className="flex-1 flex flex-col space-y-4  bg-black rounded-2xl pt-4 pb-2">
