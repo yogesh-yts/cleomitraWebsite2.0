@@ -41,7 +41,8 @@
       "Bash(timeout:*)",
       "Bash(node:*)",
       "Bash(npx node:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []
