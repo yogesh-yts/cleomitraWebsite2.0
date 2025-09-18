@@ -34,7 +34,7 @@ const createEmailTransporter = () => {
     secure: config.secure,
     hasAuth: !!config.auth,
     authUser: process.env.SMTP_USER ? `${process.env.SMTP_USER.substring(0, 4)}...` : 'Not set',
-    tlsRejectUnauthorized: (config.tls as any)?.rejectUnauthorized,
+    tlsRejectUnauthorized: (config.tls as { rejectUnauthorized?: boolean })?.rejectUnauthorized,
     timestamp: new Date().toISOString(),
   });
 
@@ -106,8 +106,8 @@ const sendEmailWithSES = async (params: {
     return { success: true, messageId: result.MessageId };
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : 'Unknown SES error';
-    const errorCode = (error as any)?.code || 'Unknown';
-    const errorResponse = (error as any)?.response || 'No response';
+    const errorCode = (error as { code?: string })?.code || 'Unknown';
+    const errorResponse = (error as { response?: string })?.response || 'No response';
 
     console.error('SES email error details:', {
       message: errorMessage,
@@ -130,9 +130,9 @@ const retryEmailSend = async (transporter: nodemailer.Transporter, mailOptions: 
       return { success: true, messageId: result.messageId };
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-      const errorCode = (error as any)?.code || 'Unknown';
-      const errorResponse = (error as any)?.response || 'No response';
-      const errorResponseCode = (error as any)?.responseCode || 'No code';
+      const errorCode = (error as { code?: string })?.code || 'Unknown';
+      const errorResponse = (error as { response?: string })?.response || 'No response';
+      const errorResponseCode = (error as { responseCode?: number })?.responseCode || 'No code';
 
       console.error(`SMTP attempt ${attempt} failed:`, {
         message: errorMessage,

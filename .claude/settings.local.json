@@ -40,7 +40,8 @@
       "Bash(del clear-database.js)",
       "Bash(timeout:*)",
       "Bash(node:*)",
-      "Bash(npx node:*)"
+      "Bash(npx node:*)",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": []
