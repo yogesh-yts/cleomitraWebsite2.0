@@ -6,9 +6,9 @@ import Link from "next/link";
 
 const StatisticsSection = () => {
   return (
-    <section className="container-responsive pt-15 w-full">
+    <section className="container-responsive pt-15 max-w-[100%]">
       <div
-        className="relative flex justify-center items-center border-2 border-dashed border-black/40 border-b-0 py-16 md:py-24 lg:py-30 px-4 md:px-6 lg:px-8"
+        className="relative flex justify-center items-center border-2 border-dashed border-black/40 border-b-0 py-16 md:py-24 lg:py-30 px-4 md:px-6 lg:px-8 min-h-[200px] md:min-h-[300px] lg:min-h-[400px]"
         style={{
           borderTopLeftRadius: "var(--radius-20)",
           borderTopRightRadius: "var(--radius-20)",
@@ -17,8 +17,7 @@ const StatisticsSection = () => {
         {/* Central Text Box */}
         <motion.div
           className="relative bg-white max-w-4xl text-center z-10 my-6 md:my-8 lg:my-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 1, y: 0 }} // Remove initial animation
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >

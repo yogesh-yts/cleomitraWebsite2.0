@@ -53,12 +53,6 @@ const nextConfig: NextConfig = {
     SMTP_FROM: process.env.SMTP_FROM,
     SMTP_TO: process.env.SMTP_TO,
 
-    // Amazon SES Configuration (fallback)
-    SES_REGION: process.env.SES_REGION,
-    AWS_ACCESS_KEY_ID: process.env.AWS_ACCESS_KEY_ID,
-    AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY,
-    AWS_REGION: process.env.AWS_REGION,
-
     // NextAuth Configuration
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
     NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,

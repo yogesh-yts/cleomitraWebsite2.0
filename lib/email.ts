@@ -73,7 +73,7 @@ const sendEmailWithSES = async (params: {
   html: string;
   text: string;
   replyTo?: string;
-}): Promise<{ success: boolean; messageId?: string; error?: string }> => {
+}): Promise<{ success: boolean; messageId?: string; error?: string; code?: string; response?: string }> => {
   try {
     const sesClient = createSESClient();
 
@@ -122,7 +122,7 @@ const sendEmailWithSES = async (params: {
 };
 
 // Retry function for failed email attempts
-const retryEmailSend = async (transporter: nodemailer.Transporter, mailOptions: nodemailer.SendMailOptions, maxRetries = 3) => {
+const retryEmailSend = async (transporter: nodemailer.Transporter, mailOptions: nodemailer.SendMailOptions, maxRetries = 3): Promise<{ success: boolean; messageId?: string; error?: string; code?: string; response?: string }> => {
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
       const result = await transporter.sendMail(mailOptions);
@@ -155,6 +155,9 @@ const retryEmailSend = async (transporter: nodemailer.Transporter, mailOptions: 
       await new Promise(resolve => setTimeout(resolve, delay));
     }
   }
+
+  // Fallback return (should never reach here)
+  return { success: false, error: 'Max retries exceeded' };
 };
 
 export const sendContactNotification = async (contactData: IContact) => {
