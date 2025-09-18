@@ -14,7 +14,6 @@ import {
 } from "@/data/homepage-data";
 
 const HomePage = () => {
-
   return (
     <>
       <Seo
@@ -24,7 +23,7 @@ const HomePage = () => {
         url="https://www.cleomitra.com"
         siteName="Cleomitra"
       />
-      <div className="bg-background relative">
+      <div className="bg-background relative w-full">
         {/* <HeroSection /> */}
         <HeroLg />
         <FeaturesSection

@@ -28,6 +28,16 @@ const createEmailTransporter = () => {
     };
   }
 
+  console.log('Creating SMTP transporter with config:', {
+    host: config.host,
+    port: config.port,
+    secure: config.secure,
+    hasAuth: !!config.auth,
+    authUser: process.env.SMTP_USER ? `${process.env.SMTP_USER.substring(0, 4)}...` : 'Not set',
+    tlsRejectUnauthorized: (config.tls as any)?.rejectUnauthorized,
+    timestamp: new Date().toISOString(),
+  });
+
   return nodemailer.createTransport(config);
 };
 
@@ -96,8 +106,18 @@ const sendEmailWithSES = async (params: {
     return { success: true, messageId: result.MessageId };
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : 'Unknown SES error';
-    console.error('SES email error:', errorMessage);
-    return { success: false, error: errorMessage };
+    const errorCode = (error as any)?.code || 'Unknown';
+    const errorResponse = (error as any)?.response || 'No response';
+
+    console.error('SES email error details:', {
+      message: errorMessage,
+      code: errorCode,
+      response: errorResponse,
+      stack: error instanceof Error ? error.stack : 'No stack',
+      timestamp: new Date().toISOString(),
+    });
+
+    return { success: false, error: errorMessage, code: errorCode, response: errorResponse };
   }
 };
 
@@ -110,10 +130,23 @@ const retryEmailSend = async (transporter: nodemailer.Transporter, mailOptions: 
       return { success: true, messageId: result.messageId };
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-      console.error(`Email attempt ${attempt} failed:`, errorMessage);
-      
+      const errorCode = (error as any)?.code || 'Unknown';
+      const errorResponse = (error as any)?.response || 'No response';
+      const errorResponseCode = (error as any)?.responseCode || 'No code';
+
+      console.error(`SMTP attempt ${attempt} failed:`, {
+        message: errorMessage,
+        code: errorCode,
+        response: errorResponse,
+        responseCode: errorResponseCode,
+        stack: error instanceof Error ? error.stack : 'No stack',
+        attempt,
+        maxRetries,
+        timestamp: new Date().toISOString(),
+      });
+
       if (attempt === maxRetries) {
-        return { success: false, error: errorMessage };
+        return { success: false, error: errorMessage, code: errorCode, response: errorResponse };
       }
       
       // Wait before retry (exponential backoff)

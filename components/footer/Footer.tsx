@@ -289,7 +289,12 @@ const Footer = () => {
               </div>
 
               {/* Second Row: Resources + Company */}
-              <div className="grid grid-cols-4 gap-8">
+              <div
+                className="grid grid-cols-4 gap-8"
+                style={{
+                  gridTemplateColumns: "1fr 1fr 1fr minmax(360px, 1fr)",
+                }}
+              >
                 {/* Resources */}
                 <div>
                   <h4 className="text-lg font-bold mb-4 text-white">

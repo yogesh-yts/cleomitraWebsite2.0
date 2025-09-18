@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const StatisticsSection = () => {
   return (
-    <section className="container-responsive pt-15">
+    <section className="container-responsive pt-15 w-full">
       <div
         className="relative flex justify-center items-center border-2 border-dashed border-black/40 border-b-0 py-16 md:py-24 lg:py-30 px-4 md:px-6 lg:px-8"
         style={{

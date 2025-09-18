@@ -40,13 +40,24 @@ const nextConfig: NextConfig = {
     // MongoDB Configuration
     MONGODB_URI: process.env.MONGODB_URI,
 
-    // Amazon SES Configuration
-    SES_REGION: process.env.SES_REGION,
+    // Email Service Configuration
+    EMAIL_SERVICE: process.env.EMAIL_SERVICE,
 
-    // Email Configuration
+    // SMTP Configuration
+    SMTP_HOST: process.env.SMTP_HOST,
+    SMTP_PORT: process.env.SMTP_PORT,
+    SMTP_SECURE: process.env.SMTP_SECURE,
+    SMTP_TLS: process.env.SMTP_TLS,
+    SMTP_USER: process.env.SMTP_USER,
+    SMTP_PASS: process.env.SMTP_PASS,
     SMTP_FROM: process.env.SMTP_FROM,
     SMTP_TO: process.env.SMTP_TO,
-    EMAIL_SERVICE: process.env.EMAIL_SERVICE,
+
+    // Amazon SES Configuration (fallback)
+    SES_REGION: process.env.SES_REGION,
+    AWS_ACCESS_KEY_ID: process.env.AWS_ACCESS_KEY_ID,
+    AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY,
+    AWS_REGION: process.env.AWS_REGION,
 
     // NextAuth Configuration
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
