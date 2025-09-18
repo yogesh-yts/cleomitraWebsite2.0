@@ -37,7 +37,10 @@
       "Bash(timeout 60 npm run build)",
       "Bash(taskkill:*)",
       "Bash(netstat:*)",
-      "Bash(del clear-database.js)"
+      "Bash(del clear-database.js)",
+      "Bash(timeout:*)",
+      "Bash(node:*)",
+      "Bash(npx node:*)"
     ],
     "deny": [],
     "ask": []

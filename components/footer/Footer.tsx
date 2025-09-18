@@ -93,7 +93,7 @@ const Footer = () => {
 
                 {/* Products - Engage with clients */}
                 <div>
-                  <h4 className="text-lg font-bold mb-4 text-black">
+                  <h4 className="text-lg font-bold mb-4 text-transparent">
                     {navigationData[0].title}
                   </h4>
                   <div className="text-sm font-normal text-white/40 mb-3">
@@ -207,7 +207,7 @@ const Footer = () => {
               <div
                 className="grid gap-8 mb-10"
                 style={{
-                  gridTemplateColumns: "1fr 1fr 1fr minmax(300px, 1fr)",
+                  gridTemplateColumns: "1fr 1fr 1fr minmax(360px, 1fr)",
                 }}
               >
                 {/* Products - Features */}

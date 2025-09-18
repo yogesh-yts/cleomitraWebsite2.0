@@ -2,7 +2,7 @@ import nodemailer from 'nodemailer';
 import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
 import { IContact } from '@/models/Contact';
 
-// Create reusable transporter object using Google Workspace SMTP Relay
+// Create reusable transporter object using SMTP (supports Amazon SES SMTP, Gmail, etc.)
 const createEmailTransporter = () => {
   const config: Record<string, unknown> = {
     host: process.env.SMTP_HOST || 'smtp-relay.gmail.com',

@@ -14,7 +14,8 @@ export async function POST() {
 
     if (usesSES) {
       console.log('Using Amazon SES');
-      console.log('AWS_REGION:', process.env.AWS_REGION);
+      console.log('SES_REGION:', process.env.SES_REGION);
+      console.log('AWS_REGION (deprecated):', process.env.AWS_REGION);
       console.log('AWS_ACCESS_KEY_ID:', process.env.AWS_ACCESS_KEY_ID ? 'Set' : 'Not set');
       console.log('AWS_SECRET_ACCESS_KEY:', process.env.AWS_SECRET_ACCESS_KEY ? 'Set' : 'Not set');
     } else {
@@ -34,7 +35,7 @@ export async function POST() {
           secretAccessKey: string;
         };
       } = {
-        region: process.env.AWS_REGION || 'us-east-1',
+        region: process.env.SES_REGION || 'us-east-1',
       };
 
       // Only add explicit credentials if provided (for local development)
@@ -63,7 +64,7 @@ export async function POST() {
                 <h1>SES Email Test Successful! 🎉</h1>
                 <p>This is a test email to verify your Amazon SES configuration is working.</p>
                 <p>Sent at: ${new Date().toLocaleString()}</p>
-                <p>Region: ${process.env.AWS_REGION}</p>
+                <p>Region: ${process.env.SES_REGION}</p>
               `,
               Charset: 'UTF-8',
             },
@@ -85,7 +86,7 @@ export async function POST() {
         messageId: result.MessageId,
         service: 'Amazon SES',
         config: {
-          region: process.env.AWS_REGION,
+          region: process.env.SES_REGION,
           hasCredentials: !!(process.env.AWS_ACCESS_KEY_ID && process.env.AWS_SECRET_ACCESS_KEY)
         }
       });

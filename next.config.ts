@@ -4,6 +4,38 @@ const nextConfig: NextConfig = {
   images: {
     qualities: [75, 95, 100], // Add all the quality values you are using
   },
+  async redirects() {
+    return [
+      // Legacy feature pages to new product pages
+      {
+        source: "/features/manage-your-clients",
+        destination: "/products/customer-management",
+        permanent: true,
+      },
+      {
+        source: "/features/manage-your-business",
+        destination: "/products/dashboard",
+        permanent: true,
+      },
+      {
+        source: "/features/market-your-business",
+        destination: "/products/marketing-messaging",
+        permanent: true,
+      },
+      // Legacy salon software page to new solution page
+      {
+        source: "/salon-software",
+        destination: "/solutions/salon-spa",
+        permanent: true,
+      },
+      // Legacy contact page
+      {
+        source: "/contact-us",
+        destination: "/contact",
+        permanent: true,
+      },
+    ];
+  },
   env: {
     // MongoDB Configuration
     MONGODB_URI: process.env.MONGODB_URI,

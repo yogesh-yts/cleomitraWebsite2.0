@@ -28,9 +28,15 @@ const StatisticsSection = () => {
               href="https://www.cleomitra.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="underline decoration-2 "
+              className="inline-flex items-baseline group"
             >
-              cleomitra
+              <span className="relative inline-block overflow-hidden">
+                cleomitra
+                {/* First underline – slides out to right on hover */}
+                <span className="absolute bottom-[2px] left-0 w-full h-0.5 bg-current transition-transform duration-200 ease-out group-hover:translate-x-full"></span>
+                {/* Second underline – always has transform, changes on hover */}
+                <span className="absolute bottom-[2px] left-0 w-full h-0.5 bg-current transform transition-transform duration-600 ease-out -translate-x-full group-hover:translate-x-0"></span>
+              </span>
             </Link>{" "}
             a customer <br className="hidden" />
             experience platform, made by 15+
