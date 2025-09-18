@@ -157,3 +157,68 @@ export async function GET(request: NextRequest) {
     );
   }
 }
+
+export async function DELETE(request: NextRequest) {
+  try {
+    await connectDB();
+
+    const { searchParams } = new URL(request.url);
+    const contactId = searchParams.get('id');
+
+    if (!contactId) {
+      return NextResponse.json(
+        { success: false, message: 'Contact ID is required' },
+        { status: 400 }
+      );
+    }
+
+    const body = await request.json();
+    const { password } = body;
+
+    if (!password) {
+      return NextResponse.json(
+        { success: false, message: 'Password is required' },
+        { status: 400 }
+      );
+    }
+
+    // Check admin password
+    if (password !== process.env.ADMIN_DELETE_PASSWORD) {
+      return NextResponse.json(
+        { success: false, message: 'Invalid admin password' },
+        { status: 401 }
+      );
+    }
+
+    // Validate ObjectId format
+    if (!mongoose.Types.ObjectId.isValid(contactId)) {
+      return NextResponse.json(
+        { success: false, message: 'Invalid contact ID format' },
+        { status: 400 }
+      );
+    }
+
+    // Delete the contact
+    const deletedContact = await Contact.findByIdAndDelete(contactId);
+
+    if (!deletedContact) {
+      return NextResponse.json(
+        { success: false, message: 'Contact not found' },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json({
+      success: true,
+      message: 'Contact deleted successfully',
+      deletedId: contactId
+    });
+
+  } catch (error) {
+    console.error('Error deleting contact:', error);
+    return NextResponse.json(
+      { success: false, message: 'Failed to delete contact' },
+      { status: 500 }
+    );
+  }
+}

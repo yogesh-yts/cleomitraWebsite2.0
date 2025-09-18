@@ -40,6 +40,11 @@ const AdminContactsPage = () => {
     pages: 0
   });
   const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [deleteContactId, setDeleteContactId] = useState<string | null>(null);
+  const [deletePassword, setDeletePassword] = useState('');
+  const [deleteLoading, setDeleteLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const fetchContacts = async (page: number = 1) => {
     try {
@@ -82,6 +87,54 @@ const AdminContactsPage = () => {
 
   const handlePageChange = (page: number) => {
     fetchContacts(page);
+  };
+
+  const handleDeleteClick = (contactId: string, event: React.MouseEvent) => {
+    event.stopPropagation();
+    setDeleteContactId(contactId);
+    setShowDeleteModal(true);
+  };
+
+  const handleDeleteConfirm = async () => {
+    if (!deleteContactId || !deletePassword.trim()) return;
+
+    setDeleteLoading(true);
+    try {
+      const response = await fetch(`/api/contact?id=${deleteContactId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ password: deletePassword }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setContacts(contacts.filter(contact => contact._id !== deleteContactId));
+        setPagination(prev => ({
+          ...prev,
+          total: prev.total - 1
+        }));
+        setShowDeleteModal(false);
+        setDeleteContactId(null);
+        setDeletePassword('');
+      } else {
+        setError(result.message || 'Failed to delete contact');
+      }
+    } catch (err) {
+      setError('Network error occurred');
+      console.error('Error deleting contact:', err);
+    } finally {
+      setDeleteLoading(false);
+    }
+  };
+
+  const handleDeleteCancel = () => {
+    setShowDeleteModal(false);
+    setDeleteContactId(null);
+    setDeletePassword('');
+    setShowPassword(false);
   };
 
   if (loading && contacts.length === 0) {
@@ -135,10 +188,17 @@ const AdminContactsPage = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
-                className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow cursor-pointer"
+                className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow cursor-pointer relative"
                 onClick={() => setSelectedContact(contact)}
               >
-                <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 items-start">
+                <button
+                  onClick={(e) => handleDeleteClick(contact._id, e)}
+                  className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-full transition-colors z-10"
+                  aria-label="Delete contact"
+                >
+                  <span className="material-symbols-outlined text-lg">close</span>
+                </button>
+                <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 items-start pr-8">
                   {/* Contact Info */}
                   <div className="lg:col-span-1">
                     <h3 className="text-lg font-semibold text-gray-900 mb-1">{contact.name}</h3>
@@ -295,6 +355,87 @@ const AdminContactsPage = () => {
                       Call
                     </a>
                   </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      )}
+
+      {/* Delete Password Modal */}
+      {showDeleteModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="bg-white rounded-lg max-w-md w-full"
+          >
+            <div className="p-6">
+              <div className="flex items-start justify-between mb-4">
+                <div>
+                  <h2 className="text-xl font-bold text-gray-900">Delete Contact</h2>
+                  <p className="text-gray-600 mt-1">Enter admin password to confirm deletion</p>
+                </div>
+                <button
+                  onClick={handleDeleteCancel}
+                  className="text-gray-400 hover:text-gray-600"
+                >
+                  <span className="material-symbols-outlined">close</span>
+                </button>
+              </div>
+
+              <div className="space-y-4">
+                <div>
+                  <label htmlFor="deletePassword" className="block text-sm font-medium text-gray-700 mb-2">
+                    Admin Password
+                  </label>
+                  <div className="relative">
+                    <input
+                      id="deletePassword"
+                      type={showPassword ? "text" : "password"}
+                      value={deletePassword}
+                      onChange={(e) => setDeletePassword(e.target.value)}
+                      className="w-full px-3 py-2 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+                      placeholder="Enter admin password"
+                      autoFocus
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600"
+                    >
+                      <span className="material-symbols-outlined text-lg">
+                        {showPassword ? "visibility_off" : "visibility"}
+                      </span>
+                    </button>
+                  </div>
+                </div>
+
+                {error && (
+                  <div className="p-3 bg-red-50 border border-red-200 rounded-md">
+                    <p className="text-sm text-red-600">{error}</p>
+                  </div>
+                )}
+
+                <div className="flex space-x-3 pt-4">
+                  <button
+                    onClick={handleDeleteCancel}
+                    disabled={deleteLoading}
+                    className="flex-1 px-4 py-2 text-gray-700 bg-gray-100 border border-gray-300 rounded-md hover:bg-gray-200 transition-colors disabled:opacity-50"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={handleDeleteConfirm}
+                    disabled={deleteLoading || !deletePassword.trim()}
+                    className="flex-1 px-4 py-2 bg-error text-white rounded-md hover:bg-error/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                  >
+                    {deleteLoading ? (
+                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    ) : (
+                      'Delete'
+                    )}
+                  </button>
                 </div>
               </div>
             </div>

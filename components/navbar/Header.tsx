@@ -536,14 +536,14 @@ const Header = () => {
             </div>
 
             {/* Mobile CTA Buttons */}
-            <div className="pt-4 pb-4 lg:pb-0 border-t border-gray-200 flex flex-row mt-auto">
+            <div className="pt-3 pb-3 sm:pt-1 sm:pb-1 lg:pb-0 border-t border-gray-200 flex flex-row mt-auto">
               <Link
                 href="/contact"
-                className="flex items-center space-x-2 w-full text-left text-gray-600 hover:text-foreground py-2 flex-1"
+                className="flex items-center space-x-2 sm:space-x-1 w-full text-left text-gray-600 hover:text-foreground py-2 sm:py-1 flex-1 text-[10px] sm:text-sm"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 <span
-                  className="material-symbols-outlined text-lg"
+                  className="material-symbols-outlined text-[10px] sm:text-base"
                   aria-hidden="true"
                 >
                   play_circle
@@ -554,12 +554,12 @@ const Header = () => {
                 href="https://www.cleomitra.app/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center space-x-2 w-full text-left text-gray-600 hover:text-foreground py-2 flex-1"
+                className="flex items-center space-x-2 sm:space-x-1 w-full text-left text-gray-600 hover:text-foreground py-2 sm:py-1 flex-1 text-[10px] sm:text-sm"
                 onClick={() => setIsMobileMenuOpen(false)}
                 aria-label="Login (opens in new tab)"
               >
                 <span
-                  className="material-symbols-outlined text-lg"
+                  className="material-symbols-outlined text-[10px] sm:text-base"
                   aria-hidden="true"
                 >
                   login
@@ -567,6 +567,7 @@ const Header = () => {
                 <span>Login</span>
               </Link>
               <StartFreeTrialButton
+                className="py-1 sm:py-2 px-2 sm:px-3 text-xs sm:text-sm bg-black text-white"
                 onClose={() => setIsMobileMenuOpen(false)}
               />
             </div>
